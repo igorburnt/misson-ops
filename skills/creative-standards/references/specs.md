@@ -13,9 +13,9 @@ This file is the human explanation. Keep the two in step.
 | Setting | Value | Why |
 |---|---|---|
 | Aspect / resolution | 9:16, 1080×1920 | The platform minimum, exactly |
-| Duration | 15–30 s | 30 s is the hard ceiling; 15 s is our own floor for a mission that reads |
+| Duration | **8–30 s** | 30 s is the platform ceiling. The 8 s floor is calibrated: 12 of the 27 shipped house creatives are under 15 s (shortest 6.2 s, median 16.2 s), so PROJECT.md's original 15 s floor would have flagged half our own best work |
 | FPS | **30** | See the decision note below |
-| Video | H.264 high@4.0, yuv420p, CRF 21, preset slow, max 7000 kbps | MP4/H.264 over WebM: H.264 decodes in hardware on every phone, and WebM buys nothing at this size |
+| Video | H.264 high@4.0, yuv420p, CRF 21, preset slow, ceiling 12000 kbps | MP4/H.264 over WebM: H.264 decodes in hardware on every phone, and WebM buys nothing at this size. The bitrate ceiling is deliberately high — the house creatives run at a median 8676 kbps and up to 15094 — because the enforced 30 MB cap, not the ceiling, is what actually constrains the file |
 | Audio | AAC 128 kbps, 48 kHz, stereo | The feed autoplays muted, but a missing audio track trips some uploaders — `normalize_video.py` adds a silent one when the source has none |
 | Container | mp4, `+faststart` | Starts playing before the full file lands |
 | Max size | **30 MB, enforced** | See the size-cap note below |
@@ -37,6 +37,27 @@ re-encodes automatically: it computes a bitrate from the remaining budget
 `encode_passes` plus a warning saying what it did. If it still cannot fit, the warning says to
 shorten the cut rather than silently shipping an oversized file.
 
+### Calibration against the library
+
+These values were checked against the 27 shipped `feed*.mp4` creatives in the reference
+library (mirrored 2026-10-13). What that evidence changed:
+
+| Setting | Was | Now | Why |
+|---|---|---|---|
+| `min_duration_s` | 15 | **8** | 12 of 27 shipped creatives are under 15 s |
+| `max_bitrate_kbps` | 7000 | **12000** | House median is 8676 kbps; a 7000 ceiling would have exported below our own standard |
+| `fps` | 30 (judgment) | 30 (**confirmed**) | All 27 are 30 fps — not a preference, the house standard |
+
+**Open with Sidney: the library is HEVC, the stated spec is H.264.** 26 of the 27 shipped
+creatives are HEVC in an MP4 container, but the Command Center limits say "MP4 H.264 · WebM".
+Either the uploader accepts HEVC in practice and the stated spec understates it, or these are
+pre-upload masters. It matters: HEVC would buy roughly 30–40% more quality inside the same
+30 MB. We export H.264 for now because it is strictly within the stated spec and decodes in
+hardware everywhere — but if HEVC is genuinely accepted, that is a free quality win.
+
+A real check: `Uber/feed-high.mp4` (HEVC, 1080×1920, 30 s, 26.56 MB) round-trips to H.264
+1080×1920, 30 s, 20.51 MB in one pass with no warnings.
+
 ## Feed video — generated (`video.generated`)
 
 **Resolution conflict, resolved.** PROJECT.md §9.4 says generate at 720p — correct, because
@@ -51,6 +72,10 @@ it is intended, not a quality defect. Everything else matches the feed profile; 
 ## Mission image (`image.mission`)
 
 1:1, 1080×1080 (above the 1024×1024 minimum), **WebP at quality 92**, ≤ 1.0 MB enforced.
+
+The library backs this up twice over: the house 1:1 images are named `*_1x1_1024.png` — the
+1024 convention is real — and **7 of the 27 of them exceed the 1.0 MB cap**, the largest at
+1.58 MB. Those are mostly PNGs. Our own library demonstrates the failure mode WebP avoids.
 
 ### Why WebP, not PNG
 

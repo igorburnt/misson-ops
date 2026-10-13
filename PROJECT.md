@@ -51,7 +51,7 @@ What the pipeline exports, and why:
 | Asset | Export | Decision |
 |---|---|---|
 | Mission image | 1:1, 1080×1080, **WebP q92**, ≤ 1.0 MB | PNG blows the 1.0 MB cap on photographic sources (measured 1.59 MB worst case) and has no quality knob. WebP is in the accepted list and fits comfortably. |
-| Feed video (sourced) | 9:16, 1080×1920, **30 fps**, MP4 H.264 high@4.0, CRF 21, ≤ 30 MB | 15–30 s. 30 fps because sources are social video at 30/60; 24 adds judder on a short autoplaying loop for a filmic look we are not after. |
+| Feed video (sourced) | 9:16, 1080×1920, **30 fps**, MP4 H.264 high@4.0, CRF 21, ≤ 30 MB | **8–30 s** — calibrated against the library, where 12 of 27 shipped creatives are under 15 s. 30 fps is confirmed by all 27. |
 | Feed video (generated) | **Generated at 720×1280, exported at 1080×1920**, 5–10 s | 720p generation keeps artifacts and credits down (§9.4), but 1080×1920 is the platform minimum, so the export upscales. Intended, flagged as a note not a warning. |
 
 - Both size caps are **enforced, not warned about**: `normalize_video.py` re-encodes against a bitrate computed from the remaining budget, `normalize_image.py` steps down a quality ladder. An oversized file means a rejected upload, which is worse than a slightly softer one.
@@ -80,7 +80,7 @@ What the pipeline exports, and why:
 ### 5.2 Reference library (the "good examples")
 Igor/Sidney's Google Drive folder with high-quality mission videos.
 - **OPEN:** Drive folder link: `<DRIVE_FOLDER_URL>`
-- Download it locally to `references/library/raw/` (git-ignored, do not commit media).
+- Mirrored with `scripts/fetch_drive_library.py` to `references/library/raw/` (git-ignored, do not commit media). See `references/library/README.md` for what is actually in it — the folders mix shipped finals with the raw sources they were cut from, and only the 27 `feed*.mp4` files are the house standard.
 - This is **not** model fine-tuning. The library is used to (a) derive a written style profile and rubric, and (b) provide visual references/keyframes for generation prompts.
 - Later: add a `references/library/negative/` folder with examples of what we **don't** want (corporate, low-effort influencer UGC, blurry, wrong format).
 
@@ -156,6 +156,7 @@ All scripts: Python 3.11+, CLI with `argparse`, JSON output on stdout, non-zero 
 | `normalize_image.py <in>` | Make spec-compliant image | 1:1 crop, upscale if below min resolution, export format from §4 | **built** |
 | `extract_frames.py <in> --n 6` | Frames for AI review | evenly spaced + first frame; also detect scene cuts (ffmpeg `scdet`) | Phase 1 |
 | `brand_overlay.py <in> --logo <png> [--text] [--endcard]` | Composite real branding | logo position presets, safe margins for feed UI, optional 1.5 s end card | Phase 2 |
+| `fetch_drive_library.py <folder> --out <dir>` | Mirror the Drive reference library | walks the tree, keeps per-brand structure, skips files already present, writes `_index.json` | **built** |
 | `profile_library.py <dir>` | Analyze reference library | per-file stats + aggregate: durations, cuts/second, aspect distribution, first-frame thumbnails → JSON for the agent to interpret | Phase 1 |
 
 **Phase 0 acceptance:** a video downloaded from YouTube or Instagram goes through `normalize_video.py` and is accepted by the Command Center upload with no CapCut step.
@@ -289,7 +290,9 @@ Calibrate in Phase 1: scores on library videos should land ≥ 80; if not, adjus
 
 - [x] ~~Exact codec/container/bitrate/size limits accepted by Command Center~~ — answered by Sidney 2026-10-13, see §4
 - [x] ~~Mission image min resolution and format~~ — answered by Sidney 2026-10-13, see §4
-- [ ] Drive library link + who maintains it (Igor/Sidney) — **blocks Phase 1**
+- [x] ~~Drive library link~~ — https://drive.google.com/drive/folders/1j0s9X3HxP5ya7B9-2HZg2CXjD_p3Yifr ("Feed - Demos"), mirrored 2026-10-13. **Still open: who maintains it** (Igor/Sidney)
+- [ ] **New:** the library's shipped creatives are 26/27 HEVC, but the stated Command Center spec is "MP4 H.264 · WebM". Does the uploader accept HEVC? If so it is ~30–40% more quality inside the same 30 MB (Sidney)
+- [ ] **New:** `Crypto.com/` holds 40 DSP banner videos (1024×768, 480×320…) that are not feed creatives and skew every aggregate. Move them out of the library, or confirm they should be excluded (Sidney)
 - [ ] Higgsfield MCP access, which models, credit budget per mission (Jean)
 - [ ] Brand approval policy: when is sourced/generated content OK without brand sign-off? (Pascal/Jean)
 - [ ] Instagram: acceptable to use a logged-in session for downloads, or YouTube/website only? (Jean)

@@ -7,7 +7,7 @@
       "width": 1080,
       "height": 1920,
       "aspect": "9:16",
-      "min_duration_s": 15,
+      "min_duration_s": 8,
       "max_duration_s": 30,
       "fps": 30,
       "container": "mp4",
@@ -17,14 +17,15 @@
       "pix_fmt": "yuv420p",
       "crf": 21,
       "preset": "slow",
-      "max_bitrate_kbps": 7000,
+      "max_bitrate_kbps": 12000,
       "acodec": "aac",
       "audio_bitrate_kbps": 128,
       "audio_sample_rate": 48000,
       "faststart": true,
       "max_size_mb": 30,
       "enforce_max_size": true,
-      "allow_upscale": false
+      "allow_upscale": false,
+      "_evidence": "Calibrated against the 27 shipped feed*.mp4 creatives in the reference library (2026-10-13): 30fps unanimous; durations 6.2-30s, median 16.2 (12 of 27 are under 15s, so the old 15s floor was wrong); bitrate median 8676 kbps, max 15094, so the maxrate ceiling is high and enforce_max_size does the real work; sizes 0.3-27.6MB, none over 30MB."
     },
     "generated": {
       "_status": "CONFIRMED",
@@ -44,7 +45,7 @@
       "pix_fmt": "yuv420p",
       "crf": 20,
       "preset": "slow",
-      "max_bitrate_kbps": 7000,
+      "max_bitrate_kbps": 12000,
       "acodec": "aac",
       "audio_bitrate_kbps": 128,
       "audio_sample_rate": 48000,
@@ -65,7 +66,12 @@
       "aspect": "1:1",
       "format": "webp",
       "quality": 92,
-      "quality_ladder": [92, 86, 80, 72],
+      "quality_ladder": [
+        92,
+        86,
+        80,
+        72
+      ],
       "max_size_mb": 1.0,
       "enforce_max_size": true
     }
