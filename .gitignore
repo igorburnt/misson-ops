@@ -1,0 +1,15 @@
+# Never commit media or credentials
+references/library/raw/
+references/library/negative/
+brands/*/logo/
+brands/*/assets/
+brands/*/runs/
+tests/samples/*.mp4
+tests/samples/*.mov
+tests/samples/*.png
+tests/samples/*.jpg
+.env
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

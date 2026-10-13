@@ -1,0 +1,63 @@
+{
+  "_comment": "Single source of truth for output specs. Scripts read ONLY this file - never hardcode specs. Values marked PROVISIONAL are PROJECT.md section 4 OPEN items awaiting Sidney's Command Center limits from the 2026-10-13 call.",
+  "video": {
+    "feed": {
+      "_status": "PROVISIONAL",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "min_duration_s": 15,
+      "max_duration_s": 30,
+      "fps": 30,
+      "container": "mp4",
+      "vcodec": "libx264",
+      "profile": "high",
+      "level": "4.0",
+      "pix_fmt": "yuv420p",
+      "crf": 20,
+      "preset": "slow",
+      "max_bitrate_kbps": 8000,
+      "acodec": "aac",
+      "audio_bitrate_kbps": 128,
+      "audio_sample_rate": 48000,
+      "faststart": true,
+      "max_size_mb": 50
+    },
+    "generated": {
+      "_status": "PROVISIONAL",
+      "width": 720,
+      "height": 1280,
+      "aspect": "9:16",
+      "min_duration_s": 5,
+      "max_duration_s": 10,
+      "fps": 30,
+      "container": "mp4",
+      "vcodec": "libx264",
+      "profile": "high",
+      "level": "4.0",
+      "pix_fmt": "yuv420p",
+      "crf": 21,
+      "preset": "slow",
+      "max_bitrate_kbps": 5000,
+      "acodec": "aac",
+      "audio_bitrate_kbps": 128,
+      "audio_sample_rate": 48000,
+      "faststart": true,
+      "max_size_mb": 30
+    }
+  },
+  "image": {
+    "mission": {
+      "_status": "PROVISIONAL",
+      "width": 1080,
+      "height": 1080,
+      "aspect": "1:1",
+      "format": "png",
+      "jpeg_quality": 92,
+      "max_size_mb": 5
+    }
+  },
+  "hard_fails": {
+    "min_source_height": 480
+  }
+}
