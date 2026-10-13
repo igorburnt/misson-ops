@@ -1,8 +1,9 @@
 {
-  "_comment": "Single source of truth for output specs. Scripts read ONLY this file - never hardcode specs. Values marked PROVISIONAL are PROJECT.md section 4 OPEN items awaiting Sidney's Command Center limits from the 2026-10-13 call.",
+  "_comment": "Single source of truth for output specs. Scripts read ONLY this file - never hardcode specs. Source: Command Center limits confirmed by Sidney, 2026-10-13.",
+  "_source": "Mission videos: 9:16, >=1080x1920, rec. <=30.0 MB, MP4 H.264 / WebM, <=30s. Mission image: 1:1, >=1024x1024, rec. <=1.0 MB, PNG / JPG / WebP.",
   "video": {
     "feed": {
-      "_status": "PROVISIONAL",
+      "_status": "CONFIRMED",
       "width": 1080,
       "height": 1920,
       "aspect": "9:16",
@@ -14,19 +15,24 @@
       "profile": "high",
       "level": "4.0",
       "pix_fmt": "yuv420p",
-      "crf": 20,
+      "crf": 21,
       "preset": "slow",
-      "max_bitrate_kbps": 8000,
+      "max_bitrate_kbps": 7000,
       "acodec": "aac",
       "audio_bitrate_kbps": 128,
       "audio_sample_rate": 48000,
       "faststart": true,
-      "max_size_mb": 50
+      "max_size_mb": 30,
+      "enforce_max_size": true,
+      "allow_upscale": false
     },
     "generated": {
-      "_status": "PROVISIONAL",
-      "width": 720,
-      "height": 1280,
+      "_status": "CONFIRMED",
+      "_note": "Generation happens at 720x1280 (fewer artifacts, fewer credits, PROJECT.md 9.4) but the Command Center requires >=1080x1920, so the export is upscaled. allow_upscale reflects that this is intended, not a quality problem to flag.",
+      "generate_width": 720,
+      "generate_height": 1280,
+      "width": 1080,
+      "height": 1920,
       "aspect": "9:16",
       "min_duration_s": 5,
       "max_duration_s": 10,
@@ -36,25 +42,32 @@
       "profile": "high",
       "level": "4.0",
       "pix_fmt": "yuv420p",
-      "crf": 21,
+      "crf": 20,
       "preset": "slow",
-      "max_bitrate_kbps": 5000,
+      "max_bitrate_kbps": 7000,
       "acodec": "aac",
       "audio_bitrate_kbps": 128,
       "audio_sample_rate": 48000,
       "faststart": true,
-      "max_size_mb": 30
+      "max_size_mb": 30,
+      "enforce_max_size": true,
+      "allow_upscale": true
     }
   },
   "image": {
     "mission": {
-      "_status": "PROVISIONAL",
+      "_status": "CONFIRMED",
+      "_note": "1.0 MB is tight: a photographic 1080x1080 PNG routinely lands at 2-3 MB. WebP is in the accepted list and holds that size at visually lossless quality, so it is the default. Set format to png only for flat UI art, or jpg if something downstream rejects WebP.",
       "width": 1080,
       "height": 1080,
+      "min_width": 1024,
+      "min_height": 1024,
       "aspect": "1:1",
-      "format": "png",
-      "jpeg_quality": 92,
-      "max_size_mb": 5
+      "format": "webp",
+      "quality": 92,
+      "quality_ladder": [92, 86, 80, 72],
+      "max_size_mb": 1.0,
+      "enforce_max_size": true
     }
   },
   "hard_fails": {

@@ -53,37 +53,72 @@ def normalize(src: str, out: str | None, profile_name: str,
     if out is None:
         stem = os.path.splitext(src)[0]
         out = f"{stem}_{profile_name}.{fmt}"
+    ext = os.path.splitext(out)[1].lstrip(".").lower()
+    if ext and ext not in (fmt, {"jpg": "jpeg", "jpeg": "jpg"}.get(fmt, fmt)):
+        raise NormalizeError(
+            f"--out ends in .{ext} but specs.json sets image.{profile_name}.format to {fmt}; "
+            f"use .{fmt} or change the spec"
+        )
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
 
-    upscaled = meta["width"] < target_w or meta["height"] < target_h
+    min_w = spec.get("min_width", target_w)
+    min_h = spec.get("min_height", target_h)
+    upscaled = meta["width"] < min_w or meta["height"] < min_h
     chain = [
         _crop_filter(meta["width"], meta["height"], target_w / target_h, focus),
         f"scale={target_w}:{target_h}:flags=lanczos",
     ]
 
-    cmd = [ffmpeg, "-y", "-loglevel", "error", "-i", src, "-vf", ",".join(chain), "-frames:v", "1"]
-    if fmt in ("jpg", "jpeg"):
-        # ffmpeg's mjpeg -q:v runs 2 (best) to 31; map the 0-100 quality knob onto it.
-        q = max(2, round(31 - (spec.get("jpeg_quality", 92) / 100) * 29))
-        cmd += ["-q:v", str(q)]
-    cmd.append(out)
-    run(cmd)
+    def encode(quality: int) -> dict:
+        cmd = [ffmpeg, "-y", "-loglevel", "error", "-i", src, "-vf", ",".join(chain), "-frames:v", "1"]
+        if fmt in ("jpg", "jpeg"):
+            # ffmpeg's mjpeg -q:v runs 2 (best) to 31; map the 0-100 knob onto it.
+            cmd += ["-q:v", str(max(2, round(31 - (quality / 100) * 29)))]
+        elif fmt == "webp":
+            cmd += ["-c:v", "libwebp", "-quality", str(quality), "-preset", "picture"]
+        cmd.append(out)
+        run(cmd)
+        return probe(out)
 
-    result = probe(out)
+    ladder = spec.get("quality_ladder") or [spec.get("quality", 92)]
+    result = encode(ladder[0])
+    used_quality = ladder[0]
     warnings = []
+    max_mb = spec.get("max_size_mb")
+
+    # PNG is lossless, so there is no quality knob to step down - the only
+    # honest move is to tell the operator to switch format in specs.json.
+    if max_mb and spec.get("enforce_max_size") and result["size_mb"] > max_mb and fmt != "png":
+        for quality in ladder[1:]:
+            result = encode(quality)
+            used_quality = quality
+            if result["size_mb"] <= max_mb:
+                break
+        if result["size_mb"] <= max_mb and used_quality != ladder[0]:
+            warnings.append(
+                f"dropped quality to {used_quality} to fit the {max_mb}MB cap "
+                f"(final {result['size_mb']}MB)"
+            )
+
     if upscaled:
         warnings.append(
-            f"source was {meta['width']}x{meta['height']}, below {target_w}x{target_h}; upscaled (may look soft)"
+            f"source was {meta['width']}x{meta['height']}, below the {min_w}x{min_h} minimum; "
+            "upscaled (may look soft) - prefer Google Play previews over App Store thumbnails"
         )
-    max_mb = spec.get("max_size_mb")
     if max_mb and result["size_mb"] > max_mb:
-        warnings.append(f"output {result['size_mb']}MB exceeds max_size_mb {max_mb}")
+        hint = ("PNG is lossless; set image.mission.format to webp or jpg in specs.json"
+                if fmt == "png" else "source is unusually detailed; try a different frame")
+        warnings.append(f"output {result['size_mb']}MB exceeds the {max_mb}MB cap - {hint}")
+    if result["width"] < min_w or result["height"] < min_h:
+        warnings.append(f"output {result['width']}x{result['height']} is below the required {min_w}x{min_h}")
 
     return {
         "ok": not warnings,
         "input": meta,
         "output": result,
         "profile": profile_name,
+        "format": fmt,
+        "quality": used_quality if fmt != "png" else None,
         "upscaled": upscaled,
         "warnings": warnings,
     }

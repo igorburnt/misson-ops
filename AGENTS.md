@@ -28,7 +28,9 @@ Plus: cache per brand · human in the loop until tuned · when a creative judgme
 
 **Phase 0 (deterministic layer) — built and tested.**
 `probe.py`, `fetch_media.py`, `normalize_video.py`, `normalize_image.py`, `specs.py`.
-Phase 0 is **not signed off**: the encode settings in `specs.json` are marked `PROVISIONAL` until the Command Center limits are confirmed (PROJECT.md §13). Acceptance is Sidney uploading a pipeline-normalized video with no CapCut step.
+Encode settings in `specs.json` are **CONFIRMED** against the Command Center limits (Sidney, 2026-10-13): video 9:16 ≥1080×1920, ≤30 s, ≤30 MB, MP4 H.264, 30 fps; image 1:1 ≥1024×1024, ≤1 MB, WebP. Both size caps are enforced by re-encode, not just warned about.
+
+Phase 0 is **not signed off** until Sidney uploads a pipeline-normalized video to Command Center with no CapCut step.
 
 **Phases 1–3 — not started.** The `brand-kit`, `brand-research`, `video-generate` and `mission-creatives` skill folders hold placeholders only. Do not start a phase before the previous one's "done when" is met and confirmed by Igor.
 

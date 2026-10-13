@@ -1,7 +1,7 @@
 # Mission Creatives Pipeline — Project Spec
 
 > Owner: Igor · Stakeholders: Jean (product), Sidney & James (mission ops)
-> Status: Phase 0 — built, awaiting sign-off
+> Status: Phase 0 — built and tested against confirmed specs; awaiting upload sign-off
 > This document is the source of truth for the agent (Codex / Claude) building this project.
 > When something here is marked **OPEN**, ask before assuming.
 
@@ -39,19 +39,28 @@ Go from **offer → mission-ready creatives** with minimal human work, at a qual
 
 ## 4. Creative specs
 
-| Asset | Aspect | Resolution | Duration | Notes |
-|---|---|---|---|---|
-| Mission image | 1:1 | **OPEN** (min. 1080×1080 suggested) | — | Crisp, no app-store-thumbnail blur |
-| Feed video (sourced) | 9:16 | **OPEN** (1080×1920 suggested) | 15–30 s | Autoplays in feed; strong first 2 s |
-| Feed video (generated) | 9:16 | 720p is enough | 5–10 s | Shorter = fewer artifacts, fewer credits |
+Command Center limits confirmed by Sidney, 2026-10-13:
 
-- **OPEN:** exact codec / container / bitrate / max file size the Command Center accepts. Sidney shared them in the 2026-10-13 call chat — copy them here. `normalize_video.py` must export exactly this.
-- Image sources: Google Play previews are higher-res than App Store. Command Center's own screenshots are low-res — upscale before use.
+| Asset | Aspect | Resolution | Size | Format | Duration |
+|---|---|---|---|---|---|
+| Mission image | 1:1 | ≥ 1024×1024 | rec. ≤ 1.0 MB | PNG · JPG · WebP | — |
+| Mission video | 9:16 | ≥ 1080×1920 | rec. ≤ 30.0 MB | MP4 H.264 · WebM | ≤ 30 s |
+
+What the pipeline exports, and why:
+
+| Asset | Export | Decision |
+|---|---|---|
+| Mission image | 1:1, 1080×1080, **WebP q92**, ≤ 1.0 MB | PNG blows the 1.0 MB cap on photographic sources (measured 1.59 MB worst case) and has no quality knob. WebP is in the accepted list and fits comfortably. |
+| Feed video (sourced) | 9:16, 1080×1920, **30 fps**, MP4 H.264 high@4.0, CRF 21, ≤ 30 MB | 15–30 s. 30 fps because sources are social video at 30/60; 24 adds judder on a short autoplaying loop for a filmic look we are not after. |
+| Feed video (generated) | **Generated at 720×1280, exported at 1080×1920**, 5–10 s | 720p generation keeps artifacts and credits down (§9.4), but 1080×1920 is the platform minimum, so the export upscales. Intended, flagged as a note not a warning. |
+
+- Both size caps are **enforced, not warned about**: `normalize_video.py` re-encodes against a bitrate computed from the remaining budget, `normalize_image.py` steps down a quality ladder. An oversized file means a rejected upload, which is worse than a slightly softer one.
+- MP4/H.264 over WebM: H.264 decodes in hardware on every phone and WebM buys nothing at this size.
+- Image sources: Google Play previews are higher-res than App Store. Command Center's own screenshots are low-res — upscale before use, and expect the softness warning.
 
 > **Implementation note.** These values live in machine-readable form in
-> `skills/creative-standards/references/specs.json`, which every script reads. The current
-> values carry `"_status": "PROVISIONAL"` and are the suggestions above. Confirming the
-> Command Center limits is a JSON edit, not a code change.
+> `skills/creative-standards/references/specs.json`, which every script reads, with the
+> reasoning in `specs.md`. Changing a spec is a JSON edit, never a code change.
 
 ## 5. Inputs
 
@@ -271,15 +280,15 @@ Calibrate in Phase 1: scores on library videos should land ≥ 80; if not, adjus
 
 | Phase | Deliverable | Done when | Status |
 |---|---|---|---|
-| **0** | Repo skeleton, `probe`, `fetch_media`, `normalize_video`, `normalize_image` | Sidney uploads a pipeline-normalized video to Command Center with no CapCut | **Built and tested; awaiting sign-off** |
+| **0** | Repo skeleton, `probe`, `fetch_media`, `normalize_video`, `normalize_image` | Sidney uploads a pipeline-normalized video to Command Center with no CapCut | **Built, 21 tests passing against the confirmed specs. Open: one real upload to Command Center.** |
 | **1** | Library downloaded, `profile_library.py`, `creative-standards` with `library_profile.md` + calibrated rubric, `brand-kit`, `brand-research`, `mission-creatives` (research path only) | Run on 10 real brands from the queue; ≥ 7 have an acceptable top asset; time per mission measured | Not started |
 | **2** | `video-generate` + `brand_overlay` + templates | On 5 small brands with no good assets, ≥ 3 produce an approved video with the correct logo | Not started |
 | **3** | Command Center integration via MCP: read "needs creatives" draft queue, upload to Cloudflare, attach to mission | A draft saved without creatives gets proposals automatically. **Depends on Jean** (draft-without-creatives + Cloudflare) | Not started |
 
 ## 13. Open questions
 
-- [ ] Exact codec/container/bitrate/size limits accepted by Command Center (Sidney) — **blocks Phase 0 sign-off**
-- [ ] Mission image min resolution and format (Sidney) — **blocks Phase 0 sign-off**
+- [x] ~~Exact codec/container/bitrate/size limits accepted by Command Center~~ — answered by Sidney 2026-10-13, see §4
+- [x] ~~Mission image min resolution and format~~ — answered by Sidney 2026-10-13, see §4
 - [ ] Drive library link + who maintains it (Igor/Sidney) — **blocks Phase 1**
 - [ ] Higgsfield MCP access, which models, credit budget per mission (Jean)
 - [ ] Brand approval policy: when is sourced/generated content OK without brand sign-off? (Pascal/Jean)

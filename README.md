@@ -25,11 +25,22 @@ python3 scripts/fetch_media.py <image-url> --out downloads/ --image
 python3 scripts/normalize_video.py <in.mp4> --profile feed        # 9:16, 15-30s
 python3 scripts/normalize_video.py <in.mp4> --profile generated   # 9:16, 5-10s, 720p
 python3 scripts/normalize_video.py <in.mp4> --profile feed --fit crop --focus 0.4,0.35
-python3 scripts/normalize_image.py <in.png>                       # 1:1 mission image
+python3 scripts/normalize_image.py <in.png>                       # 1:1 mission image -> .webp
 ```
 
 Every script prints JSON and exits non-zero on failure. Output specs come from
 `skills/creative-standards/references/specs.json` — change specs there, never in a script.
+
+Current targets (Command Center limits, confirmed 2026-10-13):
+
+| | Export |
+|---|---|
+| Mission video | 9:16 1080×1920, 30 fps, MP4 H.264, 15–30 s, ≤ 30 MB |
+| Generated video | rendered 720×1280, exported 1080×1920, 5–10 s |
+| Mission image | 1:1 1080×1080, WebP q92, ≤ 1.0 MB |
+
+Both size caps are enforced: the video re-encodes against the remaining budget, the image
+steps down a quality ladder. Check `warnings` and `encode_passes` in the JSON.
 
 ## Tests
 

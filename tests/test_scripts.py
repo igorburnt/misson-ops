@@ -38,6 +38,23 @@ def test_specs_load():
     assert s["video"]["feed"]["min_duration_s"] < s["video"]["feed"]["max_duration_s"]
 
 
+def test_specs_match_the_command_center_limits():
+    """Confirmed by Sidney 2026-10-13. These are upload-rejection limits, not preferences."""
+    s = specs_mod.load()
+    for name in ("feed", "generated"):
+        v = s["video"][name]
+        assert (v["width"], v["height"]) == (1080, 1920), f"{name}: minimum is 1080x1920"
+        assert v["max_duration_s"] <= 30, f"{name}: hard 30s ceiling"
+        assert v["max_size_mb"] <= 30, f"{name}: hard 30MB ceiling"
+        assert v["container"] == "mp4" and v["vcodec"] == "libx264"
+        assert v["fps"] in (24, 30)
+    i = s["image"]["mission"]
+    assert i["min_width"] >= 1024 and i["min_height"] >= 1024
+    assert i["width"] >= i["min_width"] and i["height"] >= i["min_height"]
+    assert i["max_size_mb"] <= 1.0
+    assert i["format"] in ("png", "jpg", "jpeg", "webp")
+
+
 def test_probe_reads_video():
     meta = probe(sample("landscape_1080p.mp4"))
     assert meta["kind"] == "video"
@@ -125,6 +142,49 @@ def test_generated_profile_uses_its_own_resolution_and_window():
         assert r["output"]["duration_s"] <= spec["max_duration_s"] + 0.2
 
 
+def test_generated_profile_clears_the_1080x1920_minimum():
+    """Generation renders at 720x1280 for credits/artifacts, but the Command Center
+    requires >=1080x1920, so the export upscales - a note, never a blocking warning."""
+    spec = specs_mod.video_profile("generated")
+    assert (spec["generate_width"], spec["generate_height"]) == (720, 1280)
+    assert spec["allow_upscale"] is True
+    with tempfile.TemporaryDirectory() as tmp:
+        small = os.path.join(tmp, "small.mp4")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi",
+                        "-i", "testsrc2=size=720x1280:rate=30:duration=8",
+                        "-c:v", "libx264", "-pix_fmt", "yuv420p", "-an", small], check=True)
+        r = normalize_video.normalize(small, "generated", os.path.join(tmp, "v.mp4"))
+        assert (r["output"]["width"], r["output"]["height"]) == (1080, 1920)
+        assert any("upscaled" in n for n in r["notes"]), "expected upscale to be a note"
+        assert not any("upscaled" in w for w in r["warnings"]), "upscale must not block generated"
+
+
+def test_oversized_output_is_re_encoded_to_fit_the_cap():
+    """Overshooting the size cap means a rejected upload, so the script
+    re-encodes against the budget instead of just warning."""
+    with tempfile.TemporaryDirectory() as tmp:
+        tight = json.loads(open(specs_mod.SPECS_PATH).read())
+        tight["video"]["feed"]["max_size_mb"] = 5
+        tight_path = os.path.join(tmp, "specs.json")
+        with open(tight_path, "w") as fh:
+            json.dump(tight, fh)
+        r = normalize_video.normalize(sample("vertical_1080x1920.mp4"), "feed",
+                                      os.path.join(tmp, "v.mp4"), specs_path=tight_path)
+        assert r["encode_passes"] > 1
+        assert r["output"]["size_mb"] <= 5
+        assert any("re-encoded" in w for w in r["warnings"])
+
+
+def test_output_extension_must_match_the_spec_container():
+    with tempfile.TemporaryDirectory() as tmp:
+        try:
+            normalize_video.normalize(sample("vertical_1080x1920.mp4"), "feed", os.path.join(tmp, "v.webm"))
+        except normalize_video.NormalizeError as exc:
+            assert "container" in str(exc)
+        else:
+            raise AssertionError("expected NormalizeError on container mismatch")
+
+
 def test_start_beyond_duration_fails_loudly():
     with tempfile.TemporaryDirectory() as tmp:
         try:
@@ -139,7 +199,8 @@ def test_start_beyond_duration_fails_loudly():
 def test_image_is_squared_and_upscaled_with_a_warning():
     spec = specs_mod.image_profile("mission")
     with tempfile.TemporaryDirectory() as tmp:
-        r = normalize_image.normalize(sample("small.png"), os.path.join(tmp, "i.png"), "mission")
+        out = os.path.join(tmp, "i." + spec["format"])
+        r = normalize_image.normalize(sample("small.png"), out, "mission")
         assert r["output"]["aspect"] == "1:1"
         assert (r["output"]["width"], r["output"]["height"]) == (spec["width"], spec["height"])
         assert r["upscaled"] is True
@@ -148,15 +209,45 @@ def test_image_is_squared_and_upscaled_with_a_warning():
 
 def test_large_image_is_downscaled_without_warning():
     with tempfile.TemporaryDirectory() as tmp:
-        r = normalize_image.normalize(sample("large.png"), os.path.join(tmp, "i.png"), "mission")
+        spec = specs_mod.image_profile("mission")
+        out = os.path.join(tmp, "i." + spec["format"])
+        r = normalize_image.normalize(sample("large.png"), out, "mission")
         assert r["upscaled"] is False
         assert r["ok"] is True, r["warnings"]
+        assert r["output"]["size_mb"] <= spec["max_size_mb"]
+
+
+def test_image_quality_ladder_fits_a_detailed_source_under_the_cap():
+    """A photographic 1080x1080 PNG routinely lands at 2-3MB against a 1.0MB
+    cap; the lossy ladder is what keeps the mission image uploadable."""
+    spec = specs_mod.image_profile("mission")
+    assert spec["format"] != "png", "a lossless format cannot be stepped down to fit the cap"
+    with tempfile.TemporaryDirectory() as tmp:
+        noisy = os.path.join(tmp, "noise.png")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi",
+                        "-i", "nullsrc=s=1600x1600,geq=random(1)*255:128:128",
+                        "-frames:v", "1", noisy], check=True)
+        r = normalize_image.normalize(noisy, os.path.join(tmp, "i." + spec["format"]), "mission")
+        assert r["output"]["size_mb"] <= spec["max_size_mb"], r["warnings"]
+
+
+def test_image_extension_must_match_the_spec_format():
+    spec = specs_mod.image_profile("mission")
+    wrong = "jpg" if spec["format"] != "jpg" else "webp"
+    with tempfile.TemporaryDirectory() as tmp:
+        try:
+            normalize_image.normalize(sample("large.png"), os.path.join(tmp, "i." + wrong), "mission")
+        except normalize_image.NormalizeError as exc:
+            assert "format" in str(exc)
+        else:
+            raise AssertionError("expected NormalizeError on format mismatch")
 
 
 def test_clis_emit_json_and_exit_non_zero_on_failure():
     for script, args in [
         ("probe.py", [sample("small.png")]),
-        ("normalize_image.py", [sample("large.png"), "--out", tempfile.mktemp(suffix=".png")]),
+        ("normalize_image.py", [sample("large.png"), "--out",
+                                tempfile.mktemp(suffix="." + specs_mod.image_profile("mission")["format"])]),
     ]:
         proc = subprocess.run([sys.executable, os.path.join(ROOT, "scripts", script), *args],
                               capture_output=True, text=True)

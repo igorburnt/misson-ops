@@ -84,6 +84,13 @@ def normalize(src: str, profile_name: str, out: str | None = None,
     if out is None:
         stem = os.path.splitext(src)[0]
         out = f"{stem}_{profile_name}.{spec.get('container', 'mp4')}"
+    container = spec.get("container", "mp4")
+    ext = os.path.splitext(out)[1].lstrip(".").lower()
+    if ext and ext != container:
+        raise NormalizeError(
+            f"--out ends in .{ext} but specs.json sets video.{profile_name}.container to "
+            f"{container}; use .{container} or change the spec"
+        )
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
 
     # Framing
@@ -113,36 +120,74 @@ def normalize(src: str, profile_name: str, out: str | None = None,
 
     # All inputs must precede output options, so the silent-audio source
     # (added when the clip has none) is declared up front.
-    cmd = [ffmpeg, "-y", "-loglevel", "error"]
-    if start:
-        cmd += ["-ss", str(start)]
-    cmd += ["-i", src]
-    if not meta["has_audio"]:
-        cmd += ["-f", "lavfi", "-i", f"anullsrc=r={spec['audio_sample_rate']}:cl=stereo"]
+    silent_audio = not meta["has_audio"]
+    if silent_audio:
         warnings.append("source had no audio track; a silent one was added")
 
-    cmd += ["-map", "0:v:0", "-map", "1:a:0" if not meta["has_audio"] else "0:a:0"]
-    cmd += ["-t", f"{want:.3f}", "-vf", vf]
-    cmd += [
-        "-c:v", spec["vcodec"],
-        "-profile:v", spec["profile"],
-        "-level", spec["level"],
-        "-pix_fmt", spec["pix_fmt"],
-        "-crf", str(spec["crf"]),
-        "-preset", spec["preset"],
-        "-maxrate", f"{spec['max_bitrate_kbps']}k",
-        "-bufsize", f"{spec['max_bitrate_kbps'] * 2}k",
-        "-c:a", spec["acodec"],
-        "-b:a", f"{spec['audio_bitrate_kbps']}k",
-        "-ar", str(spec["audio_sample_rate"]),
-        "-ac", "2",
-    ]
-    if spec.get("faststart"):
-        cmd += ["-movflags", "+faststart"]
-    cmd.append(out)
-    run(cmd)
+    def encode(target_video_kbps: int | None) -> dict:
+        """One encode pass. CRF by default; bitrate-targeted when a size cap forces it."""
+        cmd = [ffmpeg, "-y", "-loglevel", "error"]
+        if start:
+            cmd += ["-ss", str(start)]
+        cmd += ["-i", src]
+        if silent_audio:
+            cmd += ["-f", "lavfi", "-i", f"anullsrc=r={spec['audio_sample_rate']}:cl=stereo"]
+        cmd += ["-map", "0:v:0", "-map", "1:a:0" if silent_audio else "0:a:0"]
+        cmd += ["-t", f"{want:.3f}", "-vf", vf]
+        cmd += [
+            "-c:v", spec["vcodec"],
+            "-profile:v", spec["profile"],
+            "-level", spec["level"],
+            "-pix_fmt", spec["pix_fmt"],
+            "-preset", spec["preset"],
+        ]
+        if target_video_kbps is None:
+            cap = spec["max_bitrate_kbps"]
+            cmd += ["-crf", str(spec["crf"]), "-maxrate", f"{cap}k", "-bufsize", f"{cap * 2}k"]
+        else:
+            cmd += ["-b:v", f"{target_video_kbps}k",
+                    "-maxrate", f"{target_video_kbps}k",
+                    "-bufsize", f"{target_video_kbps * 2}k"]
+        cmd += [
+            "-c:a", spec["acodec"],
+            "-b:a", f"{spec['audio_bitrate_kbps']}k",
+            "-ar", str(spec["audio_sample_rate"]),
+            "-ac", "2",
+        ]
+        if spec.get("faststart"):
+            cmd += ["-movflags", "+faststart"]
+        cmd.append(out)
+        run(cmd)
+        return probe(out)
 
-    result = probe(out)
+    result = encode(None)
+    passes = 1
+
+    # The Command Center caps file size, so overshooting means a rejected
+    # upload. Re-encode against a bitrate computed from the size budget
+    # rather than leaving the operator to guess at a lower CRF.
+    max_mb = spec.get("max_size_mb")
+    if max_mb and spec.get("enforce_max_size") and result["size_mb"] > max_mb:
+        for headroom in (0.95, 0.88):
+            budget_kbps = (max_mb * 8 * 1024) / want * headroom
+            target = int(budget_kbps - spec["audio_bitrate_kbps"])
+            if target < 500:
+                break
+            result = encode(target)
+            passes += 1
+            if result["size_mb"] <= max_mb:
+                break
+        if result["size_mb"] <= max_mb:
+            warnings.append(
+                f"first pass exceeded the {max_mb}MB cap; re-encoded at a size-targeted bitrate "
+                f"({result['bitrate_kbps']} kbps, {result['size_mb']}MB)"
+            )
+        else:
+            warnings.append(
+                f"output {result['size_mb']}MB still exceeds the {max_mb}MB cap after {passes} passes; "
+                "shorten the cut or pick a less detailed source"
+            )
+
     # Real upscaling depends on the framing: a crop blows up a sub-region,
     # a pad only scales the frame to fit inside the target box.
     if chosen == "crop":
@@ -150,14 +195,21 @@ def normalize(src: str, profile_name: str, out: str | None = None,
         upscale = target_h / crop_h
     else:
         upscale = min(target_w / meta["width"], target_h / meta["height"])
+    notes = []
     if upscale > 1.05:
-        warnings.append(
-            f"source {meta['width']}x{meta['height']} was upscaled {upscale:.2f}x to reach "
-            f"{target_w}x{target_h}; expect softness"
+        message = (f"source {meta['width']}x{meta['height']} was upscaled {upscale:.2f}x to reach "
+                   f"{target_w}x{target_h}")
+        # The generated profile renders at 720x1280 on purpose and is always
+        # upscaled to clear the >=1080x1920 minimum; that is expected, not a defect.
+        (notes if spec.get("allow_upscale") else warnings).append(
+            message if spec.get("allow_upscale") else message + "; expect softness"
         )
-    max_mb = spec.get("max_size_mb")
-    if max_mb and result["size_mb"] > max_mb:
-        warnings.append(f"output {result['size_mb']}MB exceeds max_size_mb {max_mb}; lower crf or shorten the cut")
+
+    if result["height"] < spec["height"] or result["width"] < spec["width"]:
+        warnings.append(
+            f"output {result['width']}x{result['height']} is below the required "
+            f"{spec['width']}x{spec['height']} minimum"
+        )
 
     return {
         "ok": not warnings,
@@ -167,6 +219,8 @@ def normalize(src: str, profile_name: str, out: str | None = None,
         "fit": chosen,
         "crop_loss": round(lost, 3),
         "trim": {"start_s": start, "duration_s": round(want, 3)},
+        "encode_passes": passes,
+        "notes": notes,
         "warnings": warnings,
     }
 
