@@ -1,0 +1,132 @@
+{
+  "brand": "Crunchyroll",
+  "slug": "crunchyroll",
+  "official_channels": [
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@Crunchyroll",
+      "channel_id": "UC6pGDc4bFGD1_36IKv3FnYg",
+      "evidence": "verified badge (yt-dlp channel_is_verified=true, 9.28M subscribers) AND listed under Wikidata P2397 for Q1142112 - two independent sources agree on the same channel id"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/crunchyroll",
+      "evidence": "Wikidata P2003"
+    },
+    {
+      "platform": "tiktok",
+      "url": "https://www.tiktok.com/@crunchyroll",
+      "evidence": "Wikidata P7085"
+    }
+  ],
+  "channels_rejected": [
+    {
+      "platform": "youtube",
+      "note": "Wikidata P2397 lists 9 channel ids for this brand (regional and franchise accounts). Only the id matching the verified @Crunchyroll handle was accepted; the rest are not the primary US channel."
+    }
+  ],
+  "logo": {
+    "path": "brands/crunchyroll/logo/logo.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:Crunchyroll_2024.svg",
+    "source_type": "wikimedia_commons",
+    "format": "svg",
+    "outlined": true,
+    "on_dark": true,
+    "license": "Public domain (copyright); Commons records Restrictions: trademarked",
+    "verified_current": "2024 wordmark, matches the brand's current identity"
+  },
+  "icon": {
+    "path": "brands/crunchyroll/logo/icon_512.png",
+    "width": 512,
+    "height": 512,
+    "source": "Google Play listing",
+    "note": "below the 1024x1024 mission-image minimum"
+  },
+  "colors": [
+    "#FF5E00"
+  ],
+  "colors_source": "extracted from the logo SVG fill - the only colour it defines",
+  "screenshots": [
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_01.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_03.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_07.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_08.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_06.png",
+      "width": 2560,
+      "height": 1440,
+      "aspect": "16:9",
+      "is_vertical": false
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_00.png",
+      "width": 1920,
+      "height": 1080,
+      "aspect": "16:9",
+      "is_vertical": false
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_02.png",
+      "width": 1024,
+      "height": 768,
+      "aspect": "4:3",
+      "is_vertical": false
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_04.png",
+      "width": 1024,
+      "height": 768,
+      "aspect": "4:3",
+      "is_vertical": false
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_09.png",
+      "width": 1024,
+      "height": 768,
+      "aspect": "4:3",
+      "is_vertical": false
+    },
+    {
+      "path": "brands/crunchyroll/screenshots/screenshot_05.png",
+      "width": 512,
+      "height": 512,
+      "aspect": "1:1",
+      "is_vertical": false
+    }
+  ],
+  "store": {
+    "play": "https://play.google.com/store/apps/details?id=com.crunchyroll.crunchyroid"
+  },
+  "website": "https://www.crunchyroll.com",
+  "website_fetchable": false,
+  "logo_missing": false,
+  "needs_human": [
+    "The logo is trademarked. Commons marks the file public domain for copyright, which is not permission to use the mark in a creative. Blocked on the brand approval policy (PROJECT.md 13, Pascal/Jean).",
+    "crunchyroll.com returns 403 to automated fetches, so the 'linked from the brand's own website' evidence rule could not be executed. Channel identity rests on the verified badge plus Wikidata instead."
+  ],
+  "updated_at": "2026-10-14"
+}

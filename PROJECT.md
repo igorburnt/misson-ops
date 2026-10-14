@@ -156,6 +156,7 @@ All scripts: Python 3.11+, CLI with `argparse`, JSON output on stdout, non-zero 
 | `normalize_image.py <in>` | Make spec-compliant image | 1:1 crop, upscale if below min resolution, export format from §4 | **built** |
 | `extract_frames.py <in> --out <dir> --n 6` | Frames for AI review | first frame + evenly spaced; scene-cut times, cuts/second, mean shot length | **built** |
 | `brand_overlay.py <in> --logo <png> [--text] [--endcard]` | Composite real branding | logo position presets, safe margins for feed UI, optional 1.5 s end card | Phase 2 |
+| `fetch_store_assets.py <play-url\|package> --out <dir>` | Pull icon + screenshots from Google Play | requests originals rather than carousel thumbnails; probes and sorts every candidate by resolution; warns when the icon is under the mission-image minimum or no vertical screenshot exists | **built** |
 | `fetch_drive_library.py <folder> --out <dir>` | Mirror the Drive reference library | walks the tree, keeps per-brand structure, skips files already present, writes `_index.json` | **built** |
 | `profile_library.py <dir>` | Analyze reference library | per-file stats + aggregates **per group** (feed / source / undersized / images), durations, cuts/second, aspect distribution, brand-skew share, first-frame thumbnails → JSON for the agent to interpret | **built** |
 
@@ -170,8 +171,8 @@ Reference-only skill. Contains `specs.json` / `specs.md` (§4), `rubric.md` (§1
 ### 9.2 `brand-kit`
 **Input:** run input (§5.1). **Output:** `brands/<slug>/kit.json` + logo files.
 1. If `brands/<slug>/kit.json` exists and is < 90 days old, reuse it.
-2. Identify **official** channels. Accept a channel only if at least one is true: linked from the brand's own website; verified badge; linked from the app-store listing. Record the evidence.
-3. Collect logo (prefer SVG / transparent PNG from website or press/media kit), primary colors, tagline, 3–5 high-res app/product screenshots (Play Store first).
+2. Identify **official** channels. Accept a channel only if at least one is true: verified badge (`yt-dlp` exposes `channel_is_verified`); listed on Wikidata; linked from the app-store listing; linked from the brand's own website. Record the evidence, and prefer two independent sources agreeing. **Note:** large brands routinely 403 automated fetches of their own site, so the website rule is the least executable of the four — see `skills/brand-kit/references/worked-example-crunchyroll.md`.
+3. Collect logo (prefer SVG / transparent PNG from press/media kit, then Wikimedia Commons via Wikidata P154), primary colors **extracted from the logo file**, tagline, high-res app/product screenshots (Play Store first, via `fetch_store_assets.py`).
 4. Never invent a logo. If none found at sufficient quality → flag `logo_missing: true` for human input.
 
 ```json
@@ -182,7 +183,7 @@ Reference-only skill. Contains `specs.json` / `specs.md` (§4), `rubric.md` (§1
     {"platform": "youtube", "url": "...", "evidence": "linked in website footer"}
   ],
   "logo": {"path": "brands/crunchyroll/logo/logo.svg", "source": "...", "on_dark": true},
-  "colors": ["#F47521", "#000000"],
+  "colors": ["#FF5E00"],
   "tagline": "...",
   "screenshots": ["..."],
   "logo_missing": false,
