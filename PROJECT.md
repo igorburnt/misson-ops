@@ -281,7 +281,7 @@ Calibrate in Phase 1: scores on library videos should land ≥ 80; if not, adjus
 
 | Phase | Deliverable | Done when | Status |
 |---|---|---|---|
-| **0** | Repo skeleton, `probe`, `fetch_media`, `normalize_video`, `normalize_image` | Sidney uploads a pipeline-normalized video to Command Center with no CapCut | **Built, 21 tests passing against the confirmed specs. Open: one real upload to Command Center.** |
+| **0** | Repo skeleton, `probe`, `fetch_media`, `normalize_video`, `normalize_image` | Sidney uploads a pipeline-normalized video to Command Center with no CapCut | **Chain verified end to end 2026-10-14**: official Crunchyroll Short → 1080×1920 / 29.97 s / H.264 / 30 fps / 4.9 MB, every spec check passing, no CapCut. 26 tests green. Open: Sidney doing the actual upload. |
 | **1** | Library downloaded, `profile_library.py`, `creative-standards` with `library_profile.md` + calibrated rubric, `brand-kit`, `brand-research`, `mission-creatives` (research path only) | Run on 10 real brands from the queue; ≥ 7 have an acceptable top asset; time per mission measured | **In progress** — library mirrored, `profile_library.py` + `extract_frames.py` built. Next: `library_profile.md` (Igor owns), then the three skills |
 | **2** | `video-generate` + `brand_overlay` + templates | On 5 small brands with no good assets, ≥ 3 produce an approved video with the correct logo | Not started |
 | **3** | Command Center integration via MCP: read "needs creatives" draft queue, upload to Cloudflare, attach to mission | A draft saved without creatives gets proposals automatically. **Depends on Jean** (draft-without-creatives + Cloudflare) | Not started |
@@ -297,7 +297,7 @@ Calibrate in Phase 1: scores on library videos should land ≥ 80; if not, adjus
 - [ ] Brand approval policy: when is sourced/generated content OK without brand sign-off? (Pascal/Jean)
 - [ ] Instagram: acceptable to use a logged-in session for downloads, or YouTube/website only? (Jean)
 - [ ] Where the pipeline runs long-term: local per person vs. a server triggered by Command Center (Jean)
-- [ ] **New:** the local `yt-dlp` (2025.06.30) is blocked by YouTube ("content is not available on this app"). Needs `brew upgrade yt-dlp` on each operator machine, and a pinned version in setup notes.
+- [x] ~~the local `yt-dlp` (2025.06.30) is blocked by YouTube~~ — upgraded to 2026.08.19 on Igor's machine 2026-10-14; YouTube downloads work. **Still open: the same upgrade on Sidney's and James's machines**, and a minimum version in the setup notes.
 
 ## 14. Instructions for the agent building this
 

@@ -110,6 +110,11 @@ def normalize(src: str, profile_name: str, out: str | None = None,
     lo, hi = spec["min_duration_s"], spec["max_duration_s"]
     want = duration if duration is not None else min(max(src_duration - start, 0.0), hi)
     want = min(want, hi)
+    # ffmpeg's -t is where it stops reading, but the last frame's presentation
+    # extends a frame period beyond it, so asking for exactly 30s yields a
+    # 30.002s file - over a hard <=30s cap. Back off one frame at the ceiling.
+    if want >= hi:
+        want = hi - 1.0 / spec["fps"]
     if want <= 0:
         raise NormalizeError(f"--start {start}s is beyond the source duration {src_duration}s")
     if want < lo:
@@ -205,6 +210,11 @@ def normalize(src: str, profile_name: str, out: str | None = None,
             message if spec.get("allow_upscale") else message + "; expect softness"
         )
 
+    if result["duration_s"] and result["duration_s"] > hi:
+        warnings.append(
+            f"output {result['duration_s']}s exceeds the {hi}s ceiling; "
+            "trim further with --duration"
+        )
     if result["height"] < spec["height"] or result["width"] < spec["width"]:
         warnings.append(
             f"output {result['width']}x{result['height']} is below the required "

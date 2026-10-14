@@ -54,17 +54,40 @@ def _sidecar(media_path: str, source_url: str, info: dict) -> dict:
     return sidecar
 
 
-def _via_ytdlp(url: str, out_dir: str, max_height: int, cookies_from: str | None) -> dict:
+def _format_selector(max_short_side: int) -> tuple[str, str]:
+    """Cap quality by the SHORT side, not by height. Returns (-f, -S) values.
+
+    A 1080x1920 vertical Short has height 1920, so `height<=1080` rejects the
+    full-resolution file and falls back to a smaller variant - the opposite of
+    what we want, since vertical is the format we care about most. Filtering
+    per orientation does not fix it either: a 608x1080 vertical file also
+    satisfies a `height<=1080` landscape clause and wins the first branch.
+
+    yt-dlp's `res` sort key is already min(width, height), so the filter just
+    rules out anything oversized in either dimension and the sort picks the
+    format whose short side is closest to the target.
+    """
+    long_side = round(max_short_side * 16 / 9)
+    fmt = (f"bestvideo[width<={long_side}][height<={long_side}]+bestaudio/"
+           f"best[width<={long_side}][height<={long_side}]/best")
+    return fmt, f"res:{max_short_side}"
+
+
+def _via_ytdlp(url: str, out_dir: str, max_short_side: int, cookies_from: str | None) -> dict:
     if not shutil.which("yt-dlp"):
         raise FetchError("yt-dlp not found on PATH")
 
     template = os.path.join(out_dir, "%(id)s.%(ext)s")
+    fmt, sort = _format_selector(max_short_side)
     cmd = [
         "yt-dlp",
         "--no-playlist",
         "--no-progress",
         "--no-warnings",
-        "-f", f"bestvideo[height<={max_height}]+bestaudio/best[height<={max_height}]/best",
+        # YouTube hands out transient 403s on individual format URLs.
+        "--retries", "5",
+        "--fragment-retries", "10",
+        "-f", fmt, "-S", sort,
         "--merge-output-format", "mp4",
         "--print-json",
         "--no-simulate",
@@ -108,10 +131,10 @@ def _via_http(url: str, out_dir: str) -> dict:
     return {"path": path, "info": {"title": name, "extractor_key": "http", "webpage_url": url}}
 
 
-def fetch(url: str, out_dir: str, max_height: int = 1080,
+def fetch(url: str, out_dir: str, max_short_side: int = 1080,
           image: bool = False, cookies_from: str | None = None) -> dict:
     os.makedirs(out_dir, exist_ok=True)
-    result = _via_http(url, out_dir) if image else _via_ytdlp(url, out_dir, max_height, cookies_from)
+    result = _via_http(url, out_dir) if image else _via_ytdlp(url, out_dir, max_short_side, cookies_from)
     return _sidecar(result["path"], url, result["info"])
 
 
@@ -119,13 +142,15 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="Download media with provenance sidecar.")
     ap.add_argument("url")
     ap.add_argument("--out", required=True, help="output directory")
-    ap.add_argument("--max-height", type=int, default=1080)
+    ap.add_argument("--max-short-side", type=int, default=1080,
+                    help="cap the SHORT side (1080 keeps full-res 1080x1920 vertical)")
     ap.add_argument("--image", action="store_true", help="plain HTTP download (images, direct files)")
     ap.add_argument("--cookies-from", help="browser to pull cookies from, e.g. chrome (login-walled sources)")
     args = ap.parse_args()
 
     try:
-        print(json.dumps(fetch(args.url, args.out, args.max_height, args.image, args.cookies_from), indent=2))
+        print(json.dumps(fetch(args.url, args.out, args.max_short_side,
+                               args.image, args.cookies_from), indent=2))
     except FetchError as exc:
         print(json.dumps({"error": str(exc), "url": args.url}), file=sys.stderr)
         return 1

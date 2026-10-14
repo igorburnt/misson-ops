@@ -116,8 +116,10 @@ def test_long_source_is_trimmed_to_the_profile_window():
     spec = specs_mod.video_profile("feed")
     with tempfile.TemporaryDirectory() as tmp:
         r = normalize_video.normalize(sample("lowres_480p.mp4"), "feed", os.path.join(tmp, "v.mp4"))
-        assert r["trim"]["duration_s"] == spec["max_duration_s"]
-        assert abs(r["output"]["duration_s"] - spec["max_duration_s"]) < 0.5
+        # The ceiling is a hard upload limit: never at or over it, and never
+        # so far under that we throw away usable footage.
+        assert r["output"]["duration_s"] <= spec["max_duration_s"], "a 30.002s file is rejected"
+        assert r["output"]["duration_s"] > spec["max_duration_s"] - 0.5
 
 
 def test_silent_source_gets_an_audio_track():

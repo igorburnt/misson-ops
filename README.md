@@ -6,7 +6,7 @@ Offer → mission-ready creatives, with minimal human work. See `PROJECT.md` for
 ## Setup
 
 ```bash
-brew install ffmpeg yt-dlp     # yt-dlp must be current — YouTube blocks older builds
+brew install ffmpeg yt-dlp     # yt-dlp >= 2026.08.19 — older builds are blocked by YouTube
 python3 --version              # 3.11+
 cp .env.example .env           # no keys needed for Phase 0
 ```
