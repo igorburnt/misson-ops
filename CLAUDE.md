@@ -34,7 +34,11 @@ Encode settings in `specs.json` are **CONFIRMED** against the Command Center lim
 
 Phase 0 is **not signed off** until Sidney uploads a pipeline-normalized video to Command Center with no CapCut step.
 
-**Phases 1–3 — not started.** The `brand-kit`, `brand-research`, `video-generate` and `mission-creatives` skill folders hold placeholders only. Do not start a phase before the previous one's "done when" is met and confirmed by Igor.
+**Phase 1 — in progress.** Library mirrored (209 files, 32 brands). Built: `fetch_drive_library.py`, `profile_library.py`, `extract_frames.py`, `fetch_store_assets.py`, and the `brand-kit`, `brand-research` and `mission-creatives` skills — each written from a real run on Crunchyroll, with the worked examples under `skills/*/references/`.
+
+Outstanding in Phase 1: **`library_profile.md`** (Igor owns it; the rubric's tone criterion points at it) and the rubric calibration pass. Phase 1's "done when" is a run over 10 real brands from the queue with ≥ 7 acceptable top assets.
+
+**Phases 2–3 — not started.** `video-generate` holds a placeholder only. Do not start a phase before the previous one's "done when" is met and confirmed by Igor.
 
 ## Working rules
 
