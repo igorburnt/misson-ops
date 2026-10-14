@@ -17,8 +17,10 @@ ROOT = os.path.dirname(HERE)
 SAMPLES = os.path.join(HERE, "samples")
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 
+import extract_frames  # noqa: E402
 import normalize_image  # noqa: E402
 import normalize_video  # noqa: E402
+import profile_library  # noqa: E402
 import specs as specs_mod  # noqa: E402
 from probe import probe  # noqa: E402
 
@@ -241,6 +243,100 @@ def test_image_extension_must_match_the_spec_format():
             assert "format" in str(exc)
         else:
             raise AssertionError("expected NormalizeError on format mismatch")
+
+
+def test_extract_frames_takes_the_first_frame_and_spaced_frames():
+    """The first frame matters on its own - the rubric's hook criterion is
+    about the first 2 seconds."""
+    with tempfile.TemporaryDirectory() as tmp:
+        r = extract_frames.extract(sample("vertical_1080x1920.mp4"), tmp, n=6, detect=False)
+        assert len(r["frames"]) == 6
+        assert r["frames"][0]["time_s"] == 0.0
+        times = [f["time_s"] for f in r["frames"]]
+        assert times == sorted(times)
+        assert all(os.path.getsize(f["file"]) > 0 for f in r["frames"])
+        assert max(times) < r["input"]["duration_s"]
+
+
+def test_extract_frames_detects_cuts_on_a_cut_heavy_clip():
+    with tempfile.TemporaryDirectory() as tmp:
+        # Two visually unrelated sources spliced together: exactly one hard cut.
+        a, b, spliced = (os.path.join(tmp, n) for n in ("a.mp4", "b.mp4", "s.mp4"))
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi",
+                        "-i", "color=c=black:s=640x1136:d=3:r=30", "-c:v", "libx264",
+                        "-pix_fmt", "yuv420p", a], check=True)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi",
+                        "-i", "color=c=white:s=640x1136:d=3:r=30", "-c:v", "libx264",
+                        "-pix_fmt", "yuv420p", b], check=True)
+        lst = os.path.join(tmp, "l.txt")
+        with open(lst, "w") as fh:
+            fh.write(f"file '{a}'\nfile '{b}'\n")
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0",
+                        "-i", lst, "-c", "copy", spliced], check=True)
+        r = extract_frames.extract(spliced, tmp, n=3, detect=True)
+        assert r["cut_count"] >= 1, "a black-to-white splice must register as a cut"
+        assert r["cuts_per_second"] is not None
+        assert r["mean_shot_s"] > 0
+
+
+def test_extract_frames_rejects_an_image():
+    with tempfile.TemporaryDirectory() as tmp:
+        try:
+            extract_frames.extract(sample("small.png"), tmp)
+        except extract_frames.FrameError as exc:
+            assert "image" in str(exc)
+        else:
+            raise AssertionError("expected FrameError")
+
+
+def test_profile_library_separates_the_mixed_groups():
+    """The library mixes shipped finals, raw sources and ad-network banners.
+    Averaging across them describes nothing, so grouping is the whole point."""
+    with tempfile.TemporaryDirectory() as tmp:
+        for brand, fixtures in {
+            "Acme": [("feed-high.mp4", "testsrc2=size=1080x1920:rate=30:duration=6"),
+                     ("scraped.publer.com.mp4", "testsrc2=size=1920x1080:rate=30:duration=6")],
+            "Globex": [("feed.mp4", "testsrc2=size=1080x1920:rate=30:duration=6"),
+                       ("dsp_480x320.mp4", "testsrc2=size=480x320:rate=30:duration=6")],
+        }.items():
+            os.makedirs(os.path.join(tmp, brand), exist_ok=True)
+            for name, src in fixtures:
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", src,
+                                "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                                os.path.join(tmp, brand, name)], check=True)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi",
+                        "-i", "testsrc2=size=1024x1024", "-frames:v", "1",
+                        os.path.join(tmp, "Acme", "acme_1x1_1024.png")], check=True)
+
+        r = profile_library.profile(tmp, cuts=False)
+        assert r["groups"]["feed"]["count"] == 2, "feed*.mp4 is the house standard"
+        assert r["groups"]["feed"]["brands"] == 2
+        assert r["groups"]["undersized"]["count"] == 1, "480x320 can never reach 1080x1920"
+        assert r["groups"]["source"]["count"] == 1
+        assert r["groups"]["image_1x1"]["count"] == 1
+        assert r["groups"]["feed"]["duration_s"]["median"] > 0
+        assert any("misleading" in n for n in r["notes"])
+
+
+def test_profile_library_reports_brand_skew():
+    """One brand dominating a group makes its aggregate describe that brand,
+    so the share is reported rather than left for the reader to notice."""
+    with tempfile.TemporaryDirectory() as tmp:
+        os.makedirs(os.path.join(tmp, "Hoggy"), exist_ok=True)
+        os.makedirs(os.path.join(tmp, "Small"), exist_ok=True)
+        for i in range(4):
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi",
+                            "-i", "testsrc2=size=480x320:rate=30:duration=2",
+                            "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                            os.path.join(tmp, "Hoggy", f"dsp{i}.mp4")], check=True)
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi",
+                        "-i", "testsrc2=size=480x320:rate=30:duration=2",
+                        "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                        os.path.join(tmp, "Small", "dsp.mp4")], check=True)
+        r = profile_library.profile(tmp, cuts=False)
+        top = r["groups"]["undersized"]["top_brand"]
+        assert top["name"] == "Hoggy"
+        assert top["share"] == 0.8
 
 
 def test_clis_emit_json_and_exit_non_zero_on_failure():

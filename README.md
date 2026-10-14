@@ -42,6 +42,25 @@ Current targets (Command Center limits, confirmed 2026-10-13):
 Both size caps are enforced: the video re-encodes against the remaining budget, the image
 steps down a quality ladder. Check `warnings` and `encode_passes` in the JSON.
 
+## Phase 1 — the analysis layer
+
+```bash
+# mirror the reference library (skips what is already there)
+python3 scripts/fetch_drive_library.py <drive-folder-url> --out references/library/raw
+
+# per-group stats + first-frame thumbnails
+python3 scripts/profile_library.py references/library/raw \
+  --out references/library/profile.json --thumbs references/library/thumbs
+
+# frames and pacing for one video
+python3 scripts/extract_frames.py <in.mp4> --out frames/ --n 6
+```
+
+`profile_library.py` reports aggregates **per group**, because the library mixes shipped
+finals (`feed*.mp4` — the house standard), raw social scrapes, and ad-network banner videos.
+An average across all of them describes nothing. Each group also reports its top brand's
+share, so a lopsided aggregate is visible rather than hidden.
+
 ## Tests
 
 ```bash

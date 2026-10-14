@@ -154,10 +154,10 @@ All scripts: Python 3.11+, CLI with `argparse`, JSON output on stdout, non-zero 
 | `fetch_media.py <url> --out <dir>` | Download video/image | yt-dlp; best quality ≤ 1080p; save source URL + uploader in a sidecar `.json` | **built** |
 | `normalize_video.py <in> --profile feed\|generated` | Make spec-compliant video | 9:16 via smart crop (center by default, `--focus x,y` override) or blurred-pad if crop loses subject; trim to duration window; export exact codec from §4 | **built** |
 | `normalize_image.py <in>` | Make spec-compliant image | 1:1 crop, upscale if below min resolution, export format from §4 | **built** |
-| `extract_frames.py <in> --n 6` | Frames for AI review | evenly spaced + first frame; also detect scene cuts (ffmpeg `scdet`) | Phase 1 |
+| `extract_frames.py <in> --out <dir> --n 6` | Frames for AI review | first frame + evenly spaced; scene-cut times, cuts/second, mean shot length | **built** |
 | `brand_overlay.py <in> --logo <png> [--text] [--endcard]` | Composite real branding | logo position presets, safe margins for feed UI, optional 1.5 s end card | Phase 2 |
 | `fetch_drive_library.py <folder> --out <dir>` | Mirror the Drive reference library | walks the tree, keeps per-brand structure, skips files already present, writes `_index.json` | **built** |
-| `profile_library.py <dir>` | Analyze reference library | per-file stats + aggregate: durations, cuts/second, aspect distribution, first-frame thumbnails → JSON for the agent to interpret | Phase 1 |
+| `profile_library.py <dir>` | Analyze reference library | per-file stats + aggregates **per group** (feed / source / undersized / images), durations, cuts/second, aspect distribution, brand-skew share, first-frame thumbnails → JSON for the agent to interpret | **built** |
 
 **Phase 0 acceptance:** a video downloaded from YouTube or Instagram goes through `normalize_video.py` and is accepted by the Command Center upload with no CapCut step.
 
@@ -282,7 +282,7 @@ Calibrate in Phase 1: scores on library videos should land ≥ 80; if not, adjus
 | Phase | Deliverable | Done when | Status |
 |---|---|---|---|
 | **0** | Repo skeleton, `probe`, `fetch_media`, `normalize_video`, `normalize_image` | Sidney uploads a pipeline-normalized video to Command Center with no CapCut | **Built, 21 tests passing against the confirmed specs. Open: one real upload to Command Center.** |
-| **1** | Library downloaded, `profile_library.py`, `creative-standards` with `library_profile.md` + calibrated rubric, `brand-kit`, `brand-research`, `mission-creatives` (research path only) | Run on 10 real brands from the queue; ≥ 7 have an acceptable top asset; time per mission measured | Not started |
+| **1** | Library downloaded, `profile_library.py`, `creative-standards` with `library_profile.md` + calibrated rubric, `brand-kit`, `brand-research`, `mission-creatives` (research path only) | Run on 10 real brands from the queue; ≥ 7 have an acceptable top asset; time per mission measured | **In progress** — library mirrored, `profile_library.py` + `extract_frames.py` built. Next: `library_profile.md` (Igor owns), then the three skills |
 | **2** | `video-generate` + `brand_overlay` + templates | On 5 small brands with no good assets, ≥ 3 produce an approved video with the correct logo | Not started |
 | **3** | Command Center integration via MCP: read "needs creatives" draft queue, upload to Cloudflare, attach to mission | A draft saved without creatives gets proposals automatically. **Depends on Jean** (draft-without-creatives + Cloudflare) | Not started |
 

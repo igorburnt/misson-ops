@@ -1,6 +1,7 @@
 # Never commit media or credentials
 references/library/raw/
 references/library/negative/
+references/library/thumbs/
 brands/*/logo/
 brands/*/assets/
 brands/*/runs/
