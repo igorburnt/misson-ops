@@ -1,0 +1,56 @@
+{
+  "brand": "ATM.com",
+  "slug": "atm-com",
+  "offer": "ATM Cash Advance・Instant Money",
+  "updated_at": "2026-10-15",
+  "brand_class": "product",
+  "sector": "regulated consumer fintech (cash advance / earned wage access)",
+  "legal_entity": "ATM.com, Inc.",
+  "website": "https://www.atm.com/",
+  "website_fetchable": true,
+  "has_mobile_app": true,
+  "channels": [
+    {"platform": "instagram", "handle": "atmapp", "url": "https://www.instagram.com/atmapp", "evidence": "linked from atm.com", "confidence": "high"},
+    {"platform": "facebook", "handle": "atmdotcom", "url": "https://www.facebook.com/atmdotcom", "evidence": "linked from atm.com", "confidence": "high"},
+    {"platform": "x", "handle": "atmdotcom", "url": "https://x.com/atmdotcom", "evidence": "linked from atm.com", "confidence": "high"},
+    {"platform": "linkedin", "handle": "atmdotcom", "url": "https://www.linkedin.com/company/atmdotcom", "evidence": "linked from atm.com", "confidence": "high"}
+  ],
+  "channels_rejected": [
+    {"platform": "youtube", "handle": "@ATMcom", "channel_id": "UCiRm_iZKjDYd0egBWMTorGQ", "reason": "unrelated channel - 88 subscribers, Russian-language music uploads (ARTMOSPHERE LIVE, Taet Led). Not the brand."},
+    {"platform": "youtube", "handle": "@atmdotcom", "reason": "404, does not exist"},
+    {"platform": "youtube", "handle": "@getatm", "reason": "no videos tab"}
+  ],
+  "channels_not_found": ["youtube", "tiktok"],
+  "youtube_finding": "No official YouTube channel exists. A ytsearch for the app returns only third-party review channels (Overdraft Apps, Bytes Media, Jay Dubya, The Modest Wallet), including 'ATM.COM LEGIT or a SCAM?' and 'Several Cash Advance Apps Got Sued'. All are hard fails under the rubric: not official, and some are hostile to the brand. None may be used.",
+  "wikidata": {"entity": null, "evidence": "no entity for this brand"},
+  "logo": {
+    "path": "brands/atm-com/logo/atm-logo.svg",
+    "source": "https://www.atm.com/_next/static/media/atm-logo.9c6d505e.svg",
+    "source_type": "brand's own site (Next.js static asset)",
+    "format": "svg",
+    "viewbox": "0 0 88 52",
+    "has_text_element": false,
+    "license": "none stated; no published media kit",
+    "variants": ["atm-logo.svg", "atm-logo-white.svg (for dark backgrounds)"]
+  },
+  "colors": {
+    "primary": "#0A3754",
+    "secondary": "#29BFED",
+    "evidence": "the two fill values in the logo SVG, declared as CSS custom properties (var(--fill-0, #0A3754) x5, var(--fill-0, #29BFED) x3). Both are corroborated by the store screenshots: navy headline type and the cyan mascot."
+  },
+  "store": {
+    "app_store": {"id": 1507829573, "bundle": "com.atm.atm.prod", "rating": 4.7, "rating_count": 30474},
+    "google_play": {"package": "com.atm.atm.prod"},
+    "screenshots": 8,
+    "screenshot_resolution": "2160x3840",
+    "evidence": "fetch_store_assets.py; 8 native 9:16 screenshots at 2160x3840, double the 1080x1920 floor"
+  },
+  "partner_logos_on_site": ["Athleta", "Robinhood", "Starbucks", "Stash"],
+  "needs_human": [
+    "CRITICAL - do not mistake a partner logo for the brand's. atm.com displays Athleta, Robinhood, Starbucks and Stash logos as reward partners. Any of these appearing in a creative is a rubric hard fail (competitor/third party in frame).",
+    "No official video exists anywhere public. YouTube has no brand channel; Instagram @atmapp cannot be read without a logged-in session (blocked on Jean's Instagram session policy). Until that is resolved there is no video source for this brand.",
+    "Logo usage rights: SVG taken from the brand's own site with no stated licence or media kit. Pascal/Jean to confirm before compositing.",
+    "Regulated-finance disclaimers appear burned into the store screenshots ('Eligibility is based on review and approval...'). Any screenshot used as a creative source must either keep the disclaimer intact or crop to a region that never carried one.",
+    "fetch_store_assets.py returned a 48x48 app icon and classified a 512x512 image as a screenshot. The icon picker is choosing wrongly on this listing - see run notes."
+  ]
+}

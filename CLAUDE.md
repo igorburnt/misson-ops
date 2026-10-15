@@ -24,6 +24,7 @@ Plus: cache per brand · human in the loop until tuned · when a creative judgme
 | `skills/<name>/SKILL.md` | The judgment layer. |
 | `scripts/` | The deterministic layer. Python 3.11+, argparse, JSON on stdout, non-zero exit on failure, **no LLM calls**. |
 | `brands/<slug>/` | Per-brand cache: `kit.json`, logo, approved assets, runs. |
+| `scripts/collect_assets.py` | **Collect first, decide later.** Downloads every candidate asset raw and unfiltered; never rejects for shape, size or codec. |
 | `tests/` | `python3 tests/make_samples.py && python3 tests/test_scripts.py` |
 
 ## Current state
@@ -39,6 +40,12 @@ Phase 0 is **not signed off** until Sidney uploads a pipeline-normalized video t
 Outstanding in Phase 1: **`library_profile.md`** (Igor owns it; the rubric's tone criterion points at it) and the rubric calibration pass. Phase 1's "done when" is a run over 10 real brands from the queue with ≥ 7 acceptable top assets.
 
 **Phases 2–3 — not started.** `video-generate` holds a placeholder only. Do not start a phase before the previous one's "done when" is met and confirmed by Igor.
+
+**Entry points.** `/brand <company>` collects a brand's source assets raw (see `skills/brand-assets/`).
+`/brand-shortlist <slug>` scores and normalizes what was collected. Collection and judgment are
+deliberately separate: an asset is never withheld for being landscape, oversized or the wrong codec,
+because resizing is a downstream step and rejecting at collection time leaves the human nothing to
+disagree with.
 
 ## Working rules
 

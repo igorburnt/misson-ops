@@ -1,0 +1,62 @@
+{
+  "brand": "Credit Strong",
+  "slug": "credit-strong",
+  "offer": "Credit Strong - US - CPA",
+  "updated_at": "2026-10-15",
+  "brand_class": "product",
+  "sector": "regulated consumer fintech (credit-builder accounts)",
+  "operator": "Austin Capital Bank SSB",
+  "website": "https://www.creditstrong.com/",
+  "website_fetchable": true,
+  "products": ["Instal", "Magnum", "Revolv"],
+  "has_mobile_app": false,
+  "channels": [
+    {
+      "platform": "youtube",
+      "handle": "@CreditStrong",
+      "channel_id": "UCb2eu9PhUwJUK4Sd7CcOFpw",
+      "subscribers": 477,
+      "verified": false,
+      "evidence": "yt-dlp channel_is_verified=NA (no badge); handle matches brand name and all uploads carry the CreditStrong logo and registered trademark. Single-source only.",
+      "confidence": "medium"
+    },
+    {
+      "platform": "facebook",
+      "handle": "GetCreditStrong",
+      "url": "https://www.facebook.com/GetCreditStrong/",
+      "evidence": "linked from creditstrong.com homepage footer",
+      "confidence": "high"
+    }
+  ],
+  "channels_rejected": [],
+  "channels_not_found": ["instagram", "tiktok"],
+  "wikidata": {
+    "entity": null,
+    "evidence": "action=wbgetentities sites=enwiki titles='Credit Strong' returned missing. No Wikidata entity exists for this brand."
+  },
+  "logo": {
+    "path": "brands/credit-strong/logo/creditstrong_consumer_logo.svg",
+    "source": "https://www.creditstrong.com/wp-content/uploads/r3_consumer_logo.svg",
+    "source_type": "brand's own CDN",
+    "format": "svg",
+    "viewbox": "0 0 229 43",
+    "has_text_element": false,
+    "license": "none stated; served from the brand's own site with no published media kit or usage terms",
+    "trademark": "wordmark carries a registered trademark symbol in on-screen use"
+  },
+  "colors": {
+    "primary": "#6CBE45",
+    "evidence": "the only fill value in the logo SVG (8 occurrences); no other colour defined in the file"
+  },
+  "store": {
+    "google_play": null,
+    "app_store": null,
+    "evidence": "App Store search for 'credit strong' and 'creditstrong' returns only competitors (Self, Kikoff, Ava, Kovo). Zero store links or app mentions on creditstrong.com. Product is web-only."
+  },
+  "needs_human": [
+    "Logo usage rights: the SVG comes from the brand's own CDN but carries no licence or media-kit terms, and the wordmark is a registered trademark. Pascal/Jean must confirm before it is composited onto any creative.",
+    "Channel evidence is single-source. The YouTube channel is unverified (477 subscribers, no badge) and there is no Wikidata entity. Identity rests on the handle plus on-screen branding. Confirm with the offer's network contact that @CreditStrong is the advertiser's own channel.",
+    "Regulated-finance disclaimers: the product explainers carry mandatory legal text on screen. Any reframe that truncates it is a compliance issue, not a design one. Legal sign-off needed before shipping any cropped version.",
+    "No Instagram or TikTok presence found. If the advertiser has vertical social assets, they are not publicly discoverable and should be requested direct."
+  ]
+}
