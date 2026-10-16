@@ -87,7 +87,9 @@ def main():
     for r in collected:
         probe = r.get("probe", {}) or {}
         assets.append({
-            "path": r.get("path"),
+            # fetch_media.py reports the downloaded file as "file"; "path" is its
+            # internal pre-sidecar key and is not present in the sidecar output.
+            "path": r.get("file") or r.get("path"),
             "source_url": r.get("source_url") or r.get("url"),
             "platform": r.get("platform"),
             "title": r.get("title"),

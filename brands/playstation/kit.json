@@ -1,0 +1,50 @@
+{
+  "brand": "PlayStation",
+  "slug": "playstation",
+  "updated_at": "2026-10-15",
+  "brand_class": "product + licensed content (hybrid)",
+  "brand_class_note": "PlayStation is a hardware/platform brand, but most of its vertical output promotes third-party game titles under licence. Expect licensor attribution burned into frame.",
+  "legal_entity": "Sony Interactive Entertainment",
+  "website": "https://www.playstation.com",
+  "wikidata": {"entity": "Q1323662"},
+  "channels": [
+    {
+      "platform": "youtube",
+      "channel_id": "UC-2Y8dQb0S6DtpxNgAKoJKA",
+      "handle": "@PlayStation",
+      "subscribers": 17300000,
+      "verified": true,
+      "evidence": "two independent sources agree: yt-dlp channel_is_verified=True, and Wikidata Q1323662 P2397 lists this exact channel id",
+      "confidence": "high"
+    },
+    {"platform": "instagram", "handle": "playstation", "evidence": "Wikidata P2003", "confidence": "high"},
+    {"platform": "tiktok", "handle": "playstation", "evidence": "Wikidata P7085", "confidence": "high"},
+    {"platform": "facebook", "handle": "playstation", "evidence": "Wikidata P2013", "confidence": "high"},
+    {"platform": "twitter", "handle": "PlayStation", "evidence": "Wikidata P2002 (primary of 24 regional handles)", "confidence": "high"}
+  ],
+  "regional_handles_note": "Wikidata lists 24 regional Twitter handles (playstationuk, playstation_jp, playstation_br, ...). Only the primary is recorded. Use a regional account only if the offer is geo-targeted.",
+  "logo": {
+    "path": "brands/playstation/logo/PlayStation_logo_and_wordmark.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/5/5c/PlayStation_logo_and_wordmark.svg",
+    "source_type": "Wikimedia Commons via Wikidata P154",
+    "format": "svg",
+    "native_size": "1000x181",
+    "has_text_element": false,
+    "license": "Public domain",
+    "restrictions": "trademarked",
+    "artist": "Sony Interactive Entertainment",
+    "colors_in_file": "#000000 only (34 fills) - this is the monochrome wordmark variant"
+  },
+  "colors": {
+    "primary": "#000000",
+    "evidence": "the only fill in the Commons SVG; this is the monochrome lockup",
+    "caveat": "PlayStation's familiar blue is NOT defined in this file. Do not invent a hex. If a coloured mark is needed, source the colour lockup from playstation.com or a media kit and record where it came from."
+  },
+  "needs_human": [
+    "Logo is 'Public domain' for copyright but Restrictions says 'trademarked'. Same pattern as Crunchyroll: public domain is not permission to put the mark in a creative. Pascal/Jean to decide.",
+    "LICENSOR ATTRIBUTION: collected Shorts carry burned-in third-party copyright lines, e.g. '(c) 2026 MARVEL'. These are legally required and must NOT be covered by brand_overlay.py. Any crop or overlay has to preserve them.",
+    "Third-party brands appear in frame by design - Marvel, LEGO, Star Wars, Gran Turismo. For PlayStation these are licensed partners, not competitors, but the rubric's 'competitor in frame' hard fail needs a human ruling on whether partner IP is acceptable for a mission.",
+    "Accessibility: 'Building memories across generations - The LEGO PlayStation' opens on a 'Contains flashing images' warning card. A photosensitivity warning on an autoplaying feed video is a human call, not an agent's.",
+    "Brand colour is unresolved - the Commons file is monochrome only. See colors.caveat."
+  ]
+}

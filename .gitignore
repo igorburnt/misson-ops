@@ -4,6 +4,8 @@ references/library/negative/
 references/library/thumbs/
 brands/*/logo/
 brands/*/assets/
+brands/*/screenshots/
+brands/*/frames/
 brands/*/runs/
 tests/samples/*.mp4
 tests/samples/*.mov
