@@ -11,6 +11,7 @@ title, upload date and the probe metadata. Exits non-zero on failure.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import mimetypes
 import os
@@ -74,13 +75,19 @@ def _format_selector(max_short_side: int) -> tuple[str, str]:
 
 
 def _via_ytdlp(url: str, out_dir: str, max_short_side: int, cookies_from: str | None) -> dict:
-    if not shutil.which("yt-dlp"):
-        raise FetchError("yt-dlp not found on PATH")
+    # Prefer the module under this interpreter: pip's yt-dlp.exe may not be on
+    # PATH, and Windows Application Control can block that exe outright.
+    if importlib.util.find_spec("yt_dlp"):
+        ytdlp = [sys.executable, "-m", "yt_dlp"]
+    elif shutil.which("yt-dlp"):
+        ytdlp = ["yt-dlp"]
+    else:
+        raise FetchError("yt-dlp not found (neither the yt_dlp module nor yt-dlp on PATH)")
 
     template = os.path.join(out_dir, "%(id)s.%(ext)s")
     fmt, sort = _format_selector(max_short_side)
     cmd = [
-        "yt-dlp",
+        *ytdlp,
         "--no-playlist",
         "--no-progress",
         "--no-warnings",
@@ -134,7 +141,16 @@ def _via_http(url: str, out_dir: str) -> dict:
 def fetch(url: str, out_dir: str, max_short_side: int = 1080,
           image: bool = False, cookies_from: str | None = None) -> dict:
     os.makedirs(out_dir, exist_ok=True)
-    result = _via_http(url, out_dir) if image else _via_ytdlp(url, out_dir, max_short_side, cookies_from)
+    if image:
+        result = _via_http(url, out_dir)
+    else:
+        try:
+            result = _via_ytdlp(url, out_dir, max_short_side, cookies_from)
+        except FetchError as exc:
+            # A direct .mp4 on a CDN can still trip yt-dlp's generic extractor.
+            if "Unsupported URL" not in str(exc):
+                raise
+            result = _via_http(url, out_dir)
     return _sidecar(result["path"], url, result["info"])
 
 

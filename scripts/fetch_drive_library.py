@@ -75,10 +75,16 @@ def walk(fid: str, path: str = "") -> list[dict]:
     return entries
 
 
+def _local(part: str) -> str:
+    """Windows cannot create a name ending in a space or dot ("Crypto.com "). Strip them
+    everywhere, not only on Windows, so the mirror has the same layout on every machine."""
+    return part.rstrip(" .") or "_"
+
+
 def download(entry: dict, out_root: str, retries: int = 3) -> dict:
-    dest_dir = os.path.join(out_root, entry["folder"])
+    dest_dir = os.path.join(out_root, *(_local(p) for p in entry["folder"].split("/") if p))
     os.makedirs(dest_dir, exist_ok=True)
-    dest = os.path.join(dest_dir, entry["name"])
+    dest = os.path.join(dest_dir, _local(entry["name"]))
 
     # Re-running must be cheap: a file already at the expected size is done.
     if os.path.isfile(dest) and (not entry["size"] or os.path.getsize(dest) == entry["size"]):
