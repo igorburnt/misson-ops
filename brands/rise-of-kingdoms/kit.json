@@ -1,0 +1,84 @@
+{
+  "brand": "Rise of Kingdoms",
+  "slug": "rise-of-kingdoms",
+  "offer": "Rise of Kingdoms: Lost Crusade",
+  "offer_resolution": "'Lost Crusade' is the game's original subtitle. Wikidata Q106841292 is labelled 'Rise of Kingdoms: Lost Crusade' with P856 rok.lilithgames.com (redirects to rok.lilith.com). App Store search 'rise of kingdoms' returns 'Rise of Kingdoms' by LilithGame Co., Ltd. as the first result; the rest are competitors (Clash of Clans, Rise of Castles, Call of Dragons, etc.).",
+  "updated_at": "2026-11-12",
+  "brand_class": "product",
+  "sector": "mobile game (4X real-time strategy)",
+  "legal_entity": "LilithGame Co., Ltd.",
+  "website": "https://rok.lilith.com/en",
+  "website_fetchable": true,
+  "has_mobile_app": true,
+  "official_channels": [
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@RiseofKingdoms",
+      "channel_id": "UC7fU_pfnhSBM1RkBz-pJoHA",
+      "evidence": "verified badge (yt-dlp channel_is_verified=true, 402K subscribers) AND linked by channel id from rok.lilith.com - two independent sources agree"
+    },
+    {"platform": "instagram", "url": "https://www.instagram.com/riseofkingdoms/", "evidence": "linked from rok.lilith.com"},
+    {"platform": "x", "url": "https://twitter.com/riseofkingdoms", "evidence": "linked from rok.lilith.com"},
+    {"platform": "facebook", "url": "https://www.facebook.com/riseofkingdomsgame/", "evidence": "linked from rok.lilith.com"},
+    {"platform": "discord", "url": "https://discord.gg/riseofkingdoms", "evidence": "linked from rok.lilith.com"},
+    {"platform": "reddit", "url": "https://www.reddit.com/r/RiseofKingdoms/", "evidence": "linked from rok.lilith.com (community subreddit)"}
+  ],
+  "channels_rejected": [
+    {"platform": "youtube", "note": "rok.lilith.com also links regional channels (RiseofKingdomsDE/ES/FR/RUS, Viet Nam, UC3TMxM4vcad8190vvtbedWQ, UCS1nok1UdVZjx_LMf_N-lAg). Not the primary US/English channel; not collected."},
+    {"platform": "facebook", "note": "regional pages and community groups (de, esp, france, ptbr, Arabic, VN) linked from the site - not the primary English page."},
+    {"platform": "youtube", "handle": "@RiseofKingdomsOfficial", "reason": "exists but has no videos tab"}
+  ],
+  "channels_not_found": ["tiktok"],
+  "wikidata": {"entity": "Q106841292", "evidence": "label 'Rise of Kingdoms: Lost Crusade'; P856 website only - no P2397/P2003/P7085/P154 claims"},
+  "logo": {
+    "path": "brands/rise-of-kingdoms/logo/site_logo_logo.png",
+    "source": "https://lilithimage.lilithcdn.com/allgames-official-web/rok/en/img/logo/logo.png",
+    "source_type": "brand's own site (lilithcdn)",
+    "format": "png",
+    "width": 400,
+    "height": 248,
+    "transparent": true,
+    "license": "none stated - publisher's own asset, trademarked",
+    "note": "Illustrated raster badge (gold wordmark on shield, swords, red banner). No official SVG or press kit found. Other site variants: site_logo_pc1.png 455x205, site_logo_m1.png 353x160 (both palettised), site_en-logo.png 166x70."
+  },
+  "logo_candidates_rejected": [
+    {
+      "path": "brands/rise-of-kingdoms/logo/commons_redraw.svg",
+      "source": "https://commons.wikimedia.org/wiki/File:Rise_Kingdoms_svg.svg",
+      "reason": "user redraw (User:OSAMA-ART-1, 'Own work', CC0, uploaded 2026-08-11), single-colour silhouette with no fills - not the publisher's mark and not the colour logo. Do not use."
+    }
+  ],
+  "logo_missing": true,
+  "icon": {
+    "path": "brands/rise-of-kingdoms/screenshots/icon.png",
+    "width": 512,
+    "height": 512,
+    "source": "Google Play listing",
+    "note": "below the 1024x1024 mission-image minimum"
+  },
+  "colors": [],
+  "colors_source": "not extracted - no official vector logo exists to read fills from; the raster badge is a multi-colour illustration (gold, red, steel)",
+  "store": {
+    "play": "https://play.google.com/store/apps/details?id=com.lilithgame.roc.gp",
+    "app_store": "https://apps.apple.com/us/app/rise-of-kingdoms/id1354260888"
+  },
+  "screenshots": [
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_01.png", "width": 2560, "height": 1919, "aspect": "4:3", "is_vertical": false},
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_04.png", "width": 2560, "height": 1919, "aspect": "4:3", "is_vertical": false},
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_06.png", "width": 2560, "height": 1919, "aspect": "4:3", "is_vertical": false},
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_08.png", "width": 2560, "height": 1919, "aspect": "4:3", "is_vertical": false},
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_00.png", "width": 2208, "height": 1242, "aspect": "16:9", "is_vertical": false},
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_03.png", "width": 2208, "height": 1242, "aspect": "16:9", "is_vertical": false},
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_05.png", "width": 2208, "height": 1242, "aspect": "16:9", "is_vertical": false},
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_07.png", "width": 2208, "height": 1242, "aspect": "16:9", "is_vertical": false},
+    {"path": "brands/rise-of-kingdoms/screenshots/screenshot_02.png", "width": 512, "height": 512, "aspect": "1:1", "is_vertical": false}
+  ],
+  "needs_human": [
+    "Logo: the best official logo is a 400x248 raster badge from the brand's site. No SVG, no press kit, no high-res version found. logo_missing is set true for compositing purposes. Ask the publisher or network for a high-res logo.",
+    "The only SVG on Wikimedia Commons is a user-made single-colour redraw (CC0 claim). It is not the publisher's mark. Do not use it.",
+    "Colours not extracted: there is no vector logo to read fills from. Pick them manually from the badge or ask for brand guidelines.",
+    "Play listing has no vertical screenshots: 4 at 2560x1919, 4 at 2208x1242, plus a 512x512 tile. Every 9:16 crop from them will be compromised.",
+    "Trademark and usage permission for the logo and game art is unconfirmed (PROJECT.md 13, brand approval policy).",
+    "TikTok: no official account linked from the site, and TikTok cannot be reached without a logged-in session anyway."
+  ]
+}
