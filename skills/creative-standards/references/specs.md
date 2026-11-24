@@ -92,6 +92,20 @@ the script says so explicitly — it will not silently ship an oversized image.
 Sources below 1024×1024 are upscaled with lanczos and flagged. Prefer Google Play previews
 over App Store thumbnails, and either over the Command Center's own low-res screenshots.
 
+## Safe area (`safe_area.feed`) — PROVISIONAL
+
+From Safe Area Skill v2.1 (`skills/safe-area/references/`). On the 1080×1920 canvas, the margins are
+272 px top and bottom and 170 px left and right. That leaves a **740×1376 box from (170, 272) to (910, 1648)**.
+Every critical element (logo, text, CTA, offer, main product, primary people) must sit fully inside
+it, ideally with ≥ 20 px (`min_padding_px`) to spare.
+
+v2.1 assumes the canvas is shown in a 1080×2346 placement with **cover** scaling, which crops
+about 98 px off each side; the 170 px side margin keeps a 72 px buffer beyond that. The app's newer
+top/bottom gradient fits to width instead, which crops nothing. Until that is confirmed, the profile
+stays PROVISIONAL. Changing `placement_fit` to `contain` is the one-line edit if fit-to-width wins.
+
+`scripts/check_safe_area.py` reads these values; the skill never restates them in a prompt.
+
 ## Framing rules (`normalize_video.py`)
 
 - **crop** — centre crop to 9:16. `--focus x,y` (0–1) moves the crop window when the subject is off-centre.

@@ -76,6 +76,22 @@
       "enforce_max_size": true
     }
   },
+  "safe_area": {
+    "feed": {
+      "_status": "PROVISIONAL",
+      "_source": "Safe Area Skill v2.1 (skills/safe-area/references/constraints-creatives-generation.md), Igor 2026-11-24. placement_fit=cover chosen by Igor 2026-11-24 'for now'; revisit if the app's fit-to-width + gradient becomes the confirmed behaviour.",
+      "canvas_width": 1080,
+      "canvas_height": 1920,
+      "placement_width": 1080,
+      "placement_height": 2346,
+      "placement_fit": "cover",
+      "margin_top": 272,
+      "margin_bottom": 272,
+      "margin_left": 170,
+      "margin_right": 170,
+      "min_padding_px": 20
+    }
+  },
   "hard_fails": {
     "min_source_height": 480
   }

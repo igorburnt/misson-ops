@@ -17,9 +17,11 @@ ROOT = os.path.dirname(HERE)
 SAMPLES = os.path.join(HERE, "samples")
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 
+import check_safe_area  # noqa: E402
 import extract_frames  # noqa: E402
 import normalize_image  # noqa: E402
 import normalize_video  # noqa: E402
+import outpaint_canvas  # noqa: E402
 import profile_library  # noqa: E402
 import specs as specs_mod  # noqa: E402
 from probe import probe  # noqa: E402
@@ -339,6 +341,104 @@ def test_profile_library_reports_brand_skew():
         top = r["groups"]["undersized"]["top_brand"]
         assert top["name"] == "Hoggy"
         assert top["share"] == 0.8
+
+
+def _boxes_file(elements: list[dict]) -> str:
+    path = tempfile.mktemp(suffix=".json")
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump({"elements": elements}, fh)
+    return path
+
+
+def test_safe_area_spec_matches_the_skill():
+    """Safe Area Skill v2.1: 740x1376 box at (170,272)-(910,1648), inside what cover placement keeps."""
+    geo = check_safe_area.geometry(specs_mod.safe_area_profile("feed"))
+    assert geo["safe_area"] == [170, 272, 910, 1648]
+    sx0, sy0, sx1, sy1 = geo["safe_area"]
+    assert (sx1 - sx0, sy1 - sy0) == (740, 1376)
+    vx0, vy0, vx1, vy1 = geo["placement_visible"]
+    assert vx0 < sx0 and sx1 < vx1 and vy0 <= sy0 and sy1 <= vy1
+
+
+def test_safe_area_flags_overflow_and_tight_padding():
+    boxes = _boxes_file([
+        {"label": "logo", "box": [300, 150, 780, 330]},              # 122px above the safe area
+        {"label": "headline", "box": [190, 400, 890, 560]},           # exactly 20px padding
+        {"label": "cta", "box": [180, 1500, 900, 1640]},              # inside, 8px from the edge
+        {"label": "glow", "box": [0, 0, 1080, 400], "critical": False},
+    ])
+    r = check_safe_area.check(sample("vertical_1080x1920.mp4"), boxes)
+    assert r["pass"] is False
+    assert r["failures"] == ["logo"]
+    by = {e["label"]: e for e in r["elements"]}
+    assert by["logo"]["overflow_px"] == {"top": 122.0}
+    assert by["headline"]["inside_safe_area"] and not by["headline"]["tight"]
+    assert by["cta"]["tight"] and len(r["warnings"]) == 1
+    assert not by["glow"]["inside_safe_area"]  # decorative may leave the safe area
+
+
+def test_safe_area_scales_boxes_from_a_smaller_source():
+    """Boxes are given in the source's own pixels; a 540x960 source maps 2x onto the canvas."""
+    src = tempfile.mktemp(suffix=".png")
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "testsrc2=size=540x960",
+                    "-frames:v", "1", src], check=True)
+    r = check_safe_area.check(src, _boxes_file([{"label": "logo", "box": [100, 150, 440, 300]}]))
+    assert r["elements"][0]["box_canvas"] == [200.0, 300.0, 880.0, 600.0]
+    assert r["pass"] is True
+
+
+def test_safe_area_refuses_a_non_vertical_source():
+    try:
+        check_safe_area.check(sample("small.png"))
+    except check_safe_area.CheckError as exc:
+        assert "outpaint" in str(exc)
+    else:
+        raise AssertionError("a 4:3 source must not be checked against a 9:16 safe area")
+
+
+def test_safe_area_cli_exits_2_on_a_violation_and_draws_an_overlay():
+    overlay = tempfile.mktemp(suffix=".png")
+    proc = subprocess.run(
+        [sys.executable, os.path.join(ROOT, "scripts", "check_safe_area.py"),
+         sample("vertical_1080x1920.mp4"), "--overlay", overlay,
+         "--boxes", _boxes_file([{"label": "logo", "box": [300, 150, 780, 330]}])],
+        capture_output=True, text=True)
+    assert proc.returncode == 2, proc.stderr
+    assert json.loads(proc.stdout)["failures"] == ["logo"]
+    assert (probe(overlay)["width"], probe(overlay)["height"]) == (1080, 1920)
+
+
+def test_outpaint_canvas_fits_the_source_inside_the_padded_safe_area():
+    spec = specs_mod.safe_area_profile("feed")
+    for w, h in [(810, 1440), (1024, 1024), (1920, 1080)]:
+        x, y, pw, ph = outpaint_canvas.placement(w, h, spec)
+        boxes = _boxes_file([{"label": "creative", "box": [x, y, x + pw, y + ph]}])
+        canvas = tempfile.mktemp(suffix=".png")
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "color=c=gray:s=1080x1920",
+                        "-frames:v", "1", canvas], check=True)
+        r = check_safe_area.check(canvas, boxes)
+        assert r["pass"] and not r["warnings"], (w, h, r["warnings"])
+        assert abs(pw / ph - w / h) < 0.01, "aspect must be kept"
+
+
+def test_outpaint_merge_restores_the_source_pixels_over_any_generated_size():
+    canvas = tempfile.mktemp(suffix=".png")
+    rec = outpaint_canvas.prepare(sample("small.png"), canvas)
+    assert (probe(canvas)["width"], probe(canvas)["height"]) == (1080, 1920)
+
+    generated = tempfile.mktemp(suffix=".png")  # what a chat model typically returns: 2:3
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", "color=c=red:s=1024x1536",
+                    "-frames:v", "1", generated], check=True)
+    out = tempfile.mktemp(suffix=".png")
+    r = outpaint_canvas.merge(os.path.splitext(canvas)[0] + ".json", generated, out)
+    assert (probe(out)["width"], probe(out)["height"]) == (1080, 1920)
+    assert r["restored_rect"] == rec["placement"] and r["warnings"]
+
+    # The centre pixel is the source's, not the model's red.
+    x, y, w, h = rec["placement"]
+    px = subprocess.run(["ffmpeg", "-v", "error", "-i", out, "-vf", f"crop=1:1:{x + w // 2}:{y + h // 2}",
+                         "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True, check=True).stdout
+    assert tuple(px) != (255, 0, 0)
 
 
 def test_clis_emit_json_and_exit_non_zero_on_failure():

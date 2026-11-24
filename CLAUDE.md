@@ -25,6 +25,7 @@ Plus: cache per brand · human in the loop until tuned · when a creative judgme
 | `scripts/` | The deterministic layer. Python 3.11+, argparse, JSON on stdout, non-zero exit on failure, **no LLM calls**. |
 | `brands/<slug>/` | Per-brand cache: `kit.json`, logo, approved assets, runs. |
 | `scripts/collect_assets.py` | **Collect first, decide later.** Downloads every candidate asset raw and unfiltered; never rejects for shape, size or codec. |
+| `skills/safe-area/` | Safe Area Skill v2.1: you find the logo, text, product and CTA; `scripts/check_safe_area.py` measures them against `safe_area.feed` in `specs.json`. |
 | `tests/` | `python3 tests/make_samples.py && python3 tests/test_scripts.py` |
 
 ## Current state
@@ -36,6 +37,8 @@ Encode settings in `specs.json` are **CONFIRMED** against the Command Center lim
 Phase 0 is **not signed off** until Sidney uploads a pipeline-normalized video to Command Center with no CapCut step.
 
 **Phase 1 — in progress.** Library mirrored (209 files, 32 brands). Built: `fetch_drive_library.py`, `profile_library.py`, `extract_frames.py`, `fetch_store_assets.py`, and the `brand-kit`, `brand-research` and `mission-creatives` skills — each written from a real run on Crunchyroll, with the worked examples under `skills/*/references/`.
+
+**Pilot, ahead of Phase 2 by Igor's request (2026-11-24):** `safe-area` skill and `check_safe_area.py`, for triage and auto-QA. `safe_area.feed` is PROVISIONAL until cover vs fit-to-width is confirmed. Nothing generates or auto-fixes yet.
 
 Outstanding in Phase 1: **`library_profile.md`** (Igor owns it; the rubric's tone criterion points at it) and the rubric calibration pass. Phase 1's "done when" is a run over 10 real brands from the queue with ≥ 7 acceptable top assets.
 

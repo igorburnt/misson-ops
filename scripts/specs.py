@@ -33,3 +33,10 @@ def image_profile(name: str, path: str | None = None) -> dict:
     if name not in profiles:
         raise KeyError(f"unknown image profile {name!r}; have {sorted(profiles)}")
     return profiles[name]
+
+
+def safe_area_profile(name: str, path: str | None = None) -> dict:
+    profiles = load(path)["safe_area"]
+    if name not in profiles:
+        raise KeyError(f"unknown safe-area profile {name!r}; have {sorted(profiles)}")
+    return profiles[name]
