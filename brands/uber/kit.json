@@ -1,0 +1,41 @@
+{
+  "brand": "Uber",
+  "slug": "uber",
+  "partial": true,
+  "partial_note": "Logo only, built 2026-11-24 to test static-creative. Channels, screenshots and colours were not researched; run brand-kit fully before using this kit for a real mission.",
+  "updated_at": "2026-11-24",
+  "legal_entity": "Uber Technologies, Inc.",
+  "website": "https://www.uber.com/",
+  "wikidata": {
+    "entity": "Q780442",
+    "evidence": "enwiki 'Uber'; P154 'Uber logo 2018.svg' (start 2018); P2397 UCgnxoUwDmmyzeigmmcf0hZA"
+  },
+  "official_channels": [],
+  "logo": {
+    "path": "brands/uber/logo/logo.svg",
+    "png": "brands/uber/logo/logo_1600.png",
+    "png_size": [
+      1920,
+      667
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:Uber_logo_2018.svg",
+    "png_source": "Commons thumburl rendering of the same file (iiurlwidth=1600)",
+    "source_type": "wikimedia_commons",
+    "format": "svg",
+    "outlined": true,
+    "single_colour": true,
+    "colour": "#010202",
+    "on_dark": "tint #FFFFFF (single-colour wordmark)",
+    "license": "Public domain (copyright); Commons records Restrictions: trademarked",
+    "verified_current": "Wikidata P154 with start time 2018: the current wordmark (Wolff Olins, 2018)",
+    "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/1920px-Uber_logo_2018.svg.png"
+  },
+  "logo_missing": false,
+  "font": null,
+  "font_note": "Uber Move is proprietary and not available; compositing uses a system bold sans fallback.",
+  "needs_human": [
+    "Partial kit: channels, screenshots and colours not researched.",
+    "The logo is trademarked; Commons public domain is copyright only. Blocked on the brand approval policy (PROJECT.md 13).",
+    "Brand font (Uber Move) not available; creatives use a fallback font."
+  ]
+}

@@ -89,7 +89,9 @@
       "margin_bottom": 272,
       "margin_left": 170,
       "margin_right": 170,
-      "min_padding_px": 20
+      "min_padding_px": 20,
+      "min_font_px": 40,
+      "_min_font_note": "v2.1 s6 says shrink text before it overflows, but keep it readable at mobile size. brand_overlay.py refuses to shrink below this; split the line or cut copy instead."
     }
   },
   "hard_fails": {

@@ -1,0 +1,187 @@
+{
+  "brand": "Chewy",
+  "slug": "chewy",
+  "updated_at": "2026-11-24",
+  "brand_class": "company",
+  "sector": "US online pet retailer (food, pharmacy, vet care)",
+  "legal_entity": "Chewy, Inc.",
+  "resolution": "App Store search 'chewy' first result: 'Chewy - Pet Care & Pharmacy' (id1149449468, bundle com.chewy.chewy), seller Chewy, Inc., sellerUrl https://www.chewy.com. Remaining results are competitors (Petco, PetSmart, BARK, Amazon) - not used. Wikidata Q28130158 'Chewy', P856 https://www.chewy.com.",
+  "website": "https://www.chewy.com",
+  "website_fetchable": false,
+  "website_note": "www.chewy.com returns HTTP 429 to automated requests; corporate.chewy.com did not respond. investor.chewy.com (Chewy's IR site) IS fetchable and was used as the 'linked from the brand's own site' source.",
+  "has_mobile_app": true,
+  "wikidata": {
+    "entity": "Q28130158",
+    "evidence": "label 'Chewy'; P856 https://www.chewy.com; P2397 UCpWl2nwLDQQI4TTa1kJgxrg; P2003 chewy; P7085 chewy; P2013 Chewy; P2002 chewy; P154 'Chewy Pet Food Logo.png'"
+  },
+  "official_channels": [
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@Chewy",
+      "channel_id": "UCpWl2nwLDQQI4TTa1kJgxrg",
+      "evidence": "verified badge (yt-dlp channel_is_verified=true, 164K subscribers) AND Wikidata P2397 for Q28130158 AND linked by channel id from investor.chewy.com - three independent sources agree"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/chewy",
+      "evidence": "Wikidata P2003 AND linked from investor.chewy.com"
+    },
+    {
+      "platform": "x",
+      "url": "https://twitter.com/chewy",
+      "evidence": "Wikidata P2002 AND linked from investor.chewy.com"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/chewy",
+      "evidence": "Wikidata P2013 AND linked from investor.chewy.com"
+    },
+    {
+      "platform": "tiktok",
+      "url": "https://www.tiktok.com/@chewy",
+      "evidence": "Wikidata P7085 (single source)"
+    }
+  ],
+  "channels_rejected": [
+    {
+      "platform": "app_store",
+      "note": "Petco, PetSmart, BARK (BarkBox) and Amazon Shopping appear in the 'chewy' App Store search - competitors, not the brand."
+    }
+  ],
+  "logo": {
+    "path": "brands/chewy/logo/investor_site_logo.svg",
+    "source": "https://s23.q4cdn.com/610444331/files/design/logo.svg",
+    "source_type": "brand's own site (investor.chewy.com header logo, Q4 CDN)",
+    "format": "svg",
+    "viewbox": "0 0 88 26",
+    "outlined": true,
+    "has_text_element": false,
+    "single_colour": true,
+    "colour": "#FFFFFF",
+    "variant": "reversed (white) wordmark for dark backgrounds - not the primary colour logo",
+    "png": "brands/chewy/logo/logo.png",
+    "png_size": [
+      1920,
+      739
+    ],
+    "png_source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Chewy_pet_food_logo.svg/1920px-Chewy_pet_food_logo.svg.png (Commons rendering of File:Chewy_pet_food_logo.svg; fetched 2026-11-24 via thumb.wikimedia.org after upload.wikimedia.org kept returning 429)",
+    "png_appearance": "white 'chewy' wordmark on a solid blue rectangle - the blue box is part of the mark. Two colours: never use tint on it. Use it as a badge as is.",
+    "license": "none stated - Chewy's own asset; trademarked",
+    "verified_current": "served live on Chewy's IR site on 2026-11-24, so current by construction. Not visually inspected (no SVG renderer used).",
+    "single_colour_note": "single_colour/colour describe the white investor-site SVG at logo.path. logo.png (the file to composite) is two-colour: never tint it.",
+    "png_single_colour": false,
+    "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Chewy_pet_food_logo.svg/1920px-Chewy_pet_food_logo.svg.png"
+  },
+  "logo_candidates": [
+    {
+      "source": "https://commons.wikimedia.org/wiki/File:Chewy_pet_food_logo.svg",
+      "status": "PREFERRED for logo.png but NOT DOWNLOADED - upload.wikimedia.org returned HTTP 429 on every attempt (15 over ~15 min) (curl and fetch_media.py).",
+      "metadata": "SVG 520x200; uploaded 2023-02-01 by The Quirky Kitty 'from https://www.chewy.com/'; used in the en/simple Wikipedia 'Chewy (company)' infobox. Commons iiurlwidth=1600 thumburl: https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Chewy_pet_food_logo.svg/1920px-Chewy_pet_food_logo.svg.png (1600x615).",
+      "license_verbatim": "LicenseShortName: Public domain; UsageTerms: Public domain; Artist: Chewy, Inc.; Restrictions: (empty - Commons records no trademark restriction field for this file); AttributionRequired: false",
+      "why_preferred": "Wikidata P154 points at a 225x92 PNG; the SVG is a vector of the same corporate wordmark from chewy.com and is the one Wikipedia currently uses."
+    },
+    {
+      "source": "https://commons.wikimedia.org/wiki/File:Chewy_Pet_Food_Logo.png",
+      "status": "rejected as logo.png - 225x92 raster (far below 1600 px); also not downloaded (429).",
+      "metadata": "Wikidata P154; uploaded 2016-08-18 by CNMall41; Artist: Chewy (company); Credit https://www.chewy.com/",
+      "license_verbatim": "LicenseShortName: Public domain; UsageTerms: Public domain; Copyrighted: False; Restrictions: (empty)",
+      "note": "Despite the file name it is described as the company logo of Chewy, not a product-line logo; it is a 2016 upload and may predate the current mark."
+    }
+  ],
+  "logo_missing": false,
+  "icon": {
+    "path": "brands/chewy/screenshots/icon.png",
+    "width": 512,
+    "height": 512,
+    "source": "Google Play listing",
+    "note": "below the 1024x1024 mission-image minimum"
+  },
+  "colors": [],
+  "colors_source": "not extracted. The only SVG obtained (investor site) is the reversed variant and defines a single fill, #FFF - that is not a brand colour. The Commons colour SVG could not be downloaded (429). Re-extract from its fills once fetched. Do not fill in from memory.",
+  "font": null,
+  "font_note": "Brand font not researched/available; compositing will use the system bold sans fallback.",
+  "store": {
+    "play": "https://play.google.com/store/apps/details?id=com.chewy.android",
+    "app_store": "https://apps.apple.com/us/app/chewy-pet-care-pharmacy/id1149449468"
+  },
+  "store_copy": {
+    "app_store_subtitle": "Shop for Food, Toys & More",
+    "play_short_description": "Pet food, pharmacy, toys, apparel & more. Shop and save on pet care with Chewy.",
+    "youtube_channel_description": "For food, meds and expert care. For life with pets, there's Chewy."
+  },
+  "screenshots": [
+    {
+      "path": "brands/chewy/screenshots/screenshot_00.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chewy/screenshots/screenshot_01.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chewy/screenshots/screenshot_02.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chewy/screenshots/screenshot_03.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chewy/screenshots/screenshot_04.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chewy/screenshots/screenshot_05.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chewy/screenshots/screenshot_06.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chewy/screenshots/screenshot_07.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chewy/screenshots/screenshot_08.png",
+      "width": 512,
+      "height": 512,
+      "aspect": "1:1",
+      "is_vertical": false
+    }
+  ],
+  "screenshots_note": "8 of 9 Play screenshots are native 1080x1920 vertical; screenshot_08 is a 512x512 tile (same image as the og:image icon). All carry marketing text, phone UI and the current holiday campaign; one carries an offer ('35% OFF Your first Autoship order. Terms apply.').",
+  "needs_human": [
+    "logo.png is MISSING: upload.wikimedia.org returned HTTP 429 for every request (15 tries). Re-run later: download https://upload.wikimedia.org/wikipedia/commons/6/63/Chewy_pet_food_logo.svg to brands/chewy/logo/logo.svg and the 1600-px thumburl (above) to brands/chewy/logo/logo.png, then extract colours from the SVG fills. static-creative cannot composite until this exists.",
+    "The logo is a trademark of Chewy, Inc. Commons marks both files public domain and records no Restrictions, but that is copyright only and not permission to use the mark in a creative. Blocked on the brand approval policy (PROJECT.md 13).",
+    "Confirm the Commons SVG ('Chewy pet food logo.svg', 2023) matches the current Chewy wordmark - compare it with the brand's own investor_site_logo.svg once both are local.",
+    "Colours empty: no colour SVG was obtainable. Do not use remembered values.",
+    "Press kit not found: corporate.chewy.com did not respond and www.chewy.com returns 429. 'Blocked', not 'no press kit'.",
+    "Brand font not available; fallback font will be used.",
+    "TikTok @chewy rests on Wikidata alone; Instagram/TikTok need a logged-in session to collect."
+  ]
+}

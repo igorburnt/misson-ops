@@ -1,0 +1,29 @@
+{
+  "brand": "Chewy",
+  "rule": "static-creative section 2, source 3 (brand's own official copy). Quoted exactly; nothing written or edited. No mission copy or current creative was supplied.",
+  "headline": {
+    "lines": [
+      "For food, meds and expert care.",
+      "For life with pets, there's Chewy."
+    ],
+    "source": "Official YouTube channel @Chewy (UCpWl2nwLDQQI4TTa1kJgxrg), channel description, read with yt-dlp on 2026-11-24: \"For food, meds and expert care. For life with pets, there's Chewy.\"",
+    "source_url": "https://www.youtube.com/@Chewy/about",
+    "corroboration": "'For life with pets' is printed on the Chewy shipping box in the official spot 'A Holiday Dream | Chewy' (https://www.youtube.com/watch?v=9BVw9WN9Jlw, frame at 0.00s)."
+  },
+  "alternates": [
+    {
+      "text": "Shop for Food, Toys & More",
+      "source": "App Store subtitle, 'Chewy - Pet Care & Pharmacy' by Chewy, Inc.",
+      "source_url": "https://apps.apple.com/us/app/chewy-pet-care-pharmacy/id1149449468"
+    },
+    {
+      "text": "Pet food, pharmacy, toys, apparel & more. Shop and save on pet care with Chewy.",
+      "source": "Google Play short description (og:description of the listing), 'Chewy: Pet Shopping & Delivery'",
+      "source_url": "https://play.google.com/store/apps/details?id=com.chewy.android&hl=en_US"
+    }
+  ],
+  "offers_prices_legal": "none in the chosen lines. Note: the Play screenshots carry '35% OFF Your first Autoship order. Terms apply.' - an offer, NOT used here; a person must confirm before any offer copy is used.",
+  "needs_human": [
+    "Confirm the headline choice (YouTube channel tagline, 2 lines) vs the App Store subtitle."
+  ]
+}

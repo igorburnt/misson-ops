@@ -49,6 +49,11 @@ Rule 3 is absolute: the model never draws a logo. Sources, in order:
 Prefer SVG or transparent PNG. Check the SVG has no `<text>` element: an outlined path renders
 identically everywhere, where a `<text>` logo depends on a font the compositor may not have.
 
+**Always also keep a PNG at ≥ 1600 px wide**, recorded as `logo.png`: the compositor
+(`brand_overlay.py`) runs on FFmpeg, which cannot render SVG. For a Commons SVG, add
+`&iiurlwidth=1600` to the imageinfo query; `thumburl` is Commons' own PNG rendering of the
+file, with transparency. Never rasterize or redraw the mark yourself.
+
 **Read the licence metadata and record it.** Commons marked the Crunchyroll logo public domain
 for *copyright* while `Restrictions: trademarked`. Those are different things, and "public
 domain" is not permission to put a mark in a creative. Record the licence verbatim and put the
