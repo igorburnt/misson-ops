@@ -1,0 +1,165 @@
+{
+  "brand": "DoorDash",
+  "slug": "doordash",
+  "legal_entity": "DoorDash, Inc.",
+  "resolved_from": "App Store search 'doordash' (US): first result trackId 719972451 'DoorDash: Food, Grocery, More', seller DoorDash, Inc., bundle doordash.DoorDashConsumer - the consumer app. Rejected in the same search: 'DoorDash - Dasher' (courier app, same seller), Uber Eats, Grubhub, Spark Driver (competitors).",
+  "wikidata": {
+    "entity": "Q20714323",
+    "evidence": "enwiki 'DoorDash'; P856 https://www.doordash.com/; P154 'DoorDash Logo.svg'; P2003 doordash; P2002 doordash / DoorDash; P2013 DoorDash. No P2397 (YouTube) or P7085 (TikTok) statement."
+  },
+  "official_channels": [
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/doordash",
+      "evidence": "Wikidata P2003 'doordash' AND linked from about.doordash.com/en-us footer AND ir.doordash.com footer - independent sources agree"
+    },
+    {
+      "platform": "x",
+      "url": "https://x.com/doordash",
+      "evidence": "Wikidata P2002 'doordash' (qualifier P6552 id 1531669496) AND linked from about.doordash.com/en-us and ir.doordash.com footers"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://facebook.com/doordash",
+      "evidence": "Wikidata P2013 'DoorDash' AND linked from about.doordash.com/en-us and ir.doordash.com footers"
+    },
+    {
+      "platform": "linkedin",
+      "url": "https://www.linkedin.com/company/doordash",
+      "evidence": "linked from about.doordash.com/en-us footer"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@DoorDash",
+      "channel_id": "UCXQ7Gzszfuw84cEWGpKlFiQ",
+      "evidence": "WEAK - single-source, content-based only. yt-dlp channel_is_verified=None (no verified badge reported; 97.4K subscribers, below YouTube's 100K verification threshold); NOT on Wikidata (no P2397); NOT linked from about.doordash.com, ir.doordash.com, merchants.doordash.com, dasher.doordash.com or ads.doordash.com footers. Accepted provisionally because the channel hosts DoorDash's own corporate material that a third party would not publish (Dash Forward 2026 keynote, DoorDash Ads product launches, Merchant onboarding tutorials in English/Spanish/French, DoorDash x Kim Kardashian SKIMS spot) and its description links www.doordash.com. Needs human confirmation.",
+      "confidence": "provisional"
+    }
+  ],
+  "channels_rejected": [
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@doordash_us",
+      "note": "does not exist (YouTube 404)."
+    },
+    {
+      "platform": "tiktok",
+      "note": "No Wikidata P7085 and no TikTok link in the about.doordash.com / ir.doordash.com footers; not investigated further (TikTok needs a logged-in session anyway)."
+    },
+    {
+      "platform": "app",
+      "note": "App Store 'DoorDash - Dasher' (1451754591, com.doordash.dasher) and DoorDash Merchant apps are the same seller but not the consumer product; excluded."
+    }
+  ],
+  "logo": {
+    "path": "brands/doordash/logo/logo.svg",
+    "png": "brands/doordash/logo/logo.png",
+    "png_size": [
+      1920,
+      225
+    ],
+    "source": "https://commons.wikimedia.org/wiki/File:DoorDash_Logo.svg",
+    "svg_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/DoorDash_Logo.svg",
+    "png_source": "Commons thumburl rendering of the same file (imageinfo iiurlwidth=1600): https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/DoorDash_Logo.svg/1920px-DoorDash_Logo.svg.png - Commons served its 1920px standard bucket, RGBA with transparency",
+    "source_type": "wikimedia_commons",
+    "format": "svg",
+    "svg_size": [
+      154,
+      18
+    ],
+    "outlined": true,
+    "outlined_note": "no <text> element; one <path> containing the dash symbol and the DOORDASH wordmark",
+    "single_colour": true,
+    "colour": "#FF3008",
+    "on_dark": "the red mark reads on dark scenes as-is; tint #FFFFFF is possible because it is single-colour, but whether a white DoorDash mark is on-brand is a human call",
+    "lockup": "horizontal: dash symbol + DOORDASH wordmark, aspect ~8.6:1",
+    "license": "Public domain (LicenseShortName: Public domain; License: pd; UsageTerms: Public domain; Copyrighted: False; AttributionRequired: false); Restrictions: trademarked",
+    "commons_credit": "Extracted from: doordash.com; Artist: DoorDash; DateTimeOriginal 2019-04-13",
+    "press_kit": "not found: about.doordash.com has no press/media-kit page (/en-us/press, /en-us/media -> 404); brand.doordash.com redirects to brand.corp.doordash.com (internal, not accessed)",
+    "verified_current": "Wikidata P154 points at this file (no start-time qualifier). The same red #FF3008 dash mark is used in the current app icon and store screenshots, but the Commons file is dated 2019 - a human should confirm it matches the current wordmark exactly.",
+    "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/DoorDash_Logo.svg/1920px-DoorDash_Logo.svg.png"
+  },
+  "icon": {
+    "path": "brands/doordash/screenshots/icon.png",
+    "width": 512,
+    "height": 512,
+    "source": "Google Play listing",
+    "note": "below the 1024x1024 mission-image minimum. A 1024x1024 App Store icon was collected into the run's raw folder."
+  },
+  "colors": [
+    "#FF3008"
+  ],
+  "colors_source": "extracted from the logo SVG fill - the only colour it defines",
+  "font": null,
+  "font_note": "doordash.com loads its proprietary typeface 'DD Norms' (img.cdn4dd.com/t/dd-norms/*.woff2). Not downloaded: no licence to use it. Compositing falls back to a system bold sans.",
+  "screenshots": [
+    {
+      "path": "brands/doordash/screenshots/screenshot_00.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/doordash/screenshots/screenshot_01.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/doordash/screenshots/screenshot_02.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/doordash/screenshots/screenshot_04.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/doordash/screenshots/screenshot_05.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/doordash/screenshots/screenshot_06.png",
+      "width": 1080,
+      "height": 1920,
+      "aspect": "9:16",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/doordash/screenshots/screenshot_03.png",
+      "width": 512,
+      "height": 512,
+      "aspect": "1:1",
+      "is_vertical": false
+    }
+  ],
+  "store": {
+    "play": "https://play.google.com/store/apps/details?id=com.dd.doordash",
+    "app_store": "https://apps.apple.com/us/app/doordash-food-grocery-more/id719972451",
+    "app_store_subtitle": "Food Delivery, Grocery, Retail",
+    "play_short_description": "Get food, grocery, and retail essentials delivered fast with DoorDash."
+  },
+  "website": "https://www.doordash.com/",
+  "website_fetchable": false,
+  "website_note": "www.doordash.com returns 403 to automated requests. about.doordash.com, ir.doordash.com, merchants/dasher/ads.doordash.com return 200 and were used for footer evidence.",
+  "logo_missing": false,
+  "needs_human": [
+    "YouTube @DoorDash (UCXQ7Gzszfuw84cEWGpKlFiQ) is accepted on content only: no verified badge reported, not on Wikidata, not linked from any DoorDash site fetched. Confirm it is the official channel before its videos are used.",
+    "The logo is trademarked. Commons marks the file public domain for copyright, which is not permission to use the mark in a creative. Blocked on the brand approval policy (PROJECT.md 13).",
+    "No DoorDash press kit found publicly; logo is the 2019 Commons extraction. Confirm it matches the current wordmark.",
+    "Brand font (DD Norms) is proprietary and not available; creatives use a fallback font.",
+    "Logo is a wide horizontal lockup (~8.6:1); at the default 400x120 logo slot it renders ~400x47 px. Consider whether the dash symbol alone or a larger slot is wanted (human call, no symbol-only file collected).",
+    "www.doordash.com returns 403, so its own footer could not be checked."
+  ],
+  "updated_at": "2026-11-24"
+}

@@ -1,0 +1,40 @@
+{
+  "brand": "DoorDash",
+  "rule": "static-creative §2: quoted exactly from the brand's own official copy; not written or edited here. No mission copy or current creative was supplied, so source 3 (brand's official copy) was used.",
+  "lines": [
+    {
+      "text": "Food Delivery, Grocery, Retail",
+      "source": "App Store subtitle (US), DoorDash: Food, Grocery, More (id719972451)",
+      "url": "https://apps.apple.com/us/app/doordash-food-grocery-more/id719972451",
+      "retrieved": "2026-11-24"
+    },
+    {
+      "text": "Get food, grocery, and retail essentials delivered fast with DoorDash.",
+      "source": "Google Play short description, com.dd.doordash (page meta description; differs from the full description, which begins 'Delivery anywhere you are.')",
+      "url": "https://play.google.com/store/apps/details?id=com.dd.doordash&hl=en_US&gl=US",
+      "retrieved": "2026-11-24",
+      "note": "70 characters - long for a headline; would need 2-3 lines."
+    },
+    {
+      "text": "There’s a neighborhood of good in every order.",
+      "source": "YouTube channel description, @DoorDash (UCXQ7Gzszfuw84cEWGpKlFiQ)",
+      "url": "https://www.youtube.com/@DoorDash/about",
+      "retrieved": "2026-11-24",
+      "note": "Apostrophe is U+2019 as published. Usable only if a human confirms @DoorDash is the official channel (it is not verified/Wikidata/site-linked)."
+    }
+  ],
+  "not_used": [
+    {
+      "text": "Turkey Day essentials, minus the trot.",
+      "why": "App Store in-app event subtitle (SPECIAL EVENT, 2026-11-15 to 2026-11-27), not the app subtitle; seasonal and expires 2026-11-27."
+    },
+    {
+      "text": "Play/App Store screenshot headlines ('SAVE MORE AND GET $0 DELIVERY FEES WITH DASHPASS', 'DELIVERED IN AS LITTLE AS AN HOUR*')",
+      "why": "Not an allowed §2 source for this run, and both carry offers/claims with legal footnotes."
+    }
+  ],
+  "needs_human": [
+    "Pick which line (or lines) to use; none contains an offer, price or legal claim.",
+    "Line 3 depends on confirming the YouTube channel is official."
+  ]
+}

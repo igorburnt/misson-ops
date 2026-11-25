@@ -1,0 +1,171 @@
+{
+  "brand": "Chime",
+  "slug": "chime",
+  "offer_resolution": "App Store search 'chime' (US) returns 'Chime® – Mobile Banking' by Chime Financial, Inc. (id836215269, bundle com.1debit.ChimeProdApp, sellerUrl chime.com) as the first result; the remaining results are competitors (Cash App, PayPal, Venmo, Dave, Current, Brigit, Credit Karma) and were ignored. Wikidata Q85752013 'Chime' has P856 chime.com and P154 'Chime company logo.svg'. Google Play com.onedebit.chime 'Chime – Fee-Free Banking' by Chime Financial, Inc., developer website https://www.chime.com/.",
+  "updated_at": "2026-11-24",
+  "brand_class": "product",
+  "sector": "US fintech / mobile banking app",
+  "legal_entity": "Chime Financial, Inc.",
+  "website": "https://www.chime.com",
+  "website_fetchable": false,
+  "has_mobile_app": true,
+  "official_channels": [
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@Chime",
+      "channel_id": "UCJKHRNXwJsaNIqnMTENngUQ",
+      "evidence": "verified badge (yt-dlp channel_is_verified=true, 52.5K subscribers) AND the channel's own description directs viewers to chime.com (the site listed as Wikidata P856 and as the developer website on both store listings). Wikidata Q85752013 has no P2397, so the second source is the channel->site link, not Wikidata."
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/chime",
+      "evidence": "Wikidata P2003 'chime' (Instagram user id 1171103390)"
+    },
+    {
+      "platform": "x",
+      "url": "https://twitter.com/chime",
+      "evidence": "Wikidata P2002 'chime' (X user id 560176329)"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/chime",
+      "evidence": "Wikidata P2013 'chime'"
+    }
+  ],
+  "channels_rejected": [
+    {
+      "platform": "youtube",
+      "handle": "@ChimeBank",
+      "reason": "exists but has no videos tab; not the verified channel"
+    },
+    {
+      "platform": "youtube",
+      "handle": "@chimebanking",
+      "reason": "404 - does not exist"
+    }
+  ],
+  "channels_not_found": [
+    "tiktok (no Wikidata P7085; site unfetchable, so the footer could not be checked)"
+  ],
+  "wikidata": {
+    "entity": "Q85752013",
+    "evidence": "label 'Chime'; P856 http://chime.com/, P2003 chime, P2002 chime, P2013 chime, P154 'Chime company logo.svg'; no P2397 / P7085"
+  },
+  "logo": {
+    "path": "brands/chime/logo/logo.png",
+    "svg_path": null,
+    "svg_status": "NOT DOWNLOADED: upload.wikimedia.org returned HTTP 429 'Too many requests ... use thumbnail images' on 4 attempts (curl and urllib, generic UA), both the original URL and Special:FilePath. Commons' own PNG rendering (thumb host) downloaded fine.",
+    "source": "https://commons.wikimedia.org/wiki/File:Chime_company_logo.svg",
+    "svg_url": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Chime_company_logo.svg",
+    "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Chime_company_logo.svg/1920px-Chime_company_logo.svg.png",
+    "png_note": "requested via imageinfo iiurlwidth=1600; Commons returned its 1920px bucket rendering (thumbwidth reported 1600). Actual file 1920x547 RGBA PNG, transparent background.",
+    "source_type": "wikimedia_commons",
+    "format": "png (svg pending)",
+    "width": 1920,
+    "height": 547,
+    "transparent": true,
+    "svg_original_size": "553x157",
+    "outlined": "unknown - SVG not retrieved, so <text> could not be checked. Commons categorises the file under 'SVG text logos', which may only mean a text-based logo; verify when the SVG is fetched.",
+    "single_colour": true,
+    "single_colour_evidence": "visual check of logo.png: one flat bright green 'chime' wordmark with ® mark, no second colour; Commons category 'SVG green text logos'. tint is acceptable on this logo.",
+    "on_dark": "untested - bright green on transparent; reads on dark green and white backgrounds in the brand's own store art",
+    "license": "LicenseShortName: Public domain; UsageTerms: Public domain; License: pd; Copyrighted: False; AttributionRequired: false; Restrictions: trademarked; Categories: With trademark|Chime Financial|PD textlogo|SVG text logos|SVG green text logos; Artist: Chime; Credit: https://www.chime.com/; DateTimeOriginal: 2019; uploaded 2021-10-21",
+    "verified_current": "NOT verified. File dates from 2019. The wordmark shape matches what appears in current store screenshots and the 2026 YouTube spots, but the exact current green could not be checked against an official source.",
+    "png": "brands/chime/logo/logo.png"
+  },
+  "press_kit": "not reached - chime.com/newsroom returns 403 like the rest of chime.com",
+  "icon": {
+    "path": "brands/chime/screenshots/icon.png",
+    "width": 512,
+    "height": 512,
+    "source": "Google Play listing",
+    "note": "below the 1024x1024 mission-image minimum. A 1024x1024 App Store icon was collected in the run raw folder."
+  },
+  "colors": [],
+  "colors_source": "not extracted - colours are read from the SVG fills only and the SVG could not be downloaded (Commons 429). Visually the logo PNG is a single bright green; the store art uses deep forest-green gradients with mint/lime accents. Do not take a hex from the PNG or from memory; re-run the SVG fetch.",
+  "store": {
+    "play": "https://play.google.com/store/apps/details?id=com.onedebit.chime",
+    "app_store": "https://apps.apple.com/us/app/chime-mobile-banking/id836215269"
+  },
+  "store_copy": {
+    "app_store_subtitle": "Credit, Cash back, Savings",
+    "play_title": "Chime – Fee-Free Banking",
+    "play_short_description": "Credit, Cash back, Savings",
+    "play_short_description_evidence": "twitter:description meta on the Play listing (en_US)"
+  },
+  "screenshots": [
+    {
+      "path": "brands/chime/screenshots/screenshot_00.png",
+      "width": 1206,
+      "height": 2622,
+      "aspect": "201:437",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chime/screenshots/screenshot_01.png",
+      "width": 1206,
+      "height": 2622,
+      "aspect": "201:437",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chime/screenshots/screenshot_02.png",
+      "width": 1206,
+      "height": 2622,
+      "aspect": "201:437",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chime/screenshots/screenshot_03.png",
+      "width": 1206,
+      "height": 2622,
+      "aspect": "201:437",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chime/screenshots/screenshot_04.png",
+      "width": 1206,
+      "height": 2622,
+      "aspect": "201:437",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chime/screenshots/screenshot_05.png",
+      "width": 1206,
+      "height": 2622,
+      "aspect": "201:437",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chime/screenshots/screenshot_06.png",
+      "width": 1206,
+      "height": 2622,
+      "aspect": "201:437",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chime/screenshots/screenshot_07.png",
+      "width": 1206,
+      "height": 2622,
+      "aspect": "201:437",
+      "is_vertical": true
+    },
+    {
+      "path": "brands/chime/screenshots/screenshot_08.png",
+      "width": 512,
+      "height": 512,
+      "aspect": "1:1",
+      "is_vertical": false
+    }
+  ],
+  "screenshots_note": "8 vertical (taller than 9:16; ~1:2.17). All carry burned-in marketing headlines, superscript footnote markers and phone UI; one (screenshot_07) is a full page of legal disclosures.",
+  "logo_missing": false,
+  "needs_human": [
+    "Logo SVG not downloaded: upload.wikimedia.org returned 429 on every attempt. Fetch https://upload.wikimedia.org/wikipedia/commons/f/f6/Chime_company_logo.svg by hand into brands/chime/logo/logo.svg, check it for <text> elements and read the fill colour(s) into kit.colors.",
+    "The logo is trademarked. Commons marks the file public domain (PD textlogo) for copyright, with Restrictions: trademarked. That is not permission to use the mark in a creative - blocked on the brand approval policy (PROJECT.md 13).",
+    "Logo currency not verified: the Commons file dates from 2019. Confirm it matches Chime's current wordmark and green before compositing (no press kit reachable).",
+    "chime.com (and /newsroom) returns 403 to automated fetches, so the 'linked from the brand's own website' check, the press kit, site hero media and a TikTok link could not be checked. YouTube identity rests on the verified badge plus the channel description pointing to chime.com.",
+    "colors is empty: no SVG to read fills from. Fill it once the SVG is fetched.",
+    "App icon from Play is 512x512, below the 1024 minimum; a 1024x1024 App Store icon is in the run raw folder."
+  ]
+}

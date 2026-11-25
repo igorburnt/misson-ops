@@ -1,0 +1,33 @@
+{
+  "brand": "Chime",
+  "rule": "static-creative section 2: quoted exactly from an allowed source, never written or edited",
+  "lines": [
+    {
+      "text": "Credit, Cash back, Savings",
+      "source": "App Store subtitle (also the Google Play short description, twitter:description meta, en_US)",
+      "source_url": "https://apps.apple.com/us/app/chime-mobile-banking/id836215269",
+      "source_url_alt": "https://play.google.com/store/apps/details?id=com.onedebit.chime&hl=en_US"
+    },
+    {
+      "text": "Don't Bank The Old Way",
+      "source": "campaign tagline in the titles of official @Chime YouTube spots 'Cash Back Maxxing | Don't Bank The Old Way | Bank Fee-Free' (2026-04-18) and 'Ring Chasin' | Don't Bank The Old Way | Bank Fee-Free' (2026-03-09); straight apostrophe as published",
+      "source_url": "https://www.youtube.com/watch?v=HsMAkIxH7f4",
+      "source_url_alt": "https://www.youtube.com/watch?v=OERMwue7_4Y"
+    },
+    {
+      "text": "Bank Fee-Free",
+      "source": "same two official @Chime YouTube spot titles as line 2",
+      "source_url": "https://www.youtube.com/watch?v=HsMAkIxH7f4",
+      "source_url_alt": "https://www.youtube.com/watch?v=OERMwue7_4Y"
+    }
+  ],
+  "not_used": [
+    {"text": "America's #1 Choice for Banking", "where": "YouTube channel description and Play screenshot", "why": "asterisked survey claim with a legal footnote - a legal line, not usable without sign-off"},
+    {"text": "Chime – Fee-Free Banking", "where": "Google Play app title", "why": "app title, not one of the allowed copy fields (subtitle / short description / tagline)"}
+  ],
+  "needs_human": [
+    "Lines 2 and 3 come from YouTube video titles, treated as the brand's campaign tagline on its official channel. Confirm a title counts as an allowed 'tagline on the official YouTube' source.",
+    "'Bank Fee-Free' is a fee claim; Chime's own materials footnote fee claims (in-network ATMs, etc.). Confirm word for word before use.",
+    "Line 1 and lines 2-3 are from different sources; pick either line 1 alone or lines 2+3 together rather than mixing, unless a person approves the combination."
+  ]
+}
