@@ -106,6 +106,10 @@ stays PROVISIONAL. Changing `placement_fit` to `contain` is the one-line edit if
 
 `scripts/check_safe_area.py` reads these values; the skill never restates them in a prompt.
 
+`min_font_px` (40) is the smallest size `brand_overlay.py` will shrink a line to. v2.1 §6 says
+shrink before overflowing, but text must stay readable on a phone; below 40 px, split the line or
+cut copy instead.
+
 ## Framing rules (`normalize_video.py`)
 
 - **crop** — centre crop to 9:16. `--focus x,y` (0–1) moves the crop window when the subject is off-centre.

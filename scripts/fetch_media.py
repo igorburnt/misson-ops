@@ -132,7 +132,14 @@ def _via_http(url: str, out_dir: str) -> dict:
     name = os.path.basename(urllib.parse.urlsplit(url).path) or "download"
     if not os.path.splitext(name)[1]:
         name += mimetypes.guess_extension(content_type) or ".bin"
+    # Store URLs often share a basename (every App Store screenshot ends in
+    # 1320x2868bb.png); never let one download overwrite another.
     path = os.path.join(out_dir, name)
+    stem, ext = os.path.splitext(path)
+    n = 2
+    while os.path.exists(path):
+        path = f"{stem}_{n}{ext}"
+        n += 1
     with open(path, "wb") as fh:
         fh.write(data)
     return {"path": path, "info": {"title": name, "extractor_key": "http", "webpage_url": url}}

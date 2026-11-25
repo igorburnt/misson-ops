@@ -17,6 +17,7 @@ ROOT = os.path.dirname(HERE)
 SAMPLES = os.path.join(HERE, "samples")
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 
+import brand_overlay  # noqa: E402
 import check_safe_area  # noqa: E402
 import extract_frames  # noqa: E402
 import normalize_image  # noqa: E402
@@ -439,6 +440,123 @@ def test_outpaint_merge_restores_the_source_pixels_over_any_generated_size():
     px = subprocess.run(["ffmpeg", "-v", "error", "-i", out, "-vf", f"crop=1:1:{x + w // 2}:{y + h // 2}",
                          "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True, check=True).stdout
     assert tuple(px) != (255, 0, 0)
+
+
+FONT_CANDIDATES = [
+    "C:/Windows/Fonts/arialbd.ttf",
+    "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+    "/Library/Fonts/Arial Bold.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+]
+
+
+def _font() -> str:
+    for f in FONT_CANDIDATES:
+        if os.path.isfile(f):
+            return f
+    raise SystemExit("no test font found; add one to FONT_CANDIDATES")
+
+
+def _png(spec: str, size: str) -> str:
+    path = tempfile.mktemp(suffix=".png")
+    subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", f"{spec}:s={size}",
+                    "-frames:v", "1", path], check=True)
+    return path
+
+
+def _layout(elements: list[dict]) -> str:
+    path = tempfile.mktemp(suffix=".json")
+    with open(path, "w", encoding="utf-8") as fh:
+        json.dump({"elements": elements}, fh)
+    return path
+
+
+def _pixel(path: str, x: int, y: int) -> tuple[int, int, int]:
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-vf", f"crop=1:1:{x}:{y}",
+                          "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True, check=True).stdout
+    return tuple(raw)
+
+
+def test_brand_overlay_composes_onto_a_model_sized_scene_and_passes_exactly():
+    """A 941x1672 scene (what Codex image_gen returned) becomes 1080x1920 with measured boxes."""
+    scene = _png("color=c=0x204060", "941x1672")
+    logo = _png("color=c=black", "400x100")
+    out = tempfile.mktemp(suffix=".png")
+    r = brand_overlay.compose(scene, _layout([
+        {"type": "image", "label": "logo", "src": logo, "slot": [340, 320, 740, 420], "tint": "#FFFFFF"},
+        {"type": "text", "label": "headline", "text": "GO ANYWHERE.", "font": _font(), "size": 80,
+         "slot": [200, 1400, 880, 1500]},
+    ]), out)
+    assert (probe(out)["width"], probe(out)["height"]) == (1080, 1920)
+    assert r["pass"] is True and r["failures"] == []
+    x0, y0, x1, y1 = next(e["box"] for e in r["elements"] if e["label"] == "headline")
+    assert 200 <= x0 < x1 <= 880 and 1400 <= y0 < y1 <= 1500, "text box must be the measured glyphs, inside the slot"
+    lx0, ly0, lx1, ly1 = next(e["box"] for e in r["elements"] if e["label"] == "logo")
+    assert _pixel(out, (lx0 + lx1) // 2, (ly0 + ly1) // 2) == (255, 255, 255), "tint turns the black mark white"
+
+
+def test_brand_overlay_refuses_a_slot_outside_the_padded_safe_area():
+    try:
+        brand_overlay.compose(_png("color=c=gray", "1080x1920"), _layout([
+            {"type": "text", "label": "headline", "text": "X", "font": _font(), "slot": [100, 1400, 880, 1500]}
+        ]), tempfile.mktemp(suffix=".png"))
+    except brand_overlay.OverlayError as exc:
+        assert "padded safe area" in str(exc)
+    else:
+        raise AssertionError("a slot starting at x=100 must be refused (safe area starts at 170)")
+
+
+def test_brand_overlay_shrinks_long_text_but_not_below_the_minimum():
+    scene = _png("color=c=gray", "1080x1920")
+    r = brand_overlay.compose(scene, _layout([
+        {"type": "text", "label": "long", "text": "RESERVE ANYTIME, ANYWHERE.", "font": _font(), "size": 120,
+         "slot": [190, 1400, 890, 1520]}
+    ]), tempfile.mktemp(suffix=".png"))
+    assert r["pass"] and r["elements"][0]["size"] < 120 and any("shrunk" in w for w in r["warnings"])
+
+    try:
+        brand_overlay.compose(scene, _layout([
+            {"type": "text", "label": "way too long", "text": "A" * 80, "font": _font(), "size": 80,
+             "slot": [190, 1400, 890, 1500]}
+        ]), tempfile.mktemp(suffix=".png"))
+    except brand_overlay.OverlayError as exc:
+        assert "min_font_px" in str(exc)
+    else:
+        raise AssertionError("text that only fits below min_font_px must be refused")
+
+
+def test_brand_overlay_sets_a_text_group_to_one_size():
+    r = brand_overlay.compose(_png("color=c=gray", "1080x1920"), _layout([
+        {"type": "text", "label": f"line {i}", "text": t, "group": "headline", "font": _font(), "size": 96,
+         "slot": [190, 1300 + i * 100, 890, 1390 + i * 100]}
+        for i, t in enumerate(["GO ANYWHERE.", "SEND PACKAGES.", "RESERVE ANYTIME."])
+    ]), tempfile.mktemp(suffix=".png"))
+    assert len({e["size"] for e in r["elements"]}) == 1, "a grouped headline must not come out 84/79/72"
+
+
+def test_http_downloads_with_the_same_basename_do_not_overwrite_each_other():
+    """Every App Store screenshot URL ends in 1320x2868bb.png; six became one on the DoorDash run."""
+    import fetch_media
+    import http.server
+    import threading
+
+    root = tempfile.mkdtemp()
+    for d, colour in (("a", "red"), ("b", "blue")):
+        os.makedirs(os.path.join(root, d))
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "lavfi", "-i", f"color=c={colour}:s=16x16",
+                        "-frames:v", "1", os.path.join(root, d, "shot.png")], check=True)
+    handler = lambda *a, **kw: http.server.SimpleHTTPRequestHandler(*a, directory=root, **kw)  # noqa: E731
+    server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), handler)
+    threading.Thread(target=server.serve_forever, daemon=True).start()
+    try:
+        out = tempfile.mkdtemp()
+        base = f"http://127.0.0.1:{server.server_address[1]}"
+        p1 = fetch_media._via_http(f"{base}/a/shot.png", out)["path"]
+        p2 = fetch_media._via_http(f"{base}/b/shot.png", out)["path"]
+    finally:
+        server.shutdown()
+    assert p1 != p2 and os.path.isfile(p1) and os.path.isfile(p2)
+    assert _pixel(p1, 0, 0) != _pixel(p2, 0, 0)
 
 
 def test_clis_emit_json_and_exit_non_zero_on_failure():
