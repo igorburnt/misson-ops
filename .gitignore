@@ -6,7 +6,14 @@ brands/*/logo/
 brands/*/assets/
 brands/*/screenshots/
 brands/*/frames/
-brands/*/runs/
+# Runs are media, except the text a static creative is built from (copy, prompt, layout,
+# records): the generation queue points at it, so it must survive a clone.
+brands/*/runs/**
+!brands/*/runs/*/
+!brands/*/runs/*/static/
+!brands/*/runs/*/static/**/
+!brands/*/runs/*/static/**/*.json
+!brands/*/runs/*/static/**/*.txt
 tests/samples/*.mp4
 tests/samples/*.mov
 tests/samples/*.png
@@ -16,3 +23,6 @@ __pycache__/
 *.pyc
 .venv/
 .DS_Store
+queue/.lock
+queue/*.tmp
+queue/review.html

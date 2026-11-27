@@ -1,0 +1,123 @@
+{
+  "brand": "Nielsen Pulse",
+  "slug": "nielsen-pulse",
+  "offer": "Nielsen Pulse-138242-iPhone-US-3Nov26-ERS",
+  "offer_resolution": "App Store lookup id6755230383 'Nielsen Pulse' by The Nielsen Company (seller and artist), bundle com.nielsen.confluence, genre Utilities, released 2026-04-22, v4.1.1, sellerUrl https://nielsenpulse.com/. App Store search 'nielsen' (US) also returns other Nielsen apps (Nielsen Mobile App, Nielsen Meter Companion, Nielsen Engage, Nielsen Digital App) and NielsenIQ Consumer Panel (Nielsen Consumer LLC, a separate company) - all different products, ignored. The listing description ('Join the exclusive Nielsen Pulse ... earn daily rewards ... Redeem your points for Vouchers') matches an iPhone rewards panel offer. nielsenpulse.com (title 'Nielsen Pulse', meta 'Onboarding and rewards application') serves the Nielsen logo files and the same rewards/panel copy, and its bundle tells users to search 'Nielsen Pulse' in the App Store. The bundle id and the site's 'Join Confluence' string show the product was previously called Confluence.",
+  "updated_at": "2026-11-26",
+  "brand_class": "product",
+  "parent_brand": "Nielsen (The Nielsen Company (US), LLC) - Wikidata Q540891",
+  "sector": "US audience-measurement panel / rewards app (passive screen-time and streaming measurement, points redeemed for vouchers)",
+  "legal_entity": "The Nielsen Company",
+  "website": "https://nielsenpulse.com",
+  "website_fetchable": true,
+  "website_note": "Next.js client-rendered: the HTML has no visible copy; text was read from the site's English locale strings in /_next/static/chunks/30073129455ada08.js (fetched 2026-11-26). Parent site: http://www.nielsen.com/ (Wikidata P856).",
+  "has_mobile_app": true,
+  "official_channels": [
+    {
+      "platform": "app_store",
+      "url": "https://apps.apple.com/us/app/nielsen-pulse/id6755230383",
+      "evidence": "seller 'The Nielsen Company'; seller URL nielsenpulse.com; the site points users to the App Store under the name 'Nielsen Pulse'"
+    },
+    {
+      "platform": "website",
+      "url": "https://nielsenpulse.com",
+      "evidence": "seller URL on the App Store listing; serves /assets/logos/nielsen_logo_full.svg whose fills match Commons 'Nielsen 2021.svg' (Wikidata Q540891 P154 preferred) exactly"
+    }
+  ],
+  "channels_rejected": [
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@nielsen",
+      "channel_id": "UCPDG-p0v24KS3t6xBCMsjWQ",
+      "reason": "Nielsen corporate B2B channel (16.4K subscribers; reports, Gauge, events). Recent uploads checked and a channel search for 'pulse' returned no Nielsen Pulse app content. Parent-brand channel, not a source for this product."
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=p4eh1HXWzxc",
+      "channel_id": "UCNrKTwVnsh2VHOY5mF5JA4w",
+      "reason": "'Nielsen - Pulse' (2018-02-16) on an 18-subscriber channel named 'Nielsen' (@nielsen5730). Predates the app by 8 years; not the official channel. Unrelated."
+    },
+    {
+      "platform": "google_play",
+      "reason": "no Play listing found: com.nielsen.confluence returns 404, and Play search for \"Nielsen Pulse\" returned no com.nielsen package. The site bundle mentions Google Play, so an Android listing may exist under another id or region."
+    }
+  ],
+  "channels_not_found": [
+    "youtube (no first-party Nielsen Pulse channel or video found; only third-party reviews)",
+    "instagram / tiktok / x / facebook for the product (Wikidata Q540891 has P2013 'nielsen' and P2002 'nielsen' for the parent company only)"
+  ],
+  "wikidata": {
+    "entity": "Q540891",
+    "evidence": "label 'Nielsen Company', 'global information, data and measurement company'; P856 http://www.nielsen.com/; P154 'Nielsen 2021.svg' (preferred) and 'Nielsen Logo.svg'; P2013 nielsen; P2002 nielsen; no P2397. This is the parent company; Nielsen Pulse has no Wikidata entry."
+  },
+  "logo": {
+    "path": "brands/nielsen-pulse/logo/logo.png",
+    "png": "brands/nielsen-pulse/logo/logo.png",
+    "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Nielsen_2021.svg/1920px-Nielsen_2021.svg.png",
+    "png_note": "Commons' own PNG rendering, requested via imageinfo iiurlwidth=1600 (Commons returned its 1920px bucket). 1920x325 RGBA, transparent background.",
+    "svg_path": "brands/nielsen-pulse/logo/Nielsen_2021.svg",
+    "svg_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Nielsen_2021.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:Nielsen_2021.svg",
+    "source_type": "wikimedia_commons",
+    "what_it_is": "the Nielsen parent-company logo: four triangles (pink, orange, teal, purple) + 'Nielsen' wordmark in dark navy. It is NOT a 'Nielsen Pulse' product lockup - no Pulse wordmark was found anywhere (site, store, Commons).",
+    "corroboration": "nielsenpulse.com serves /assets/logos/nielsen_logo_full.svg (copied to brands/nielsen-pulse/logo/site_nielsen_logo_full.svg): same four triangle fills #F40953 #FF9408 #32BBB9 #6E37FA with a white wordmark - the reversed (on-dark) variant of the same mark. So the product site itself uses this logo.",
+    "width": 1920,
+    "height": 325,
+    "transparent": true,
+    "outlined": true,
+    "outlined_evidence": "Nielsen_2021.svg has 0 <text> elements",
+    "single_colour": false,
+    "tint": "do not tint - multi-colour mark",
+    "on_dark": "the navy wordmark (#002041) will not read on a dark scene; the white-wordmark variant exists only as the site SVG (site_nielsen_logo_full.svg), which FFmpeg cannot render and must not be rasterized by us. Keep the logo band light.",
+    "license": "LicenseShortName: Public domain; UsageTerms: Public domain; License: pd; Copyrighted: False; AttributionRequired: false; Restrictions: trademarked; Categories: With trademark|Nielsen Holdings|PD textlogo|SVG simple text logos|...; Artist/Credit: The Nielsen Company (US), LLC.; DateTimeOriginal: 2021-11-05",
+    "verified_current": "yes for the parent mark: fills of the Commons SVG and the SVG on nielsenpulse.com are identical (fetched 2026-11-26)."
+  },
+  "product_symbol": {
+    "path": "brands/nielsen-pulse/logo/site_pulse_symbol.svg",
+    "source": "https://nielsenpulse.com/assets/logos/Nielsen.svg",
+    "note": "28x28 SVG: the Nielsen Pulse app mark (two crossed teal orbits, two purple dots, purple play triangle) - same mark as the App Store icon and the in-app header in the store screenshots. Too small/SVG-only for compositing; the 1024x1024 App Store icon (opaque white background) is at brands/nielsen-pulse/screenshots/icon.png. Not used as logo.png."
+  },
+  "press_kit": "none found for Nielsen Pulse; nielsen.com press kit not checked (parent brand)",
+  "icon": {
+    "path": "brands/nielsen-pulse/screenshots/icon.png",
+    "width": 1024,
+    "height": 1024,
+    "source": "App Store artworkUrl512 requested at 1024x1024bb.png",
+    "note": "opaque white background, no transparency"
+  },
+  "colors": ["#002041", "#32BBB9", "#6E37FA", "#F40953", "#FF9408"],
+  "colors_source": "fills of Nielsen_2021.svg (Commons): #002041 wordmark navy; #32BBB9 teal, #6E37FA purple, #F40953 pink, #FF9408 orange triangles. The Pulse product symbol (site Nielsen.svg) uses only #32BBB9 and #6E37FA, and the store screenshots run a white-to-mint-to-lavender gradient with purple buttons - the product's palette is teal + purple.",
+  "font": null,
+  "font_note": "brand font not identified; the site preloads a woff2 (/_next/static/media/83afe278b6a6bb3c-s.p.3a6ba036.woff2) of unknown family - not downloaded or verified.",
+  "store": {
+    "app_store": "https://apps.apple.com/us/app/nielsen-pulse/id6755230383",
+    "play": null
+  },
+  "store_copy": {
+    "app_store_title": "Nielsen Pulse",
+    "app_store_subtitle": null,
+    "app_store_subtitle_note": "the listing has no subtitle (the subtitle slot shows the genre 'Utilities')",
+    "app_store_description_first_line": "Turn Your Screen Time into Real Rewards.",
+    "site_hero_title": "Earn rewards for your screen time.",
+    "site_hero_title_evidence": "landing.hero.title in the English locale of nielsenpulse.com (chunk 30073129455ada08.js)"
+  },
+  "screenshots": [
+    {"path": "brands/nielsen-pulse/runs/20261126T202931Z/raw/1290x2796bb.jpg", "width": 1179, "height": 2556, "is_vertical": true},
+    {"path": "brands/nielsen-pulse/runs/20261126T202931Z/raw/1290x2796bb_2.jpg", "width": 1179, "height": 2556, "is_vertical": true},
+    {"path": "brands/nielsen-pulse/runs/20261126T202931Z/raw/1290x2796bb_3.jpg", "width": 1179, "height": 2556, "is_vertical": true},
+    {"path": "brands/nielsen-pulse/runs/20261126T202931Z/raw/1290x2796bb_4.jpg", "width": 1179, "height": 2556, "is_vertical": true},
+    {"path": "brands/nielsen-pulse/runs/20261126T202931Z/raw/2048x2732bb.jpg", "width": 2048, "height": 2732, "is_vertical": true, "device": "ipad"}
+  ],
+  "screenshots_note": "App Store only (no Play listing). iPhone shots max out at 1179x2556 although 1290x2796 was requested. All carry burned-in headlines (e.g. 'Earn Daily Rewards, Effortlessly.'), phone UI and third-party logos (Netflix, Prime Video, YouTube, Instagram).",
+  "logo_missing": false,
+  "needs_human": [
+    "logo.png is the Nielsen PARENT-company logo, not a 'Nielsen Pulse' lockup (none exists publicly). nielsenpulse.com itself uses this mark, but confirm the creative should carry 'Nielsen' alone, or supply an official Pulse lockup.",
+    "The logo is trademarked. Commons marks the file public domain (PD textlogo) for copyright with Restrictions: trademarked - not permission to use the mark in a creative (PROJECT.md 13).",
+    "The navy wordmark needs a light background; the official on-dark (white wordmark) variant exists only as an SVG on nielsenpulse.com. If a dark scene is wanted, a person must supply a PNG of the reversed logo.",
+    "Brand font unknown; generation will fall back to a system bold sans.",
+    "No first-party video anywhere (no Pulse YouTube channel; @nielsen is the B2B corporate channel). Two THIRD-PARTY review videos were collected for reference only: aRgLMzCadkU 'Nielsen Pulse App Review - A NEW Data Rewards App?' (Honest Money Moves) and sc0mN9ufxrs 'Nielsen Pulse Review: Can You Really Earn Rewards for Your Data?' (Reviews By Nolan). Not first-party; review content, possibly critical - never shortlist without a person watching them.",
+    "Site lifestyle images USimg2.png and USimg3.png carry a Gemini sparkle watermark in the bottom-right corner (AI-generated or edited); USimg1.jpg looks like stock photography. None are usable as-is in a creative.",
+    "No Google Play listing found for the US (com.nielsen.confluence 404). Instagram/TikTok not searched for the product - no product handle found to start from.",
+    "The App Store listing rates 2.9/5 from 254 ratings, and the app requires VPN, location and notification permissions; a person may want to check the offer's compliance angle before creative goes out."
+  ]
+}

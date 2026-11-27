@@ -50,6 +50,24 @@ Do not rewrite, translate or invent copy. A line written by you or by a model is
 fallback; if none of the three exists, stop and put it in `needs_human`. Offers, prices and legal lines go to `needs_human` for a
 person to confirm word for word. Keep it short: v2.1 §12 says cut copy before shrinking it.
 
+Write the candidates to `copy.json` in the static folder. `scripts/work_queue.py` reads it,
+so keep the shape:
+
+```json
+{
+  "brand": "Chime",
+  "lines": [
+    {"text": "Credit, Cash back, Savings", "source": "App Store subtitle",
+     "source_url": "https://apps.apple.com/us/app/chime-mobile-banking/id836215269"}
+  ],
+  "not_used": [{"text": "...", "where": "...", "why": "legal line"}],
+  "needs_human": ["..."]
+}
+```
+
+Every line needs `text` and `source_url`. Which lines are set on the creative is chosen when
+the item is queued (`work_queue.py add ... --lines 0,1`), not here.
+
 ## 3. Scene
 
 Write the prompt to `scene_prompt.txt` first, then generate. Template:
@@ -121,6 +139,13 @@ subject. The script checks geometry; it cannot check taste.
 `static.json`: brand, copy used, scene prompt, generator used, the overlay result and
 `needs_human`. Do not normalize yet: the static output format (1:1 in `specs.json` vs 9:16
 in the pilot plan) is not settled.
+
+## Working from the queue
+
+In the research/generation split, research stops after `copy.json` and `scene_prompt.txt` and
+queues the item (`/brand-queue`); generation (`skills/generate-queue/SKILL.md`) does §3-§6
+and writes everything into the attempt folder the queue hands out
+(`<run>/static/attempt-N/`), so retries never overwrite earlier work.
 
 ## needs_human, always
 

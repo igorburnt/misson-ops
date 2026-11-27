@@ -1,0 +1,141 @@
+{
+  "brand": "BarkBox",
+  "slug": "barkbox",
+  "updated_at": "2026-11-26",
+  "brand_class": "product line of a company",
+  "parent": "BARK (BARK, Inc.; App Store seller 'Barkbox, Inc.')",
+  "sector": "US dog toy and treat subscription box",
+  "offer": "Bark Box US Web/MobileWeb CPA - Rewarded: web / mobile-web signup, landing is the website (barkbox.com -> bark.co), not an app",
+  "resolution": "Wikidata search 'BarkBox' -> Q18378267 'BarkBox, dog toy and treat subscription box', P856 http://www.barkbox.com. App Store search 'barkbox' first result: 'BARK - BarkBox, Super Chewer' (id570764065, bundle barkbox.BarkBox), seller Barkbox, Inc., sellerUrl https://bark.co/. Remaining results are competitors (Chewy, PetSmart, Petco) and unrelated apps - not used.",
+  "website": "https://bark.co/",
+  "website_fetchable": true,
+  "website_note": "www.barkbox.com returns HTTP 403 to automated requests (the legacy asset path www.barkbox.com/assets/v3/barkbox-logo.svg still serves). bark.co (the sellerUrl, BARK's current Shopify storefront that sells BarkBox) IS fetchable, as are bark.co/blogs/press and investors.bark.co. No press/media kit was found on either.",
+  "has_mobile_app": true,
+  "app_note": "The offer is web signup; the app (subscription management) is only a source of official copy and screenshots.",
+  "wikidata": {
+    "entity": "Q18378267",
+    "evidence": "label 'BarkBox'; P856 http://www.barkbox.com; P2003 barkbox; P2013 barkbox; P2002 barkbox; P154 'BarkBox logo.svg'. No P2397 (YouTube) or P7085 (TikTok)."
+  },
+  "official_channels": [
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/c/barkbox",
+      "channel_id": "UCwafqzMfvEJ1yFhTa5OnUmg",
+      "handle": "@BarkBox",
+      "channel_name": "BARK",
+      "evidence": "linked from the bark.co footer (href https://www.youtube.com/c/barkbox). yt-dlp: channel 'BARK', uploader_id @BarkBox, channel_is_verified=NA (not reported), 131 followers reported by yt-dlp (likely a truncated/abbreviated count). Single source (brand's own site); not on Wikidata."
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/barkbox/",
+      "evidence": "Wikidata P2003 'barkbox' AND linked from investors.bark.co. Note bark.co footer links https://www.instagram.com/bark instead (parent account)."
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/bark",
+      "evidence": "linked from the bark.co footer - parent BARK account"
+    },
+    {
+      "platform": "x",
+      "url": "https://twitter.com/barkbox",
+      "evidence": "Wikidata P2002 'barkbox' AND linked from the bark.co footer"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/Bark/",
+      "evidence": "linked from bark.co footer AND investors.bark.co. Wikidata P2013 says 'barkbox' (older handle)."
+    },
+    {
+      "platform": "tiktok",
+      "url": "https://www.tiktok.com/@bark",
+      "evidence": "linked from the bark.co footer (single source)"
+    }
+  ],
+  "channels_rejected": [
+    {
+      "platform": "app_store",
+      "note": "Chewy, PetSmart, Petco, DogHush, BarkGPT appear in the 'barkbox' App Store search - competitors / unrelated."
+    },
+    {
+      "platform": "app_store",
+      "note": "'BarkTalks' (com.barkbox.barktalks, 'Talking Dog eCards') is a BARK side app, not the BarkBox subscription - not used."
+    }
+  ],
+  "logo": {
+    "path": "brands/barkbox/logo/logo_commons.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:BarkBox_logo.svg",
+    "source_type": "Wikimedia Commons (Wikidata P154 for Q18378267); Commons credits https://www.barkbox.com/assets/v3/barkbox-logo.svg, and that URL still serves a byte-identical file on 2026-11-26",
+    "format": "svg",
+    "viewbox": "0 0 123 28",
+    "outlined": true,
+    "has_text_element": false,
+    "single_colour": true,
+    "colour": "#42B0E2",
+    "variant": "OLDER 'BARK<BOX' wordmark (SVG title 'BARK_BOX_Final_February22', Sketch 43, uploaded to Commons 2018-07-06). NOT the mark currently shown on bark.co - see logo_candidates[0].",
+    "png": "brands/barkbox/logo/logo.png",
+    "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/BarkBox_logo.svg/1920px-BarkBox_logo.svg.png",
+    "png_size": [
+      1920,
+      438
+    ],
+    "png_appearance": "light-blue (#42B0E2) 'BARK<BOX' wordmark on transparent. Single colour: may be tinted white on a dark scene.",
+    "png_single_colour": true,
+    "license": "LicenseShortName: Public domain; UsageTerms: Public domain; Artist: Bark & Co.; Credit: https://www.barkbox.com/assets/v3/barkbox-logo.svg; Restrictions: trademarked; AttributionRequired: false; Copyrighted: False",
+    "verified_current": "NO - superseded. bark.co's home page BarkBox box-selector shows a different mark (barkbox_current_barkco.svg). Visually inspected the Commons PNG."
+  },
+  "logo_candidates": [
+    {
+      "source": "https://bark.co/cdn/shop/files/barkbox_logo.svg?v=1793722188",
+      "path": "brands/barkbox/logo/barkbox_current_barkco.svg",
+      "status": "CURRENT BarkBox mark (served live on bark.co home page, img class 'bark-home-box-selector__logo', 2026-11-26) but NOT used as logo.png: SVG only (145x40), no PNG >= 1600 px exists at any URL found; Shopify ?width= does not rasterize SVG (returns SVG). We must not rasterize it ourselves.",
+      "appearance": "'BARK' in hand-drawn cyan letters + a cyan pennant/flag shape with 'BOX' knocked out in white. Single fill #00B1E0, outlined paths, no <text>. Inspected via a scratch render only (not kept)."
+    },
+    {
+      "source": "https://s27.q4cdn.com/974260903/files/images/logo.svg",
+      "path": "brands/barkbox/logo/bark_parent_ir.svg",
+      "status": "BARK parent-company logo from investors.bark.co header - parent mark, not BarkBox; SVG only. Not used."
+    },
+    {
+      "source": "https://s27.q4cdn.com/974260903/files/design/BARK_SUPERCHEWER_logo.png",
+      "status": "Super Chewer sub-brand PNG (2093x527) - a different product line. Not used. Proves IR CDN hosts big PNGs; no BarkBox equivalent found (BARK_BARKBOX_logo.png, BARKBOX_logo.png etc. all 404)."
+    }
+  ],
+  "logo_missing": false,
+  "icon": {
+    "path": "brands/barkbox/screenshots/icon.png",
+    "source": "Google Play listing com.barknativeshop",
+    "note": "fetch_store_assets reports the icon as only 48x48; unusable"
+  },
+  "colors": [
+    "#00B1E0"
+  ],
+  "colors_source": "single fill of the CURRENT BarkBox SVG on bark.co (barkbox_current_barkco.svg). The older Commons SVG (the file composited) defines #42B0E2.",
+  "font": null,
+  "font_note": "Brand font not researched/available; compositing will use the system bold sans fallback.",
+  "store": {
+    "play": "https://play.google.com/store/apps/details?id=com.barknativeshop",
+    "app_store": "https://apps.apple.com/us/app/bark-barkbox-super-chewer/id570764065"
+  },
+  "store_copy": {
+    "app_store_subtitle": "BarkBox, Super Chewer & Bright",
+    "play_short_description": "BarkBox, Super Chewer, & Bright are themed monthly boxes of dog toys and treats!",
+    "site_og_description": "Treat your pup to a monthly surprise with BarkBox, the ultimate dog subscription box! Get hand-picked toys, delicious treats, and endless fun delivered right to your door.",
+    "site_barkbox_section_heading": "Dog Joy Delivered Every Month"
+  },
+  "screenshots_note": "Play listing com.barknativeshop: 8 vertical 1080x2340 screenshots + one 512x512 tile (see brands/barkbox/screenshots/). App UI screenshots with marketing text.",
+  "needs_human": [
+    "The logo is a trademark of BARK. Commons marks the file public domain but Restrictions: trademarked - not permission to use the mark in a creative. Blocked on the brand approval policy (PROJECT.md 13).",
+    "BarkBox vs BARK: the website, YouTube channel ('BARK', @BarkBox), Instagram/Facebook/TikTok are now mostly the parent BARK brand; BarkBox is the product line sold on bark.co. A BarkBox-specific mark exists (not just the parent), so the creative uses the BarkBox mark.",
+    "Press kit not found on bark.co/blogs/press or investors.bark.co ('not found', not 'blocked'). www.barkbox.com itself returns 403.",
+    "YouTube channel verification not reported by yt-dlp (NA); channel accepted on the strength of the bark.co footer link only.",
+    "Brand font not available; fallback font will be used.",
+    "Instagram/TikTok need a logged-in session to collect; not attempted."
+  ],
+  "decisions": [
+    {
+      "at": "2026-11-26",
+      "by": "Igor",
+      "decision": "Use the Commons BarkBox 'BARK<BOX' wordmark (logo.png_url) for creatives; the newer bark.co mark has no PNG >= 1600 px."
+    }
+  ]
+}

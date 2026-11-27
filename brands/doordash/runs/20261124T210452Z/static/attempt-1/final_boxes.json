@@ -1,0 +1,24 @@
+{
+  "elements": [
+    {
+      "label": "logo",
+      "box": [
+        205,
+        321,
+        875,
+        399
+      ],
+      "critical": true
+    },
+    {
+      "label": "headline",
+      "box": [
+        210,
+        1463,
+        869,
+        1507
+      ],
+      "critical": true
+    }
+  ]
+}

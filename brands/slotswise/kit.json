@@ -1,0 +1,90 @@
+{
+  "brand": "SlotsWise",
+  "slug": "slotswise",
+  "offer_resolution": "Offer string 'Discover New Gaming Offers SlotsWise'. App Store search 'slotswise' (US) returns only unrelated casino apps (Gaminator, Slottist, Scatter Slots, ...): SlotsWise has NO App Store app. Web search and https://www.slotswise.com/ resolve it to a UK online-casino bonus comparison / affiliate site: <title> 'SlotsWise - Best UK Online Casino Bonuses', meta description 'SlotsWise - The home of UK Casino Free Spins offers. Compare the best free spins and bonus offers in one place'. Site footer/T&Cs: owned by Digital Adventures Ltd (company no. 8564150, 116 Screenworks, 22 Highbury Grove, London N5 2EF); eDigital Adventures Ltd is a wholly-owned subsidiary of Quantum International Holdings Ltd (company no. 9435188). Assets served from assets.qih-tech.com (QIH = Quantum International Holdings). SoloAzar (2022) describes slotswise.com as a slot-review / casino-bonus portal (Evoplay B2C partnership). It is not an app and not a casino operator; it lists third-party UKGC-licensed casinos' offers and earns commission.",
+  "updated_at": "2026-11-26",
+  "brand_class": "website",
+  "sector": "UK online casino / free-spins bonus comparison (gambling affiliate)",
+  "legal_entity": "Digital Adventures Ltd (England, company no. 8564150), part of Quantum International Holdings Ltd",
+  "website": "https://www.slotswise.com/",
+  "website_fetchable": true,
+  "has_mobile_app": false,
+  "market": "UK only (copy and offers are GBP, 'UK Casino', UKGC-licensed operators only)",
+  "official_channels": [
+    {
+      "platform": "website",
+      "url": "https://www.slotswise.com/",
+      "evidence": "fetched 2026-11-26 (HTTP 200). slotswise.com bare domain did not resolve; www works."
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/@SlotsWise",
+      "channel_id": "UCWTekJrfoILuzZdoq9fZ7aA",
+      "evidence": "NOT verified (channel_is_verified=NA, 477 subscribers). Channel name 'SlotsWise.com'; its /about page and video descriptions link to https://www.slotswise.com/?network=youtube (tracked link back to the official site). The site itself does not link the channel (no social links found in the homepage HTML). One-directional evidence only."
+    }
+  ],
+  "channels_rejected": [],
+  "channels_not_found": [
+    "App Store / Google Play: no SlotsWise app (App Store search returns only competitors)",
+    "Wikidata: no entity (wbsearchentities 'SlotsWise' empty)",
+    "Wikimedia Commons: no logo file",
+    "Instagram / TikTok / Facebook / X: not linked from the site; not searched further (login-gated)"
+  ],
+  "wikidata": null,
+  "logo": {
+    "path": "brands/slotswise/logo/logo.png",
+    "png": "brands/slotswise/logo/logo.png",
+    "png_url": "https://assets.qih-tech.com/images/IE_SlotsWise_UK_Logo.png",
+    "source": "https://www.slotswise.com/ site header (<img> via Next.js /_next/image?url=https://assets.qih-tech.com/images/IE_SlotsWise_UK_Logo.png)",
+    "source_type": "official_website",
+    "format": "png (pal8, palette with transparency)",
+    "width": 520,
+    "height": 130,
+    "transparent": true,
+    "svg_path": null,
+    "svg_status": "no SVG found: IE_SlotsWise_UK_Logo.svg, SlotsWise_UK_Logo.png/.svg, SlotsWise_Logo.png all 404 on assets.qih-tech.com; no press kit; not on Commons",
+    "single_colour": false,
+    "single_colour_evidence": "visual check: circular arrows 'S' badge and 'Wise' in bright mint/neon green, 'Slots' in white, on transparent. Two colours - do not tint. White 'Slots' needs a dark background.",
+    "on_dark": "designed for dark backgrounds (site header is dark navy)",
+    "license": "none published. Site T&Cs: 'Reproduction is prohibited other than in accordance with the copyright notice'. No usage terms for the mark.",
+    "verified_current": "current: it is the logo served in the live site header on 2026-11-26",
+    "below_spec": "520 px wide, below the >= 1600 px logo.png the pipeline requires (brand-kit section 2 / brand-queue section 2). Native file; Next.js /_next/image does not upscale. Edges are palette/1-bit-alpha and visibly stair-stepped when enlarged."
+  },
+  "logo_missing": true,
+  "logo_missing_reason": "Not missing in the sense of 'not found': the official site logo was found and saved (brands/slotswise/logo/logo.png, 520x130). It is set as missing because it is far below the >= 1600 px PNG the pipeline requires and no larger official version (SVG, press kit, Commons) exists. A person decides: either supply a larger official logo, or accept the 520 px file (it is larger than the 400x120 default logo slot) and set logo_missing to false.",
+  "press_kit": "none found",
+  "icon": {
+    "url": "https://assets.qih-tech.com/icons/SLW-favicon.ico",
+    "note": "favicon only; no app icon (no app). Not collected."
+  },
+  "colors": [],
+  "colors_source": "not extracted: no SVG to read fills from. Visually: the logo is white + bright mint/neon green; the site's lead-form background (raw/570_SLWUK_Lead_Form_BG_ Mobile_850x1850_1.png) is deep navy/indigo with glowing teal-green circuit lines and a tilted grid of slot-game tiles. Do not take a hex from the PNG.",
+  "store": null,
+  "site_copy": {
+    "title": "SlotsWise - Best UK Online Casino Bonuses",
+    "meta_description": "SlotsWise - The home of UK Casino Free Spins offers. Compare the best free spins and bonus offers in one place",
+    "h1": "Compare The Best Free Spin Offers November 2026",
+    "h1_sub": "Our experts have selected the best free spins offers in the UK today. Each has been reviewed, scored and verified.",
+    "disclosure": "Disclosure: We may earn a commission when you sign up or deposit through the links below. We only recommend licensed operators.",
+    "source_url": "https://www.slotswise.com/"
+  },
+  "compliance_seen_on_site": [
+    "18+ badge, GambleAware, GamCare, GamStop, DMCA, SSL badges in the hero",
+    "Every listed offer carries significant terms ending '18+ ... T&Cs apply', several '#AD' and 'BeGambleAware.org'",
+    "Affiliate disclosure: 'We may earn a commission when you sign up or deposit through the links below.'",
+    "Responsible Gaming footer: operators licensed by the Gambling Commission of Great Britain; 'we will not host free play slots on our site' to keep children safe"
+  ],
+  "screenshots": [],
+  "screenshots_note": "no app, so no store screenshots. Site art collected raw in the run folder instead.",
+  "needs_human": [
+    "LOGO BELOW SPEC (blocks the item): the only official logo is the site-header PNG, 520x130, palette with 1-bit-style alpha. No SVG, press kit or Commons file exists. Supply a larger official logo or explicitly accept this one (it fits the 400x120 default slot without upscaling) and set logo_missing false.",
+    "No licence or usage terms for the SlotsWise mark; site T&Cs prohibit reproduction except per its copyright notice. Use in a creative depends on the advertiser relationship (PROJECT.md 13).",
+    "GAMBLING: SlotsWise is a UK casino-bonus affiliate. Its own pages put 18+, BeGambleAware.org / GamCare / GamStop, '#AD' and significant T&Cs on every offer. A UK gambling ad is subject to the CAP/BCAP gambling rules and UKGC requirements (18+ / responsible-gambling messaging, no appeal to under-18s, significant terms with any offer). Someone must decide which age/RG lines the creative must carry, word for word.",
+    "MARKET MISMATCH: the brand is UK-only (GBP, UKGC operators). Confirm the mission's target geo; promoting it outside GB, or in a jurisdiction where online casino promotion is restricted (e.g. most US states), may be non-compliant.",
+    "Mission offer string 'Discover New Gaming Offers' was not given as mission copy and does not appear on the site; it was not used as copy.",
+    "YouTube @SlotsWise is unverified (477 subs); its only link to the brand is that it links to slotswise.com, the site does not link back. Nearly all its videos are gameplay of third-party slot games (Big Bass, Fishin' Frenzy, etc.) - third-party IP. Only the 22 s 'UK'S BEST SLOTS and SIGN UP OFFERS!' promo and two site-promo videos are brand-centric; 5 Shorts were also collected and are all third-party slot gameplay.",
+    "Site art (lead-form backgrounds) contains a grid of third-party slot-game tiles (Big Bass, Starburst, Hyper Strike...) - not usable as-is; used only as palette/mood reference for the scene prompt.",
+    "colors is empty: no SVG to read fills from.",
+    "Brand font unknown; none recorded."
+  ]
+}

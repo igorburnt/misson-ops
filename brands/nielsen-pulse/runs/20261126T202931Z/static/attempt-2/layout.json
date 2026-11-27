@@ -1,0 +1,31 @@
+{
+  "elements": [
+    {
+      "type": "image",
+      "label": "logo",
+      "src": "brands/nielsen-pulse/logo/logo.png",
+      "slot": [
+        270,
+        300,
+        810,
+        420
+      ]
+    },
+    {
+      "type": "text",
+      "label": "headline 1",
+      "text": "Earn rewards for your screen time.",
+      "font": "C:/Windows/Fonts/arialbd.ttf",
+      "group": "headline",
+      "shadow": true,
+      "size": 44,
+      "color": "#191537",
+      "slot": [
+        190,
+        1515,
+        890,
+        1600
+      ]
+    }
+  ]
+}

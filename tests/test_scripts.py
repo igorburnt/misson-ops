@@ -559,6 +559,115 @@ def test_http_downloads_with_the_same_basename_do_not_overwrite_each_other():
     assert _pixel(p1, 0, 0) != _pixel(p2, 0, 0)
 
 
+def _queue_root(lines=("Bank Fee-Free",), logo=True, prompt=True) -> tuple[str, str]:
+    """A throwaway repo root with one brand kit and one static folder."""
+    root = tempfile.mkdtemp()
+    os.makedirs(os.path.join(root, "brands", "acme"))
+    kit = {"brand": "Acme", "slug": "acme", "logo_missing": not logo,
+           "logo": {"png": "brands/acme/logo/logo.png", "png_url": "https://example.invalid/logo.png",
+                    "single_colour": True} if logo else {}}
+    with open(os.path.join(root, "brands", "acme", "kit.json"), "w", encoding="utf-8") as fh:
+        json.dump(kit, fh)
+    static = os.path.join(root, "brands", "acme", "runs", "20261126T000000Z", "static")
+    os.makedirs(static)
+    with open(os.path.join(static, "copy.json"), "w", encoding="utf-8") as fh:
+        json.dump({"lines": [{"text": t, "source": "App Store subtitle",
+                              "source_url": "https://example.invalid/app"} for t in lines]}, fh)
+    if prompt:
+        with open(os.path.join(static, "scene_prompt.txt"), "w", encoding="utf-8") as fh:
+            fh.write("A scene.\n\nForbidden: any text.\n")
+    return root, "brands/acme/runs/20261126T000000Z/static"
+
+
+def test_queue_add_is_ready_only_when_generation_needs_nothing_else():
+    import work_queue
+    root, run = _queue_root()
+    item = work_queue.add(root, "acme", run, None, None)
+    assert item["status"] == "ready" and item["blocked_by"] == []
+    assert item["id"] == "acme-20261126T000000Z"
+    assert item["copy"][0]["text"] == "Bank Fee-Free" and item["logo"]["tint_allowed"] is True
+
+    root, run = _queue_root(lines=("One", "Two"), logo=False, prompt=False)
+    item = work_queue.add(root, "acme", run, None, None)
+    assert item["status"] == "blocked"
+    joined = " ".join(item["blocked_by"])
+    assert "logo_missing" in joined and "scene prompt" in joined and "--lines" in joined
+
+
+def test_queue_claim_hands_out_one_item_with_its_own_attempt_folder():
+    import work_queue
+    root, run = _queue_root()
+    work_queue.add(root, "acme", run, None, None)
+    first = work_queue.claim(root, "codex")
+    assert first["status"] == "generating" and first["out"].endswith("/attempt-1")
+    assert os.path.isdir(os.path.join(root, first["out"]))
+    assert work_queue.claim(root, "codex") is None, "a generating item must not be claimed twice"
+    proc = subprocess.run([sys.executable, os.path.join(ROOT, "scripts", "work_queue.py"),
+                           "--root", root, "claim"], capture_output=True, text=True)
+    assert proc.returncode == 3, proc.stderr
+
+
+def test_queue_refuses_done_without_outputs_and_bad_moves():
+    import work_queue
+    root, run = _queue_root()
+    item = work_queue.add(root, "acme", run, None, None)
+    item = work_queue.claim(root, "codex")
+    for to, note, why in [("done", "x", "lacks"), ("approved", "x", "cannot go"),
+                          ("failed", None, "--note"), ("generating", "x", "claim")]:
+        try:
+            work_queue.set_status(root, item["id"], to, note, "codex")
+        except work_queue.QueueError as exc:
+            assert why in str(exc), exc
+        else:
+            raise AssertionError(f"moving to {to} should have been refused")
+    for f in ("final.png", "final_boxes.json", "static.json"):
+        open(os.path.join(root, item["out"], f), "w").close()
+    assert work_queue.set_status(root, item["id"], "done", None, "codex")["status"] == "done"
+    work_queue.set_status(root, item["id"], "rejected", "headline on the dog", "human")
+    again = work_queue.set_status(root, item["id"], "ready", "headline on the dog", "human")
+    assert again["status"] == "ready"
+    assert work_queue.claim(root, "codex")["out"].endswith("/attempt-2"), "a retry must not overwrite attempt 1"
+
+
+def test_queue_ready_is_rechecked_against_disk():
+    import work_queue
+    root, run = _queue_root(prompt=False)
+    item = work_queue.add(root, "acme", run, None, None)
+    assert item["status"] == "blocked"
+    try:
+        work_queue.set_status(root, item["id"], "ready", "trying", "claude")
+    except work_queue.QueueError as exc:
+        assert "still not ready" in str(exc)
+    else:
+        raise AssertionError("ready must be refused while the scene prompt is missing")
+    with open(os.path.join(root, run, "scene_prompt.txt"), "w", encoding="utf-8") as fh:
+        fh.write("A scene.\n\nForbidden: any text.\n")
+    assert work_queue.set_status(root, item["id"], "ready", "prompt written", "claude")["status"] == "ready"
+
+
+def test_queue_brands_and_review_gallery():
+    import review_gallery
+    import work_queue
+    root, run = _queue_root()
+    work_queue.brand_add(root, "Acme", None, None, None)
+    try:
+        work_queue.brand_add(root, "acme", None, None, None)
+    except work_queue.QueueError:
+        pass
+    else:
+        raise AssertionError("the same brand must not be queued twice")
+    assert work_queue.brand_set(root, "Acme", "researched", "acme", None)["slug"] == "acme"
+    assert [b["name"] for b in work_queue.brand_list(root, "researched")] == ["Acme"]
+
+    item = work_queue.add(root, "acme", run, None, None)
+    work_queue.claim(root, "codex")
+    r = review_gallery.build(root, "generating", os.path.join(root, "queue", "review.html"))
+    assert r["items"] == [item["id"]]
+    with open(r["page"], encoding="utf-8") as fh:
+        page = fh.read()
+    assert f'data-id="{item["id"]}"' in page and "Bank Fee-Free" in page
+
+
 def test_clis_emit_json_and_exit_non_zero_on_failure():
     for script, args in [
         ("probe.py", [sample("small.png")]),

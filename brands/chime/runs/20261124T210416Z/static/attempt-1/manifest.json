@@ -1,0 +1,12 @@
+{
+  "run_id": "chime-20261124T210416Z-attempt-1",
+  "input": {
+    "brand_name": "Chime"
+  },
+  "path_taken": "static-creative",
+  "assets": [],
+  "scene_attempts": 3,
+  "needs_human": [
+    "Three scenes rejected: the subject extends into the 68-85% headline band in all three. Frame the subject smaller so both reserved bands are clear."
+  ]
+}

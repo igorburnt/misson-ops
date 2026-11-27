@@ -1,0 +1,40 @@
+{
+  "brand": "SlotsWise",
+  "rule": "static-creative section 2: quoted exactly from an allowed source, never written or edited",
+  "lines": [
+    {
+      "text": "The home of UK Casino Free Spins offers",
+      "source": "slotswise.com homepage <meta name=\"description\">, first sentence after the 'SlotsWise - ' prefix (verbatim, capitalisation as published; trailing period dropped)",
+      "source_url": "https://www.slotswise.com/"
+    },
+    {
+      "text": "Compare the best free spins and bonus offers in one place",
+      "source": "slotswise.com homepage <meta name=\"description\">, second sentence (verbatim; no trailing period on the site)",
+      "source_url": "https://www.slotswise.com/"
+    },
+    {
+      "text": "Best UK Online Casino Bonuses",
+      "source": "slotswise.com homepage <title>, after the 'SlotsWise - ' prefix",
+      "source_url": "https://www.slotswise.com/"
+    },
+    {
+      "text": "You can't miss the latest slot releases and SIGN-UP OFFERS",
+      "source": "first line of the description of the official-linked @SlotsWise YouTube promo 'UK'S BEST SLOTS and SIGN UP OFFERS!' (unverified channel)",
+      "source_url": "https://www.youtube.com/watch?v=RwNXBSKdg-U"
+    }
+  ],
+  "not_used": [
+    {"text": "Compare The Best Free Spin Offers November 2026", "where": "slotswise.com homepage H1", "why": "dated to the current month; goes stale"},
+    {"text": "Our experts have selected the best free spins offers in the UK today. Each has been reviewed, scored and verified.", "where": "slotswise.com homepage hero", "why": "too long for a static headline; contains claims ('reviewed, scored and verified')"},
+    {"text": "Disclosure: We may earn a commission when you sign up or deposit through the links below. We only recommend licensed operators.", "where": "slotswise.com homepage", "why": "legal/disclosure line"},
+    {"text": "200 FREE SPINS / 50 FREE SPINS NO DEPOSIT & NO WAGERING / ...", "where": "slotswise.com offer cards", "why": "third-party operators' offers with significant T&Cs - offers, not SlotsWise brand copy"},
+    {"text": "Discover New Gaming Offers", "where": "queue offer string", "why": "not given as mission copy and not found on any official SlotsWise source"}
+  ],
+  "chosen": {"lines": [1], "why": "closest official line to the offer's 'discover offers' promise; from a single source (meta description). Alternatives from the same source: 0 alone, or 2 (page title) for a shorter headline."},
+  "needs_human": [
+    "Every candidate line promotes gambling offers/bonuses ('free spins', 'bonus offers', 'Casino Bonuses'). Under UK CAP/BCAP gambling rules a creative carrying them likely needs 18+ and a responsible-gambling line (the site uses 18+, BeGambleAware.org, GamCare, GamStop, '#AD'). Confirm the copy word for word and which compliance lines must be set with it.",
+    "'best' (lines 1-3) is a comparative claim; confirm it is acceptable in the ad.",
+    "Line 3 is from an unverified YouTube channel's video description; treat as lower-confidence than lines 0-2.",
+    "Mixing lines across sources (0-2 site vs 3 YouTube) needs a person's approval."
+  ]
+}

@@ -1,0 +1,14 @@
+A 9:16 vertical photograph for a mobile ad for OG.com: a studio product shot of five sealed trading-card foil packs fanned out in mid-air, the centre pack slightly forward and its top edge torn open, a bright warm glow spilling out of the tear as if a rare card is about to be revealed. The packs are blank metallic foil with crimped, finely embossed top and bottom seals and no printing at all: the centre pack in burnished copper-orange, the others in deep metallic blue, emerald green, ruby red and brushed gold, with subtle holographic sheen on the edges. Background is a near-black deep navy gradient, darkest at the corners, with a soft warm amber lens flare grazing in from the left edge and cool silver rim light on the foil. Glossy, high-contrast, premium 3D-render look; a faint copper reflection of the packs on a dark polished surface below them. Palette: near-black navy, brushed silver highlights, copper-orange, with jewel-tone foil accents.
+
+Composition (mandatory):
+- Main subject between 30% and 65% of the image height, inside the central 70% of the width.
+- Keep the band from 14% to 26% of the height calm and low in detail (sky, wall, soft
+  shadow, plain surface): a logo will be placed there later.
+- Keep the band from 68% to 85% of the height calm and darker or lighter than the rest:
+  a headline will be placed there later.
+- Backgrounds, light and texture may run to every edge.
+
+Forbidden: any text, letters, numbers, logos, brand marks, signage, UI, watermarks,
+screens showing content. No real or famous people. No other brands' products.
+No printed artwork, characters or creatures on the packs; no visible card faces, no
+Pokémon or any licensed character, no sports team or league marks.

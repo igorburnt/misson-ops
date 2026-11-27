@@ -1,0 +1,35 @@
+{
+  "brand": "OG.com",
+  "rule": "static-creative section 2: quoted exactly from an allowed source, never written or edited. No mission copy and no current creative were given, so all lines are the brand's own official copy.",
+  "lines": [
+    {
+      "text": "Rip Real Card Packs",
+      "source": "App Store subtitle (US listing, fetched 2026-11-26)",
+      "source_url": "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676"
+    },
+    {
+      "text": "Introducing Rips: Card Packs",
+      "source": "App Store In-App Event title (MAJOR UPDATE, 2026-10-29 to 2026-11-29)",
+      "source_url": "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676?eventid=6827983950"
+    },
+    {
+      "text": "Pokémon, football, and much more. Just sign up.",
+      "source": "App Store In-App Event subtitle of 'Get 5 Trading Card Packs on Us' (SPECIAL EVENT, 2026-11-20 to 2026-12-20)",
+      "source_url": "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676?eventid=6836737350"
+    }
+  ],
+  "not_used": [
+    {"text": "Get 5 Trading Card Packs on Us", "where": "App Store In-App Event title (eventid=6836737350)", "why": "offer line (free packs, T&Cs, ends 2026-12-20) - needs word-for-word sign-off"},
+    {"text": "New OGs get 5 Rips on us! Rare cards await.", "where": "App Store In-App Event subtitle (eventid=6827983950)", "why": "offer line, event ends 2026-11-29"},
+    {"text": "Real authenticated cards. Ship it to you or sell it with 100% buyback. See what you pull now.", "where": "App Store In-App Event detail (eventid=6836737350)", "why": "too long, and '100% buyback' is a claim needing legal sign-off"},
+    {"text": "RIP YOUR FIRST 5 PACKS ON US", "where": "App Store screenshot 1 headline", "why": "offer line"},
+    {"text": "Feast Week Leaderboard", "where": "App Store In-App Event (eventid=6836753383)", "why": "prediction-market contest with a cash prize pool, not the Rips offer"},
+    {"text": "OG.com: Rip, Trade, Predict", "where": "App Store app title", "why": "app title, not an allowed copy field; also mentions trading/predictions"}
+  ],
+  "needs_human": [
+    "Recommended: line 0 alone ('Rip Real Card Packs', App Store subtitle) - one source, no offer, no claim.",
+    "Line 2 names 'Pokémon' (third-party trademark) - needs IP sign-off before use.",
+    "Lines 1-2 come from time-limited In-App Events; confirm they are still live when the creative runs.",
+    "Gambling-adjacent product (randomized packs). A required age/eligibility line (Rips terms: 18+, or 19/21 where the state requires; US only) may have to accompany any line - a person supplies that wording; it is not written here."
+  ]
+}

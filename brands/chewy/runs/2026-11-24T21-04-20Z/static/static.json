@@ -1,0 +1,57 @@
+{
+  "brand": "Chewy",
+  "copy": {
+    "text": "For life with pets, there's Chewy.",
+    "source": "Official YouTube channel description",
+    "source_url": "https://www.youtube.com/@Chewy/about"
+  },
+  "scene": "brands/chewy/runs/2026-11-24T21-04-20Z/static/scene.png",
+  "scene_prompt": "A 9:16 vertical photograph for a mobile ad for Chewy: a warm, lived-in American home in late-afternoon light, shot like a cinematic TV commercial. A fluffy blue-merle Australian Shepherd with a soft plaid bandana sits contentedly on a honey-toned wooden floor beside two plain matte ceramic food bowls and a well-loved plush toy, looking toward the camera with a gentle, happy expression. Around it: a cozy mid-century living room with a wooden chair, a plaid throw over a sofa arm, leafy houseplants and a small table lamp glowing softly. Golden sunlight falls through a window from one side, casting long soft shadows across the floor; shallow depth of field, the room behind softly blurred. Mood: everyday comfort, warmth and quiet companionship between a pet and its home, natural and unstaged.\n\nComposition (mandatory):\n- Main subject between 30% and 65% of the image height, inside the central 70% of the width.\n- Keep the band from 14% to 26% of the height calm and low in detail (sky, wall, soft\n  shadow, plain surface): a logo will be placed there later.\n- Keep the band from 68% to 85% of the height calm and darker or lighter than the rest:\n  a headline will be placed there later.\n- Backgrounds, light and texture may run to every edge.\n\nForbidden: any text, letters, numbers, logos, brand marks, signage, UI, watermarks,\nscreens showing content. No real or famous people. No other brands' products.\n",
+  "scene_prompt_file": "brands/chewy/runs/2026-11-24T21-04-20Z/static/scene_prompt.txt",
+  "generator": "image_gen (built-in)",
+  "scene_attempts": 1,
+  "scene_status": "accepted_for_overlay",
+  "overlay_result": {
+    "scene": "brands/chewy/runs/2026-11-24T21-04-20Z/static/scene.png",
+    "output": "brands/chewy/runs/2026-11-24T21-04-20Z/static/final.png",
+    "boxes": "brands/chewy/runs/2026-11-24T21-04-20Z/static/final_boxes.json",
+    "elements": [
+      {
+        "label": "logo",
+        "type": "image",
+        "box": [
+          395,
+          300,
+          685,
+          412
+        ]
+      },
+      {
+        "label": "headline",
+        "type": "text",
+        "box": [
+          196,
+          1490,
+          885,
+          1531
+        ],
+        "size": 45
+      }
+    ],
+    "pass": true,
+    "failures": [],
+    "warnings": [
+      "headline: shrunk from 46px to 45px to fit"
+    ],
+    "overlay": "brands/chewy/runs/2026-11-24T21-04-20Z/static/final_check.png"
+  },
+  "approval": {
+    "status": "approved",
+    "file": "brands/chewy/assets/approved/static-2026-11-24T21-04-20Z.png"
+  },
+  "review_notes": [
+    "Brand font unavailable in kit. Used C:/Windows/Fonts/arialbd.ttf for the overlay.",
+    "Review lateral cropping of the dog's tail in cover placement."
+  ],
+  "needs_human": []
+}

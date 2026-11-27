@@ -1,0 +1,60 @@
+{
+  "brands": [
+    {
+      "name": "Chime",
+      "status": "researched",
+      "added_at": "2026-11-26T15:20:29Z",
+      "note": "pilot brand, researched 2026-11-24",
+      "updated_at": "2026-11-26T15:20:30Z",
+      "slug": "chime"
+    },
+    {
+      "name": "Chewy",
+      "status": "researched",
+      "added_at": "2026-11-26T15:20:29Z",
+      "note": "pilot brand, researched 2026-11-24",
+      "updated_at": "2026-11-26T15:20:30Z",
+      "slug": "chewy"
+    },
+    {
+      "name": "DoorDash",
+      "status": "researched",
+      "added_at": "2026-11-26T15:20:30Z",
+      "note": "pilot brand, researched 2026-11-24",
+      "updated_at": "2026-11-26T15:20:30Z",
+      "slug": "doordash"
+    },
+    {
+      "name": "Nielsen Pulse",
+      "status": "researched",
+      "added_at": "2026-11-26T20:25:30Z",
+      "note": "offer: Nielsen Pulse-138242-iPhone-US-3Nov26-ERS (iPhone, US)",
+      "updated_at": "2026-11-26T20:32:24Z",
+      "slug": "nielsen-pulse"
+    },
+    {
+      "name": "SlotsWise",
+      "status": "researched",
+      "added_at": "2026-11-26T20:25:30Z",
+      "note": "offer: Discover New Gaming Offers SlotsWise",
+      "updated_at": "2026-11-26T20:30:34Z",
+      "slug": "slotswise"
+    },
+    {
+      "name": "BarkBox",
+      "status": "researched",
+      "added_at": "2026-11-26T20:25:30Z",
+      "note": "offer: Bark Box US Web/MobileWeb CPA - Rewarded (web, US)",
+      "updated_at": "2026-11-26T20:32:24Z",
+      "slug": "barkbox"
+    },
+    {
+      "name": "OG.com",
+      "status": "researched",
+      "added_at": "2026-11-26T20:25:30Z",
+      "note": "offer: OG.com Rip Card Trade Events US iOS CPA - #WL (iOS, US; card ripping/trading events)",
+      "updated_at": "2026-11-26T20:32:32Z",
+      "slug": "og-com"
+    }
+  ]
+}

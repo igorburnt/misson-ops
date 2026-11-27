@@ -1,0 +1,403 @@
+{
+  "items": [
+    {
+      "id": "chime-20261124T210416Z",
+      "status": "failed",
+      "attempt": 1,
+      "created_at": "2026-11-26T15:20:30Z",
+      "updated_at": "2026-11-26T15:30:48Z",
+      "slug": "chime",
+      "run": "brands/chime/runs/20261124T210416Z/static",
+      "brand": "Chime",
+      "logo": {
+        "png": "brands/chime/logo/logo.png",
+        "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f6/Chime_company_logo.svg/1920px-Chime_company_logo.svg.png",
+        "tint_allowed": true,
+        "colour": null
+      },
+      "font": null,
+      "scene_prompt": "brands/chime/runs/20261124T210416Z/static/scene_prompt.txt",
+      "copy_file": "brands/chime/runs/20261124T210416Z/static/copy.json",
+      "copy": [
+        {
+          "text": "Credit, Cash back, Savings",
+          "source": "App Store subtitle (also the Google Play short description, twitter:description meta, en_US)",
+          "source_url": "https://apps.apple.com/us/app/chime-mobile-banking/id836215269"
+        }
+      ],
+      "blocked_by": [],
+      "history": [
+        {
+          "at": "2026-11-26T15:20:30Z",
+          "from": null,
+          "to": "ready",
+          "by": "claude",
+          "note": "App Store subtitle alone (copy.json needs_human: do not mix with the YouTube lines)"
+        },
+        {
+          "at": "2026-11-26T15:28:14Z",
+          "from": "ready",
+          "to": "generating",
+          "by": "codex"
+        },
+        {
+          "at": "2026-11-26T15:30:48Z",
+          "from": "generating",
+          "to": "failed",
+          "by": "codex",
+          "note": "Three scenes rejected: the subject extends into the 68-85% headline band in all three. Frame the subject smaller so both reserved bands are clear."
+        }
+      ],
+      "last_note": "Three scenes rejected: the subject extends into the 68-85% headline band in all three. Frame the subject smaller so both reserved bands are clear.",
+      "out": "brands/chime/runs/20261124T210416Z/static/attempt-1"
+    },
+    {
+      "id": "chewy-2026-11-24T21-04-20Z",
+      "status": "approved",
+      "attempt": 1,
+      "created_at": "2026-11-26T15:20:30Z",
+      "updated_at": "2026-11-26T20:58:46Z",
+      "slug": "chewy",
+      "run": "brands/chewy/runs/2026-11-24T21-04-20Z/static",
+      "brand": "Chewy",
+      "logo": {
+        "png": "brands/chewy/logo/logo.png",
+        "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/Chewy_pet_food_logo.svg/1920px-Chewy_pet_food_logo.svg.png",
+        "tint_allowed": false,
+        "colour": "#FFFFFF"
+      },
+      "font": null,
+      "scene_prompt": "brands/chewy/runs/2026-11-24T21-04-20Z/static/scene_prompt.txt",
+      "copy_file": "brands/chewy/runs/2026-11-24T21-04-20Z/static/copy.json",
+      "copy": [
+        {
+          "text": "For food, meds and expert care.",
+          "source": "Official YouTube channel @Chewy (UCpWl2nwLDQQI4TTa1kJgxrg), channel description, read with yt-dlp on 2026-11-24: \"For food, meds and expert care. For life with pets, there's Chewy.\"",
+          "source_url": "https://www.youtube.com/@Chewy/about"
+        },
+        {
+          "text": "For life with pets, there's Chewy.",
+          "source": "Official YouTube channel @Chewy (UCpWl2nwLDQQI4TTa1kJgxrg), channel description, read with yt-dlp on 2026-11-24: \"For food, meds and expert care. For life with pets, there's Chewy.\"",
+          "source_url": "https://www.youtube.com/@Chewy/about"
+        }
+      ],
+      "blocked_by": [],
+      "history": [
+        {
+          "at": "2026-11-26T15:20:30Z",
+          "from": null,
+          "to": "ready",
+          "by": "claude",
+          "note": "YouTube channel tagline, two lines"
+        },
+        {
+          "at": "2026-11-26T15:30:48Z",
+          "from": "ready",
+          "to": "generating",
+          "by": "codex"
+        },
+        {
+          "at": "2026-11-26T15:32:06Z",
+          "from": "generating",
+          "to": "done",
+          "by": "codex",
+          "note": "Safe-area check passed; exact two-line headline at 45 px and original blue badge."
+        },
+        {
+          "at": "2026-11-26T20:58:46Z",
+          "from": "done",
+          "to": "approved",
+          "by": "human"
+        }
+      ],
+      "last_note": "Safe-area check passed; exact two-line headline at 45 px and original blue badge.",
+      "out": "brands/chewy/runs/2026-11-24T21-04-20Z/static/attempt-1"
+    },
+    {
+      "id": "doordash-20261124T210452Z",
+      "status": "approved",
+      "attempt": 1,
+      "created_at": "2026-11-26T15:20:30Z",
+      "updated_at": "2026-11-26T20:58:46Z",
+      "slug": "doordash",
+      "run": "brands/doordash/runs/20261124T210452Z/static",
+      "brand": "DoorDash",
+      "logo": {
+        "png": "brands/doordash/logo/logo.png",
+        "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/DoorDash_Logo.svg/1920px-DoorDash_Logo.svg.png",
+        "tint_allowed": true,
+        "colour": "#FF3008"
+      },
+      "font": null,
+      "scene_prompt": "brands/doordash/runs/20261124T210452Z/static/scene_prompt.txt",
+      "copy_file": "brands/doordash/runs/20261124T210452Z/static/copy.json",
+      "copy": [
+        {
+          "text": "Food Delivery, Grocery, Retail",
+          "source": "App Store subtitle (US), DoorDash: Food, Grocery, More (id719972451)",
+          "source_url": "https://apps.apple.com/us/app/doordash-food-grocery-more/id719972451"
+        }
+      ],
+      "blocked_by": [],
+      "history": [
+        {
+          "at": "2026-11-26T15:20:30Z",
+          "from": null,
+          "to": "blocked",
+          "by": "claude",
+          "note": "Pilot attempt was rejected: both scenes put the subject's legs across the headline band (68-85%). Keep that band clear, e.g. frame the subject from the knees up."
+        },
+        {
+          "at": "2026-11-26T15:20:39Z",
+          "from": "blocked",
+          "to": "ready",
+          "by": "claude",
+          "note": "copy.json: url renamed to source_url. Pilot scenes put the subject's legs across the headline band (68-85%); keep that band clear, e.g. frame the subject from the knees up."
+        },
+        {
+          "at": "2026-11-26T15:32:07Z",
+          "from": "ready",
+          "to": "generating",
+          "by": "codex"
+        },
+        {
+          "at": "2026-11-26T15:34:24Z",
+          "from": "generating",
+          "to": "done",
+          "by": "codex",
+          "note": "Safe-area check passed on the third scene; exact headline at 47 px and white logo tint."
+        },
+        {
+          "at": "2026-11-26T20:58:46Z",
+          "from": "done",
+          "to": "approved",
+          "by": "human"
+        }
+      ],
+      "last_note": "Safe-area check passed on the third scene; exact headline at 47 px and white logo tint.",
+      "out": "brands/doordash/runs/20261124T210452Z/static/attempt-1"
+    },
+    {
+      "id": "slotswise-20261126T202817Z",
+      "status": "blocked",
+      "attempt": 0,
+      "created_at": "2026-11-26T20:30:31Z",
+      "updated_at": "2026-11-26T20:30:31Z",
+      "slug": "slotswise",
+      "run": "brands/slotswise/runs/20261126T202817Z/static",
+      "brand": "SlotsWise",
+      "logo": {
+        "png": "brands/slotswise/logo/logo.png",
+        "png_url": "https://assets.qih-tech.com/images/IE_SlotsWise_UK_Logo.png",
+        "tint_allowed": false,
+        "colour": null
+      },
+      "font": null,
+      "scene_prompt": "brands/slotswise/runs/20261126T202817Z/static/scene_prompt.txt",
+      "copy_file": "brands/slotswise/runs/20261126T202817Z/static/copy.json",
+      "copy": [
+        {
+          "text": "Compare the best free spins and bonus offers in one place",
+          "source": "slotswise.com homepage <meta name=\"description\">, second sentence (verbatim; no trailing period on the site)",
+          "source_url": "https://www.slotswise.com/"
+        }
+      ],
+      "blocked_by": [
+        "kit says logo_missing: a creative without the real logo is not a fallback"
+      ],
+      "history": [
+        {
+          "at": "2026-11-26T20:30:31Z",
+          "from": null,
+          "to": "blocked",
+          "by": "claude"
+        }
+      ]
+    },
+    {
+      "id": "nielsen-pulse-20261126T202931Z",
+      "status": "approved",
+      "attempt": 2,
+      "created_at": "2026-11-26T20:32:20Z",
+      "updated_at": "2026-11-26T20:58:49Z",
+      "slug": "nielsen-pulse",
+      "run": "brands/nielsen-pulse/runs/20261126T202931Z/static",
+      "brand": "Nielsen Pulse",
+      "logo": {
+        "png": "brands/nielsen-pulse/logo/logo.png",
+        "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Nielsen_2021.svg/1920px-Nielsen_2021.svg.png",
+        "tint_allowed": false,
+        "colour": null
+      },
+      "font": null,
+      "scene_prompt": "brands/nielsen-pulse/runs/20261126T202931Z/static/scene_prompt.txt",
+      "copy_file": "brands/nielsen-pulse/runs/20261126T202931Z/static/copy.json",
+      "copy": [
+        {
+          "text": "Earn rewards for your screen time.",
+          "source": "nielsenpulse.com landing hero title (landing.hero.title, English locale string in the site's Next.js bundle /_next/static/chunks/30073129455ada08.js, fetched 2026-11-26); nielsenpulse.com is the developer website on the App Store listing",
+          "source_url": "https://nielsenpulse.com/"
+        }
+      ],
+      "blocked_by": [],
+      "history": [
+        {
+          "at": "2026-11-26T20:32:20Z",
+          "from": null,
+          "to": "ready",
+          "by": "claude"
+        },
+        {
+          "at": "2026-11-26T20:36:38Z",
+          "from": "ready",
+          "to": "generating",
+          "by": "codex"
+        },
+        {
+          "at": "2026-11-26T20:38:28Z",
+          "from": "generating",
+          "to": "failed",
+          "by": "codex",
+          "note": "All three scenes put the seated subject in the headline band; scenes two and three also put hair in the logo band. A wider composition is needed."
+        },
+        {
+          "at": "2026-11-26T20:41:47Z",
+          "from": "failed",
+          "to": "ready",
+          "by": "claude",
+          "note": "scene_prompt.txt rewritten: wide shot, explicit Correction keeping head below 32% and feet/sofa/popcorn above 64%"
+        },
+        {
+          "at": "2026-11-26T20:43:09Z",
+          "from": "ready",
+          "to": "generating",
+          "by": "codex"
+        },
+        {
+          "at": "2026-11-26T20:44:07Z",
+          "from": "generating",
+          "to": "done",
+          "by": "codex",
+          "note": "Wide composition passed the safe-area check; exact headline at 42 px."
+        },
+        {
+          "at": "2026-11-26T20:58:49Z",
+          "from": "done",
+          "to": "approved",
+          "by": "human"
+        }
+      ],
+      "out": "brands/nielsen-pulse/runs/20261126T202931Z/static/attempt-2",
+      "last_note": "Wide composition passed the safe-area check; exact headline at 42 px."
+    },
+    {
+      "id": "barkbox-20261126T202916Z",
+      "status": "failed",
+      "attempt": 2,
+      "created_at": "2026-11-26T20:32:24Z",
+      "updated_at": "2026-11-26T20:45:59Z",
+      "slug": "barkbox",
+      "run": "brands/barkbox/runs/20261126T202916Z/static",
+      "brand": "BarkBox",
+      "logo": {
+        "png": "brands/barkbox/logo/logo.png",
+        "png_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/BarkBox_logo.svg/1920px-BarkBox_logo.svg.png",
+        "tint_allowed": true,
+        "colour": "#42B0E2"
+      },
+      "font": null,
+      "scene_prompt": "brands/barkbox/runs/20261126T202916Z/static/scene_prompt.txt",
+      "copy_file": "brands/barkbox/runs/20261126T202916Z/static/copy.json",
+      "copy": [
+        {
+          "text": "Dog Joy Delivered Every Month",
+          "source": "bark.co home page, heading of the BarkBox box-selector section (h2 directly under the BarkBox logo, class bark-home-box-selector), fetched 2026-11-26",
+          "source_url": "https://bark.co/"
+        }
+      ],
+      "blocked_by": [],
+      "history": [
+        {
+          "at": "2026-11-26T20:32:24Z",
+          "from": null,
+          "to": "ready",
+          "by": "claude",
+          "note": "logo.png is the OLDER BarkBox wordmark (Commons); current bark.co mark has no PNG >=1600px - see kit needs_human"
+        },
+        {
+          "at": "2026-11-26T20:38:28Z",
+          "from": "ready",
+          "to": "generating",
+          "by": "codex"
+        },
+        {
+          "at": "2026-11-26T20:38:36Z",
+          "from": "generating",
+          "to": "needs_research",
+          "by": "codex",
+          "note": "The queued PNG is the superseded BarkBox wordmark. Supply a PNG of the current mark or obtain explicit approval to use the older mark."
+        },
+        {
+          "at": "2026-11-26T20:42:03Z",
+          "from": "needs_research",
+          "to": "ready",
+          "by": "claude",
+          "note": "Igor approved the older BarkBox wordmark at logo.png_url (2026-11-26). The logo is final; generate."
+        },
+        {
+          "at": "2026-11-26T20:44:07Z",
+          "from": "ready",
+          "to": "generating",
+          "by": "codex"
+        },
+        {
+          "at": "2026-11-26T20:45:59Z",
+          "from": "generating",
+          "to": "failed",
+          "by": "codex",
+          "note": "All three scenes put part of the dog in the reserved logo band. Use a wider shot with the entire dog, including its tail, below the logo band."
+        }
+      ],
+      "last_note": "All three scenes put part of the dog in the reserved logo band. Use a wider shot with the entire dog, including its tail, below the logo band.",
+      "out": "brands/barkbox/runs/20261126T202916Z/static/attempt-2"
+    },
+    {
+      "id": "og-com-20261126T203000Z",
+      "status": "blocked",
+      "attempt": 0,
+      "created_at": "2026-11-26T20:32:30Z",
+      "updated_at": "2026-11-26T20:32:30Z",
+      "slug": "og-com",
+      "run": "brands/og-com/runs/20261126T203000Z/static",
+      "brand": "OG.com",
+      "logo": {
+        "png": null,
+        "png_url": null,
+        "tint_allowed": false,
+        "colour": null
+      },
+      "font": null,
+      "scene_prompt": "brands/og-com/runs/20261126T203000Z/static/scene_prompt.txt",
+      "copy_file": "brands/og-com/runs/20261126T203000Z/static/copy.json",
+      "copy": [
+        {
+          "text": "Rip Real Card Packs",
+          "source": "App Store subtitle (US listing, fetched 2026-11-26)",
+          "source_url": "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676"
+        }
+      ],
+      "blocked_by": [
+        "kit says logo_missing: a creative without the real logo is not a fallback",
+        "kit has no logo.png + logo.png_url; generation cannot fetch the logo"
+      ],
+      "history": [
+        {
+          "at": "2026-11-26T20:32:30Z",
+          "from": null,
+          "to": "blocked",
+          "by": "claude"
+        }
+      ]
+    }
+  ]
+}

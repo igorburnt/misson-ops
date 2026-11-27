@@ -1,0 +1,19 @@
+{
+  "run_id": "barkbox-20261126T202916Z-attempt-1",
+  "input": {
+    "brand_name": "BarkBox",
+    "copy": [
+      {
+        "text": "Dog Joy Delivered Every Month",
+        "source": "bark.co home page, heading of the BarkBox box-selector section (h2 directly under the BarkBox logo, class bark-home-box-selector), fetched 2026-11-26",
+        "source_url": "https://bark.co/"
+      }
+    ]
+  },
+  "path_taken": "static-creative",
+  "assets": [],
+  "needs_human": [
+    "The queued PNG is the superseded BarkBox wordmark. Supply a PNG of the current mark or obtain explicit approval to use the older mark."
+  ],
+  "scene_attempts": 0
+}

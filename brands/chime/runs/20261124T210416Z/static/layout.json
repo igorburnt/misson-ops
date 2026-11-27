@@ -1,0 +1,31 @@
+{
+  "elements": [
+    {
+      "type": "image",
+      "label": "logo",
+      "src": "brands/chime/logo/logo.png",
+      "slot": [
+        365,
+        293,
+        715,
+        370
+      ],
+      "tint": "#123B2B"
+    },
+    {
+      "type": "text",
+      "label": "headline",
+      "text": "Credit, Cash back, Savings",
+      "font": "C:/Windows/Fonts/arialbd.ttf",
+      "size": 54,
+      "color": "#FFFFFF",
+      "slot": [
+        190,
+        1465,
+        890,
+        1555
+      ],
+      "shadow": true
+    }
+  ]
+}

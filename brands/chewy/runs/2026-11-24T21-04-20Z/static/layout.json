@@ -1,0 +1,30 @@
+{
+  "elements": [
+    {
+      "type": "image",
+      "label": "logo",
+      "src": "brands/chewy/logo/logo.png",
+      "slot": [
+        390,
+        300,
+        690,
+        412
+      ]
+    },
+    {
+      "type": "text",
+      "label": "headline",
+      "text": "For life with pets, there's Chewy.",
+      "font": "C:/Windows/Fonts/arialbd.ttf",
+      "size": 46,
+      "color": "#FFFFFF",
+      "slot": [
+        190,
+        1465,
+        890,
+        1555
+      ],
+      "shadow": true
+    }
+  ]
+}

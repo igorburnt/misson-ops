@@ -1,0 +1,123 @@
+{
+  "brand": "OG.com",
+  "slug": "og-com",
+  "offer_resolution": "Offer 'OG.com Rip Card Trade Events US iOS CPA - #WL'. App Store search 'OG.com' (US) returns 'OG.com: Rip, Trade, Predict' by OG Markets Limited (id6757954676, bundle com.og.mobile.ios, sellerUrl https://og.com, released 2026-01-27, v1.0.41 2026-11-21, 17+, Finance/Sports, 4.72 from 6,041 ratings) as the first result; the other results are competing pack-rip apps (Tilt Rips, Rips by Triumph, Fast Rips, CrownCards, Packz, Stadium Vault, Coverd) and were ignored. The listing's subtitle is 'Rip Real Card Packs' and its description describes 'OG.com RIPS' (rip real graded Pokemon/MLB/NBA/NFL card packs, ship or sell back) alongside OG.com Markets (CFTC-regulated prediction markets via Nadex). og.com <title> 'OG.com - Card Rips, Prediction Markets & Live Odds, Perps' and the App Store listing links back to https://og.com. 'Trade Events' in the offer name most likely refers to the App Store In-App Events running on the listing (see store_copy.in_app_events). The App Store description quotes the WSJ: '[Crypto.com] launched OG, a stand-alone prediction markets platform'. US terms are between the user and OG Markets US, Inc. (Delaware).",
+  "updated_at": "2026-11-26",
+  "brand_class": "product",
+  "sector": "US prediction markets / perps app with a randomized physical trading-card pack product (OG.com Rips)",
+  "legal_entity": "OG Markets Limited (App Store seller); OG Markets US, Inc. (US Terms and Conditions counterparty); prediction markets operated by North American Derivatives Exchange, Inc. (Nadex)",
+  "parent": "Crypto.com (spin-off; WSJ quote in the App Store description, Crypto.com newsroom 'Crypto.com launches OG, a new prediction market experience')",
+  "website": "https://og.com",
+  "website_fetchable": "partial - the local resolver does not resolve og.com, web-assets.og.com or static.og.com (getaddrinfo fails; likely a DNS filter on gambling/betting domains). With DNS-over-HTTPS (curl --doh-url https://cloudflare-dns.com/dns-query) og.com returns 200. Repo scripts (urllib) cannot reach *.og.com from this machine.",
+  "has_mobile_app": true,
+  "official_channels": [
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/og_com",
+      "evidence": "linked from the og.com site footer (fetched 2026-11-26 via DoH)"
+    },
+    {
+      "platform": "x",
+      "url": "https://x.com/og_com",
+      "evidence": "linked from the og.com site footer AND og.com meta twitter:site '@og_com'"
+    },
+    {
+      "platform": "facebook",
+      "url": "https://www.facebook.com/share/1aGcnKyMYd/",
+      "evidence": "linked from the og.com site footer (share link, page name not resolved)"
+    }
+  ],
+  "channels_rejected": [
+    {"platform": "youtube", "handle": "@og_com", "reason": "exists but has no videos tab; not linked from og.com"},
+    {"platform": "youtube", "handle": "@ogdotcom", "reason": "exists but has no videos tab; not linked from og.com"},
+    {"platform": "youtube", "handle": "@OG", "reason": "exists but has no videos tab; not linked from og.com, unrelated-looking generic handle"},
+    {"platform": "youtube", "handle": "@OGcom", "reason": "404"}
+  ],
+  "channels_not_found": [
+    "youtube (no YouTube link on og.com; no candidate handle has videos)",
+    "tiktok (no TikTok link on og.com)",
+    "google play (com.og.mobile / com.og.mobile.android / com.og.app all 404; no Play link found - the offer is iOS only)"
+  ],
+  "wikidata": {
+    "entity": null,
+    "evidence": "wbsearchentities 'OG.com' returns no results; no Commons logo file found"
+  },
+  "logo": {
+    "path": null,
+    "png": null,
+    "png_url": null,
+    "svg_path": "brands/og-com/logo/logo_dark-theme.svg",
+    "svg_path_alt": "brands/og-com/logo/logo_light-theme.svg",
+    "svg_source": "https://og.com/ (inline <svg class=\"ctdbYW_logo ctdbYW_dark\"> viewBox 0 0 123.06 24, and <svg class=\"ctdbYW_logo ctdbYW_light\"> viewBox 0 0 123 24, in the site header). Extracted verbatim from the page HTML fetched 2026-11-26 via DoH; not redrawn.",
+    "svg_status": "outlined paths only, no <text> element. 'OG.COM' wordmark with brushed-metal gradient fills (several linearGradients); dark-theme variant stops #D2D5DD / #949BAD / #8E96A9, light-theme variant stops #C7CBD4 / #8F98A9 / #6C778D / #5E687B / #576071.",
+    "source_type": "brand's own site (inline header SVG)",
+    "png_candidates_rejected": [
+      {"url": "https://web-assets.og.com/og-logo.png", "why": "referenced on og.com but returns 403 (with and without og.com referer)"},
+      {"url": "https://og.com/opengraph-image.png?opengraph-image.1_wui3dqx8lz6.png", "why": "official, 1200x630, but the wordmark is rendered on a dark backdrop with a lens flare (not transparent, ~750 px wordmark); kept as brands/og-com/logo/og-opengraph-image_1200x630.png for reference only"},
+      {"url": "App Store icon 1024x1024 (run raw/1024x1024bb.png)", "why": "'OG' monogram on dark backdrop, 1024 px, not transparent and not the full wordmark; below the 1600 px requirement"}
+    ],
+    "single_colour": false,
+    "single_colour_evidence": "the SVG uses multi-stop metallic gradients; do not tint",
+    "license": "no licence or usage terms found; no press/media kit on og.com (og.com/press is the 'Odds & Predictions' page, not a press kit). Trademark of OG Markets; usage needs brand approval.",
+    "verified_current": "current - taken from og.com's live header on 2026-11-26; matches the wordmark on the App Store screenshots, In-App Event art and og.com OpenGraph image"
+  },
+  "logo_missing": true,
+  "logo_missing_reason": "An official outlined SVG wordmark exists (saved), but no official PNG >= 1600 px wide was found: the site's og-logo.png is 403, there is no press kit, no Wikimedia Commons file, and the App Store icon is a 1024 px monogram on a backdrop. brand-kit forbids rasterizing the mark ourselves, so logo.png / png_url are left empty and the item is blocked until a person supplies or approves a PNG.",
+  "brand_font": "og.com loads 'Lateral' (Lateral_CompressedBold, Lateral_CondensedBold woff2 from web-assets.og.com/_next/static/media/). Not downloaded; licence unknown. The pack art and screenshots use a condensed bold sans in the same family.",
+  "press_kit": "not found - no press/media kit link on og.com; og.com/press resolves to the 'Odds & Predictions' page",
+  "icon": {
+    "path": "brands/og-com/runs/20261126T203000Z/raw/1024x1024bb.png",
+    "width": 1024,
+    "height": 1024,
+    "source": "App Store listing artwork (mzstatic 1024x1024bb)",
+    "note": "silver 'OG' monogram on a dark navy backdrop with a warm lens flare at left"
+  },
+  "colors": ["#D2D5DD", "#949BAD", "#8E96A9"],
+  "colors_source": "gradient stops of the dark-theme header logo SVG on og.com (brushed silver). The wordmark has no saturated brand colour. Store/event art uses near-black navy backgrounds with a warm amber lens flare; pack foils come in blue, green, red, black/gold, gold, holographic and copper-orange (visual only, not hexed).",
+  "store": {
+    "play": null,
+    "app_store": "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676"
+  },
+  "store_copy": {
+    "app_store_title": "OG.com: Rip, Trade, Predict",
+    "app_store_subtitle": "Rip Real Card Packs",
+    "app_store_subtitle_evidence": "apps.apple.com/us listing HTML, product-header subtitle (fetched 2026-11-26)",
+    "site_meta_description": "Rip Pokémon and sports card packs online, trade perps and explore prediction markets with live odds on sports, crypto, politics and more at OG.com.",
+    "in_app_events": [
+      {"title": "Introducing Rips: Card Packs", "subtitle": "New OGs get 5 Rips on us! Rare cards await.", "detail": "Rip sports & Pokémon packs. Find rare cards, then ship or sell. New OGs get 5 Rips on us; existing get 1. T&Cs apply.", "kind": "MAJOR UPDATE", "start": "2026-10-29T17:00:00Z", "end": "2026-11-29T17:00:00Z", "url": "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676?eventid=6827983950"},
+      {"title": "Get 5 Trading Card Packs on Us", "subtitle": "Pokémon, football, and much more. Just sign up.", "detail": "Real authenticated cards. Ship it to you or sell it with 100% buyback. See what you pull now.", "kind": "SPECIAL EVENT", "start": "2026-11-20T10:00:00Z", "end": "2026-12-20T10:00:00Z", "url": "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676?eventid=6836737350"},
+      {"title": "Feast Week Leaderboard", "subtitle": "Trade college hoops. Share a $5,000+ prize pool.", "detail": "Opt in, trade college hoops and climb the leaderboard. Top 50 share a $5,000+ cash prize pool. T&Cs apply.", "kind": "SPECIAL EVENT", "start": "2026-11-20T10:00:00Z", "end": "2026-11-29T04:00:00Z", "url": "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676?eventid=6836753383"}
+    ]
+  },
+  "compliance": {
+    "app_store_age_rating": "17+",
+    "rips_age": "OG US Terms and Conditions (Last Updated: November 14, 2026), Annex I: OG.com Rips: \"YOU MUST BE AT LEAST EIGHTEEN (18) YEARS OF AGE TO USE OG RIPS, OR THE MINIMUM AGE IN YOUR STATE OF RESIDENCE, WHICH MAY BE NINETEEN (19) OR TWENTY-ONE (21).\"",
+    "services_age": "Terms 3.1(a): \"You are at least the age of majority if you reside in the U.S. or its territories, or at least 21 if you reside outside the U.S.\"",
+    "rips_availability": "Annex I 2: \"The Company may, in its sole discretion, elect to make Rips available only in certain states [...] Rips are currently available for sale only within the United States.\" og.com/rips banner: \"Rips is only available to U.S. residents\"",
+    "rips_chance": "Annex I 3: \"Rips contents are randomized\"; \"the value of the physical trading cards received may be more or less than the purchase price paid via the Rips service\"; \"purchasing a physical trading card through Rips involves an inherent element of chance regarding the specific items received\"",
+    "rips_not_cftc": "App Store description: \"OG.COM RIPS ARE NOT A CFTC-REGULATED PRODUCT.\"",
+    "markets_risk": "App Store description: \"Trading on OG.com involves risk and may not be appropriate for all.\"",
+    "sources": [
+      "https://static.og.com/assets/documents/terms-and-conditions-us.pdf",
+      "https://og.com/legal",
+      "https://og.com/rips",
+      "https://apps.apple.com/us/app/og-com-rip-trade-predict/id6757954676"
+    ]
+  },
+  "screenshots": [
+    {"path": "brands/og-com/runs/20261126T203000Z/raw/1290x2796bb.png", "width": 1206, "height": 2622, "is_vertical": true, "note": "S1: copper-orange 'RIPS' foil packs fanned on dark navy, headline 'RIP YOUR FIRST 5 PACKS ON US' burned in"},
+    {"path": "brands/og-com/runs/20261126T203000Z/raw/1290x2796bb_2.png ... _8.png", "width": 1206, "height": 2622, "is_vertical": true, "note": "S2-S8, all 1206x2622 (largest the App Store serves); burned-in headlines and app UI"}
+  ],
+  "screenshots_note": "8 vertical App Store screenshots (1206x2622, taller than 9:16). Pack art carries 'OG.COM' and licensed 'POKÉMON TRADING CARD PACK' text and Pokémon-styled creatures - third-party IP.",
+  "needs_human": [
+    "No usable logo PNG: logo_missing is true and the queue item is blocked. Official outlined SVG wordmark from og.com's header is saved at brands/og-com/logo/logo_dark-theme.svg (and _light-theme). Either obtain an official PNG >= 1600 px from OG.com (web-assets.og.com/og-logo.png returns 403; no press kit), or approve rendering the official SVG to PNG and set logo.png + logo.png_url.",
+    "Logo is a trademark of OG Markets; no licence or usage terms found. Brand approval needed before compositing (PROJECT.md 13).",
+    "Gambling-adjacent: OG.com Rips sells randomized physical trading-card packs ('Rips contents are randomized', value 'may be more or less than the purchase price', 'inherent element of chance') and the same app runs prediction markets and up-to-5x-leverage crypto perps. App Store age rating 17+. Rips terms: at least 18, or 19/21 where the state requires; Rips is US-only and may be limited to certain states (no state list published in the terms). Confirm with the network/advertiser what age gate, state restrictions and disclaimer the creative must carry (e.g. '18+ (19+/21+ where required). T&Cs apply.') - do not invent it.",
+    "Offer copy in the In-App Events ('Get 5 Trading Card Packs on Us', 'New OGs get 5 Rips on us', '100% buyback', '$5,000+ prize pool') is a promotion with T&Cs and end dates (2026-11-29 / 2026-12-20). Not used; a person must confirm any offer line word for word and its validity window.",
+    "'Trade Events' in the offer name is read as the App Store In-App Events; confirm with whoever set the offer that the CPA event is a card rip (and not a prediction-market trade).",
+    "*.og.com does not resolve via this machine's DNS (likely a gambling-domain DNS filter); og.com pages were read via DNS-over-HTTPS, but collect_assets.py could not download the og.com OpenGraph image or the site's rips.webp / perps.webp (recorded as failures). Re-run from a network that resolves og.com if those are wanted.",
+    "All official pack art shows the 'OG.COM' mark plus licensed third-party IP (Pokémon wording and Pokémon-like creatures, league cards). Do not use pack art or screenshots raw in a creative without IP review; the scene prompt uses blank, generic foil packs only.",
+    "Brand font is 'Lateral' (Compressed/Condensed Bold) per og.com; not obtained, licence unknown. Overlay will fall back to a system bold sans.",
+    "No official YouTube or TikTok found; the only first-party video is the 'Get 5 Trading Card Packs on Us' In-App Event video (1920x1080, landscape)."
+  ]
+}

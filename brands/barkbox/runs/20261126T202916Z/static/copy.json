@@ -1,0 +1,44 @@
+{
+  "brand": "BarkBox",
+  "rule": "static-creative section 2, source 3 (brand's own official copy). Quoted exactly; nothing written or edited. No mission copy or current creative was supplied.",
+  "lines": [
+    {
+      "text": "Dog Joy Delivered Every Month",
+      "source": "bark.co home page, heading of the BarkBox box-selector section (h2 directly under the BarkBox logo, class bark-home-box-selector), fetched 2026-11-26",
+      "source_url": "https://bark.co/"
+    },
+    {
+      "text": "A fun new theme each month",
+      "source": "bark.co home page, BarkBox Classic card in the same box-selector section, fetched 2026-11-26",
+      "source_url": "https://bark.co/"
+    },
+    {
+      "text": "BarkBox, Super Chewer & Bright",
+      "source": "App Store subtitle, 'BARK - BarkBox, Super Chewer' by Barkbox, Inc.",
+      "source_url": "https://apps.apple.com/us/app/bark-barkbox-super-chewer/id570764065"
+    },
+    {
+      "text": "BarkBox, Super Chewer, & Bright are themed monthly boxes of dog toys and treats!",
+      "source": "Google Play listing og:description (short description), com.barknativeshop",
+      "source_url": "https://play.google.com/store/apps/details?id=com.barknativeshop&hl=en_US"
+    },
+    {
+      "text": "Treat your pup to a monthly surprise with BarkBox, the ultimate dog subscription box!",
+      "source": "bark.co og:description, first sentence (full: \"Treat your pup to a monthly surprise with BarkBox, the ultimate dog subscription box! Get hand-picked toys, delicious treats, and endless fun delivered right to your door.\")",
+      "source_url": "https://bark.co/"
+    }
+  ],
+  "line_groups": "lines 0 and 1 are from the same bark.co BarkBox section; 2, 3 and 4 are standalone alternates from other sources",
+  "not_used": [
+    {"text": "From $24/mo + free shipping", "where": "bark.co home page, BarkBox Classic card", "why": "price"},
+    {"text": "FREE extra toy in every box for the first year.", "where": "bark.co home page, BarkBox Classic card", "why": "offer"},
+    {"text": "Sign up today and get FREE extra toys for a year!", "where": "App Store description", "why": "offer"},
+    {"text": "$10 off orders of $20 or more on one-time “Ship Now” purchases only when code BARKOUTLOUD is applied at checkout.", "where": "bark.co home page banner", "why": "offer + legal; not the subscription signup offer"},
+    {"text": "Trusted by 8+ million dogs", "where": "bark.co home page h2", "why": "claim with a number - needs a person to confirm"}
+  ],
+  "offers_prices_legal": "none in lines 0-4. The site carries an offer (FREE extra toy in every box for the first year) and a price (From $24/mo) - not used; a person must confirm word for word before any offer copy is used.",
+  "needs_human": [
+    "Confirm the headline (line 0, 'Dog Joy Delivered Every Month', bark.co BarkBox section heading). Line 1 from the same section can be added as a second line.",
+    "The rewarded-offer creative might want the offer line ('FREE extra toy in every box for the first year.') - a person decides and confirms it word for word."
+  ]
+}

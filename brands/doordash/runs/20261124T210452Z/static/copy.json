@@ -5,22 +5,22 @@
     {
       "text": "Food Delivery, Grocery, Retail",
       "source": "App Store subtitle (US), DoorDash: Food, Grocery, More (id719972451)",
-      "url": "https://apps.apple.com/us/app/doordash-food-grocery-more/id719972451",
-      "retrieved": "2026-11-24"
+      "retrieved": "2026-11-24",
+      "source_url": "https://apps.apple.com/us/app/doordash-food-grocery-more/id719972451"
     },
     {
       "text": "Get food, grocery, and retail essentials delivered fast with DoorDash.",
       "source": "Google Play short description, com.dd.doordash (page meta description; differs from the full description, which begins 'Delivery anywhere you are.')",
-      "url": "https://play.google.com/store/apps/details?id=com.dd.doordash&hl=en_US&gl=US",
       "retrieved": "2026-11-24",
-      "note": "70 characters - long for a headline; would need 2-3 lines."
+      "note": "70 characters - long for a headline; would need 2-3 lines.",
+      "source_url": "https://play.google.com/store/apps/details?id=com.dd.doordash&hl=en_US&gl=US"
     },
     {
       "text": "There’s a neighborhood of good in every order.",
       "source": "YouTube channel description, @DoorDash (UCXQ7Gzszfuw84cEWGpKlFiQ)",
-      "url": "https://www.youtube.com/@DoorDash/about",
       "retrieved": "2026-11-24",
-      "note": "Apostrophe is U+2019 as published. Usable only if a human confirms @DoorDash is the official channel (it is not verified/Wikidata/site-linked)."
+      "note": "Apostrophe is U+2019 as published. Usable only if a human confirms @DoorDash is the official channel (it is not verified/Wikidata/site-linked).",
+      "source_url": "https://www.youtube.com/@DoorDash/about"
     }
   ],
   "not_used": [

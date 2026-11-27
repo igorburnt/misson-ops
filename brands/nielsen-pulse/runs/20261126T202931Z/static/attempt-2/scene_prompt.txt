@@ -1,0 +1,15 @@
+A 9:16 vertical photograph for a mobile ad for Nielsen Pulse, shot WIDE from across the room so the person is small in the frame: a relaxed young adult in their twenties, in a soft lavender knit sweater over a plain white tee, sits on a light oatmeal fabric sofa in a bright, airy apartment living room, a bowl of popcorn on the sofa cushion beside them, holding a phone loosely in one hand with its screen turned away from the camera, smiling contentedly as if enjoying an evening of streaming. The whole sofa and the person, head to feet, fit in the middle of the frame with generous empty space above and below. Daylight-to-early-evening light: soft diffused window light from the side, warm but clean. Above the sofa, a large expanse of plain pale off-white wall with nothing hung on it. Below the sofa, a wide stretch of plain pale wooden floor and a solid soft-mint rug with no pattern, empty of objects. To one side, out of focus, a low white media console with the dark edge of a switched-off television and a leafy plant. Palette: clean white and soft mint fading into pale lavender, with accents of bright teal and vivid violet purple in a cushion and a throw blanket draped over the sofa arm, natural skin tones; calm, modern, optimistic, uncluttered, like the brand's own white-to-mint-to-lavender app store artwork.
+
+Correction: the previous attempt framed the person too close, so their head and hair reached the logo band and their knees, feet and the popcorn reached the headline band. Pull the camera back: the person's head must sit below 32% of the image height and their feet, the sofa base and the popcorn above 64%. Nothing but plain wall above the person, nothing but plain floor and rug below the sofa.
+
+Composition (mandatory):
+- Main subject between 30% and 65% of the image height, inside the central 70% of the width.
+- Keep the band from 14% to 26% of the height calm and low in detail (sky, wall, soft
+  shadow, plain surface): a logo will be placed there later. This band must be LIGHT
+  (pale wall), because the logo's wordmark is dark navy.
+- Keep the band from 68% to 85% of the height calm and darker or lighter than the rest:
+  a headline will be placed there later.
+- Backgrounds, light and texture may run to every edge.
+
+Forbidden: any text, letters, numbers, logos, brand marks, signage, UI, watermarks,
+screens showing content. No real or famous people. No other brands' products.

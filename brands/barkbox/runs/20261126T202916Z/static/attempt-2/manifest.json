@@ -1,0 +1,22 @@
+{
+  "run_id": "barkbox-20261126T202916Z-attempt-2",
+  "input": {
+    "brand_name": "BarkBox",
+    "copy": [
+      {
+        "text": "Dog Joy Delivered Every Month",
+        "source": "bark.co home page, heading of the BarkBox box-selector section (h2 directly under the BarkBox logo, class bark-home-box-selector), fetched 2026-11-26",
+        "source_url": "https://bark.co/"
+      }
+    ]
+  },
+  "path_taken": "static-creative",
+  "assets": [],
+  "needs_human": [
+    "All three scenes put part of the dog in the reserved logo band. Use a wider shot with the entire dog, including its tail, below the logo band."
+  ],
+  "scene_attempts": 3,
+  "scene_status": "rejected",
+  "scene_prompt_file": "brands/barkbox/runs/20261126T202916Z/static/attempt-2/scene_prompt.txt",
+  "scene": "brands/barkbox/runs/20261126T202916Z/static/attempt-2/scene.png"
+}

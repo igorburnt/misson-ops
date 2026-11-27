@@ -1,0 +1,16 @@
+A 9:16 vertical photograph-style digital illustration for a mobile ad for SlotsWise, a UK online-casino offers comparison site: a deep navy-to-indigo night-tech backdrop, as on SlotsWise's own site artwork, crossed by thin glowing teal and mint-green circuit lines that branch and run diagonally like light traces on a dark circuit board. In the middle of the frame, a loose, slightly tilted cascade of blank glossy rounded-square tiles in violet, electric blue and magenta floats in perspective, receding toward the lower right, each tile softly lit from within and edged with a faint neon-green glow; a few tiles catch brighter highlights, suggesting new offers lighting up. Cinematic, sleek, premium and calm rather than flashy; soft volumetric glow, gentle bokeh sparkles, shallow depth of field toward the edges. Palette strictly deep navy and indigo, with mint/neon green and teal as the accent light and violet/blue on the tiles.
+
+Composition (mandatory):
+- Main subject between 30% and 65% of the image height, inside the central 70% of the width.
+- Keep the band from 14% to 26% of the height calm and low in detail (sky, wall, soft
+  shadow, plain surface): a logo will be placed there later. Keep it dark navy: the logo
+  has white letters.
+- Keep the band from 68% to 85% of the height calm and darker or lighter than the rest:
+  a headline will be placed there later.
+- Backgrounds, light and texture may run to every edge.
+
+Forbidden: any text, letters, numbers, logos, brand marks, signage, UI, watermarks,
+screens showing content. No real or famous people. No other brands' products.
+No slot-machine reels, fruit/bar/7 symbols, playing cards, chips, coins, cash or
+game artwork from any real slot game. Nothing that appeals to children (no cartoon
+characters, toys or candy). The tiles must be blank.

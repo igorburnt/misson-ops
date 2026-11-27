@@ -1,0 +1,22 @@
+{
+  "run_id": "nielsen-pulse-20261126T202931Z-attempt-1",
+  "input": {
+    "brand_name": "Nielsen Pulse",
+    "copy": [
+      {
+        "text": "Earn rewards for your screen time.",
+        "source": "nielsenpulse.com landing hero title (landing.hero.title, English locale string in the site's Next.js bundle /_next/static/chunks/30073129455ada08.js, fetched 2026-11-26); nielsenpulse.com is the developer website on the App Store listing",
+        "source_url": "https://nielsenpulse.com/"
+      }
+    ]
+  },
+  "path_taken": "static-creative",
+  "assets": [],
+  "needs_human": [
+    "All three scenes put the seated subject in the headline band; scenes two and three also put hair in the logo band. A wider composition is needed."
+  ],
+  "scene_attempts": 3,
+  "scene_status": "rejected",
+  "scene_prompt_file": "brands/nielsen-pulse/runs/20261126T202931Z/static/attempt-1/scene_prompt.txt",
+  "scene": "brands/nielsen-pulse/runs/20261126T202931Z/static/attempt-1/scene.png"
+}

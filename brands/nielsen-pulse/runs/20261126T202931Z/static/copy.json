@@ -1,0 +1,32 @@
+{
+  "brand": "Nielsen Pulse",
+  "rule": "static-creative section 2: quoted exactly from an allowed source, never written or edited. No mission copy was given for this offer.",
+  "lines": [
+    {
+      "text": "Earn rewards for your screen time.",
+      "source": "nielsenpulse.com landing hero title (landing.hero.title, English locale string in the site's Next.js bundle /_next/static/chunks/30073129455ada08.js, fetched 2026-11-26); nielsenpulse.com is the developer website on the App Store listing",
+      "source_url": "https://nielsenpulse.com/"
+    },
+    {
+      "text": "Turn Your Screen Time into Real Rewards.",
+      "source": "App Store listing, first line of the description (the listing has no subtitle)",
+      "source_url": "https://apps.apple.com/us/app/nielsen-pulse/id6755230383"
+    },
+    {
+      "text": "Earn Daily Rewards, Effortlessly.",
+      "source": "App Store listing, headline burned into iPhone screenshot 1 (transcribed)",
+      "source_url": "https://apps.apple.com/us/app/nielsen-pulse/id6755230383"
+    }
+  ],
+  "not_used": [
+    {"text": "Earn rewards / For your screen time", "where": "nielsenpulse.com rewards page strings (earnRewards / forYourScreenTime)", "why": "same message as line 0, split across two UI labels"},
+    {"text": "Join the Club / Connect Your Device / Get Rewarded", "where": "nielsenpulse.com hero scroll text", "why": "step labels, not a tagline"},
+    {"text": "20+ Gift Cards / PayPal, Amazon, and 18 more", "where": "nielsenpulse.com rewards page", "why": "offer claim naming third-party brands"},
+    {"text": "Up to 48 hrs*", "where": "nielsenpulse.com rewards page", "why": "asterisked claim with footnote '*Subject to processing from the vendor/brand' - legal line"}
+  ],
+  "needs_human": [
+    "Line 0 is read from the site's locale bundle, not from a rendered page (the site is client-rendered). Confirm it is shown on the live US landing page as written, including the full stop.",
+    "Lines 1 and 2 come from the App Store description and a screenshot headline, which are not the subtitle / short description / site tagline fields static-creative section 2 names. Queued item uses line 0 only.",
+    "All lines promise rewards. Not a price or amount, but a rewards claim for a panel that requires eligibility - confirm a person is happy with it word for word."
+  ]
+}
